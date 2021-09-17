@@ -22,56 +22,56 @@ Highcharts.chart('container', {
       color: "#EC2500"
     }, {
       id: 'B',
-      name: 'Bananas',
+      name: 'Farmers',
       color: "#ECE100"
     }, {
       id: 'O',
       name: 'Oranges',
       color: '#EC9800'
     }, {
-      name: 'Anne',
+      name: 'Plot 2',
       parent: 'A',
       value: 5
     }, {
-      name: 'Rick',
+      name: 'Plot 1',
       parent: 'A',
       value: 3
     }, {
-      name: 'Peter',
+      name: 'Plot 3',
       parent: 'A',
       value: 4
     }, {
-      name: 'Anne',
+      name: 'Plot 2',
       parent: 'B',
       value: 4
     }, {
-      name: 'Rick',
+      name: 'Plot 1',
       parent: 'B',
       value: 10
     }, {
-      name: 'Peter',
+      name: 'Plot 3',
       parent: 'B',
       value: 1
     }, {
-      name: 'Anne',
+      name: 'Plot 2',
       parent: 'O',
       value: 1
     }, {
-      name: 'Rick',
+      name: 'Plot 1',
       parent: 'O',
       value: 3
     }, {
-      name: 'Peter',
+      name: 'Plot 3',
       parent: 'O',
       value: 3
     }, {
-      name: 'Susanne',
+      name: 'Mill',
       parent: 'Kiwi',
       value: 2,
       color: '#9EDE00'
     }]
   }],
   title: {
-    text: 'Fruit consumption'
+    text: 'Contribution of costs'
   }
 });

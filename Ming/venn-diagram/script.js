@@ -15,30 +15,30 @@ Highcharts.chart('container', {
     type: 'venn',
     name: 'The Unattainable Triangle',
     data: [{
-      sets: ['Good'],
+      sets: ['High Quality 25%'],
       value: 2
     }, {
-      sets: ['Fast'],
+      sets: ['Med Quality 25%'],
       value: 2
     }, {
-      sets: ['Cheap'],
+      sets: ['Low Quality 22%'],
       value: 2
     }, {
-      sets: ['Good', 'Fast'],
+      sets: ['High Quality 25%', 'Med Quality 25%'],
       value: 1,
-      name: 'More expensive'
+      name: 'Border Line 15%'
     }, {
-      sets: ['Good', 'Cheap'],
+      sets: ['High Quality 25%', 'Low Quality 22%'],
       value: 1,
-      name: 'Will take time to deliver'
+      name: 'Border Line 7%'
     }, {
-      sets: ['Fast', 'Cheap'],
+      sets: ['Med Quality 25%', 'Low Quality 22%'],
       value: 1,
-      name: 'Not the best quality'
+      name: 'Border Line 6%'
     }, {
-      sets: ['Fast', 'Cheap', 'Good'],
+      sets: ['Med Quality 25%', 'Low Quality 22%', 'High Quality 25%'],
       value: 1,
-      name: 'They\'re dreaming'
+      name: 'Total Yield 84%'
     }]
   }],
   title: {

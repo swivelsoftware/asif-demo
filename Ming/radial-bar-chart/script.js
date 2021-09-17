@@ -6,7 +6,7 @@ Highcharts.chart('container', {
     polar: true
   },
   title: {
-    text: 'Winter Olympic medals per existing country (TOP 5)'
+    text: 'Contribution of process running costs (USD K) by Destination'
   },
   tooltip: {
     outside: true
@@ -62,13 +62,13 @@ Highcharts.chart('container', {
     }
   },
   series: [{
-    name: 'Gold medals',
+    name: 'Farming',
     data: [132, 105, 92, 73, 64]
   }, {
-    name: 'Silver medals',
+    name: 'Ginners',
     data: [125, 110, 86, 64, 81]
   }, {
-    name: 'Bronze medals',
+    name: 'Merchants',
     data: [111, 90, 60, 62, 87]
   }]
 });

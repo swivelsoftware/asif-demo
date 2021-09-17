@@ -16,15 +16,15 @@ Highcharts.chart('container', {
 
 
   title: {
-    text: 'Sales per employee per weekday'
+    text: 'Yield Quality by location in Plot'
   },
 
   xAxis: {
-    categories: ['Alexander', 'Marie', 'Maximilian', 'Sophia', 'Lukas', 'Maria', 'Leon', 'Anna', 'Tim', 'Laura']
+    categories: ['500M', '1000M', '1500M', '2000M', '2500M', '3000M', '3500M', '4000M', '4500M', '5000M']
   },
 
   yAxis: {
-    categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    categories: ['500M', '1000M', '1500M', '2000M', '2500M'],
     title: null,
     reversed: true
   },
