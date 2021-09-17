@@ -18,7 +18,7 @@ Highcharts.chart('container', {
     }],
     data: [{
       id: 'A',
-      name: 'Apples',
+      name: 'Ginners',
       color: "#EC2500"
     }, {
       id: 'B',
@@ -26,7 +26,7 @@ Highcharts.chart('container', {
       color: "#ECE100"
     }, {
       id: 'O',
-      name: 'Oranges',
+      name: 'Merchants',
       color: '#EC9800'
     }, {
       name: 'Plot 2',
