@@ -1,7 +1,7 @@
 Highcharts.chart('container', {
 
   title: {
-    text: 'Highcharts Sankey Diagram'
+    text: 'Cotton Journey Farm to Destination'
   },
   accessibility: {
     point: {

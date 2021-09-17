@@ -42,6 +42,6 @@ Highcharts.chart('container', {
     }]
   }],
   title: {
-    text: 'The Unattainable Triangle'
+    text: 'Cotton Bail Quality accross Harvest'
   }
 });
