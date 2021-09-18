@@ -12,7 +12,7 @@ Highcharts.chart('container', {
     outside: true
   },
   pane: {
-    size: '85%',
+    size: '100%',
     innerSize: '20%',
     endAngle: 270
   },
