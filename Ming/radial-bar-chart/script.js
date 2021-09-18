@@ -25,7 +25,7 @@ Highcharts.chart('container', {
       step: 1,
       y: 3,
       style: {
-        fontSize: '13px'
+        fontSize: '15px'
       }
     },
     lineWidth: 0,
