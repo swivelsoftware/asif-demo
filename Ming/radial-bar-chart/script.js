@@ -3,7 +3,8 @@ Highcharts.chart('container', {
   chart: {
     type: 'column',
     inverted: true,
-    polar: true
+    polar: true,
+    width: '1000px'
   },
   title: {
     text: 'Contribution of process running costs (USD K) by Destination'
