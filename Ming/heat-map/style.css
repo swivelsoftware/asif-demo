@@ -31,3 +31,10 @@
 .highcharts-data-table tr:hover {
   background: #f1f7ff;
 }
+
+.highcharts-title {
+  font-size: 25px!important;
+}
+text {
+  font-size: 15px!important;
+}
