@@ -20,11 +20,11 @@ Highcharts.chart('container', {
   },
 
   xAxis: {
-    categories: ['500M', '1000M', '1500M', '2000M', '2500M', '3000M', '3500M', '4000M', '4500M', '5000M']
+    categories: ['0.5M', '1.0KM', '1.5KM', '2.0KM', '2.5KM', '3.0KM', '3.5KM', '4.0KM', '4.5KM', '5.0KM']
   },
 
   yAxis: {
-    categories: ['500M', '1000M', '1500M', '2000M', '2500M'],
+    categories: ['2.5KM', '2.0KM', '1.5KM', '1.0KM', '0.5KM'],
     title: null,
     reversed: true
   },
