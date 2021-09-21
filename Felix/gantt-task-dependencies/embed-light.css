@@ -413,4 +413,12 @@ header {
     color: #181919; }
 
 body {
-  background-color: #f3f5f6; }
+  background-color: #f3f5f6; 
+}
+
+.anychart-title {
+  font-size: 25px!important;
+}
+text {
+    font-size: 15px!important;
+}
