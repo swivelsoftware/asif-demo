@@ -10,10 +10,10 @@
 
     <style>
       
-    /* #chart {
-      max-width: 1250px;
+    #chart {
+      /* max-width: 1200px; */
       margin:auto;
-    } */
+    }
     
   </style>
 
@@ -55,7 +55,7 @@
     
     <div id="app">
       <div id="chart">
-       <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
+       <apexchart type="bar" :height="550" :options="chartOptions" :series="series"></apexchart>
       </div>
     </div>
 
@@ -69,16 +69,16 @@
           
           series: [{
             name: 'Ocean',
-            data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 22, 23, 10]
+            data: [34, 36, 40, 33, 25, 35, 35, 38, 34, 32, 33, 30]
           }, {
             name: 'Air',
-            data: [50, 55, 58, 65, 67, 35, 45, 25, 36, 47, 35, 55]
+            data: [30, 29, 33, 34, 36, 35, 34, 37, 36, 33, 35, 34]
           }, {
             name: 'Road',
-            data: [35, 41, 36, 26, 45, 48, 22, 23, 10, 52, 53, 41]
+            data: [35, 33, 34, 35, 33, 32, 33, 34, 30, 34, 35, 36]
           }, {
             name: 'Rail',
-            data: [60, 41, 36, 26, 45, 48, 52, 22, 23, 10, 53, 41]
+            data: [30, 35, 36, 30, 34, 37, 33, 33, 35, 38, 32, 41]
           }],
           chartOptions: {
             chart: {
@@ -87,7 +87,8 @@
             plotOptions: {
               bar: {
                 horizontal: false,
-                endingShape: 'rounded'
+                columnWidth: '80%',
+                barHeight: '100%',
               },
             },
             dataLabels: {
