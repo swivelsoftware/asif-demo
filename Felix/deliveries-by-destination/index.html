@@ -1,0 +1,28 @@
+<html>
+<body>
+    <div id="chart">
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/apexcharts'></script>
+    <script>
+        var options = {
+            series: [22, 25, 13, 15, 22],
+            chart: {
+            width: 380,
+            type: 'donut',
+            },
+            labels: ['USA', 'Germany', 'Australia', 'India', 'UK'],
+            responsive: [{
+                breakpoint: 50,
+                options: {
+                    legend: {
+                    position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+</body>
+</html>

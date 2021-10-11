@@ -1,0 +1,51 @@
+<html>
+<body>
+    <div id="chart">
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/apexcharts'></script>
+    <script>
+        var options = {
+          series: [87, 13],
+          chart: {
+          width: 380,
+          type: 'donut'
+        },
+        stroke: {
+          width: 0,
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true
+              }
+            }
+          }
+        },
+        labels: ["Within time limit", "Out of the limit"],
+        states: {
+          hover: {
+            filter: 'none'
+          }
+        },
+        theme: {
+          palette: 'palette2'
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+</body>
+</html>
