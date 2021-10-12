@@ -1,0 +1,40 @@
+<html>
+<body>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       
+       
+        const data = {
+          labels: ['Futile Trip', 'Waiting Time', 'Cartage Via Yrad/Lifts', 'Storage'],
+          datasets: [
+            {
+              label: 'Dataset 1',
+              data: [273, 29, 320, 90],
+              backgroundColor: ['#F380FF', '#E0E0E0', '#85E57E', '#5AD4FF'],
+            }
+          ]
+        };
+
+          const config = {
+            type: 'pie',
+            data: data,
+            options: {
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: 'top',
+                }
+              }
+            },
+          };
+
+        var myChart = new Chart(
+          document.getElementById('myChart'),
+          config
+        );
+    </script>
+</body>
+</html>

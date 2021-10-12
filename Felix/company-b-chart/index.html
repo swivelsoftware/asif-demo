@@ -1,0 +1,39 @@
+<html>
+<body>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       
+       const data = {
+          labels: ['Futile Trip', 'Overweight Surcharge', 'Container Detention', 'Waiting Time', 'Cartage Via Yrad/Lifts', 'Storage', 'Unpack/Handing/Redelivery',  'AQIS / Tailgate Inspection', 'Fumigation Fees', 'Qurantine Fees'],
+          datasets: [
+            {
+              label: 'Dataset 1',
+              data: [135, 5573, 440, 333, 1853, 804, 2318, 265, 711, 110],
+              backgroundColor: ['#F380FF', '#E0E0E0', '#005EC9', '#85E57E', '#5AD4FF', '#FAF200', '#AE4848', '#48F0C3', '#80DAFF', '#FFEF80'],
+            }
+          ]
+        };
+
+          const config = {
+            type: 'pie',
+            data: data,
+            options: {
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: 'top',
+                }
+              }
+            },
+          };
+
+        var myChart = new Chart(
+          document.getElementById('myChart'),
+          config
+        );
+    </script>
+</body>
+</html>
