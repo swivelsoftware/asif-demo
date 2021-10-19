@@ -1,0 +1,74 @@
+<html>
+<body>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       
+        const label = ['JAL', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JULY', 'AUG'];
+        var data = {
+          labels: label,
+          datasets: [
+            {
+              label: 'JERSEY NBA',
+              data: [3, 5, 4, 4, 3, 5, 4, 4],
+              backgroundColor: '#ff8a8a',
+              fill: true
+            },
+            {
+              label: 'NORTH AMERICA OUTLETS',
+              data: [10, 3, 4, -3, 10, 3, 4, 6],
+              backgroundColor: '#a3ffff',
+              fill: true
+            },
+            {
+              label: 'RETAIL',
+              data: [-3, 2, 7, 4, -3, 10, 3, 4, 6],
+              backgroundColor: '#C692FF',
+              fill: true
+            },
+            {
+              label: 'BRAND DTC',
+              data: [10, 6, 16, 2, 10, 6, 10, 2],
+              backgroundColor: '#92FF96',
+              fill: true
+            }
+          ]
+                };
+
+            const config = {
+              type: 'line',
+              data: data,
+              options: {
+                responsive: true,
+                interaction: {
+                  mode: 'nearest',
+                  axis: 'x',
+                  intersect: false
+                },
+                scales: {
+                  x: {
+                    title: {
+                      display: true,
+                      text: 'Month'
+                    }
+                  },
+                  y: {
+                    stacked: true,
+                    title: {
+                      display: true,
+                      text: 'Value'
+                    }
+                  }
+                }
+              }
+            };
+
+        var myChart = new Chart(
+          document.getElementById('myChart'),
+          config
+        );
+    </script>
+</body>
+</html>

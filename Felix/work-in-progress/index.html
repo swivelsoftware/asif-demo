@@ -1,0 +1,55 @@
+<html>
+<body>
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       
+        const label = ['LINE 1', 'LINE 2', 'LINE 3', 'LINE 4'];
+        var data = {
+          labels: label,
+          datasets: [
+            {
+              label: 'Loading',
+              data: [110, 30, 20, 50],
+              backgroundColor: '#ff8a8a'
+            },
+            {
+              label: 'Sewing',
+              data: [34, 130, 70, 28],
+              backgroundColor: '#a3ffff'
+            },
+            {
+              label: 'Quaity Checks',
+              data: [33, 55, 79, 88],
+              backgroundColor: '#C692FF'
+            },
+            {
+              label: 'Folding and Packing',
+              data: [67, 45, 24, 160],
+              backgroundColor: '#92FF96'
+            }
+          ]
+                };
+
+                const config = {
+                  type: 'bar',
+                  data: data,
+                  options: {
+                    responsive: true,
+                    plugins: {
+                      legend: {
+                        position: 'top',
+                      }
+                    }
+                  },
+                };
+
+        var myChart = new Chart(
+          document.getElementById('myChart'),
+          config
+        );
+    </script>
+</body>
+</html>
