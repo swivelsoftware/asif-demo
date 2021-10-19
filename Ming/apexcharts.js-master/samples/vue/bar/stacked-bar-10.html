@@ -69,20 +69,20 @@
           
           series: [{
             name: 'BOM',
-            data: [1.5, 1.9, 4.6, 10.4, 13.9, 0.7]
+            data: [30, 20, 35, 25, 25, 60]
           }, {
             name: 'BOM',
-            data: [4.3, 2.5, 23.4, 16.6, 22.8, 13.6]
+            data: [30, 20, 50, 25, 50, 20]
           }, {
             name: 'Transport',
-            data: [4.3, 2.5, 23.4, 16.6, 22.8, 13.6]
+            data: [40, 60, 15, 50, 25, 20]
           }],
           chartOptions: {
             chart: {
               type: 'bar',
               stacked: true,
             },
-            colors: ['#A2D2FF', '#FF0075', '#AF0075'],
+            colors: ['#4E9F3D', '#1597E5', '#1E5128'],
             plotOptions: {
               bar: {
                 horizontal: false,
@@ -105,13 +105,13 @@
             },
             yaxis: {
               title: {
-                text: 'Thousands'
+                text: '%'
               },
             },
             tooltip: {
               y: {
                 formatter: function (val) {
-                  return val + 'K'
+                  return val + '%'
                 }
               }
             },
