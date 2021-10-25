@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Area Spline</title>
+    <title>Stacked Bar Chart</title>
 
     <link href="../../assets/styles.css" rel="stylesheet" />
 
@@ -55,7 +55,7 @@
     
     <div id="app">
       <div id="chart">
-      <apexchart type="area" :options="chartOptions" :series="series"></apexchart>
+      <apexchart type="bar" :options="chartOptions" :series="series"></apexchart>
     </div>
     </div>
 
@@ -68,31 +68,61 @@
         data: {
           
           series: [{
-            name: 'In-store',
-            data: [31, 40, 28, 51, 42, 50, 52]
+            name: 'BOM',
+            data: [30, 20, 35, 25, 25, 60]
           }, {
-            name: 'Online',
-            data: [11, 32, 45, 32, 34, 52, 41]
+            name: 'Manufacture',
+            data: [30, 20, 50, 25, 50, 20]
+          }, {
+            name: 'Transport',
+            data: [40, 60, 15, 50, 25, 20]
           }],
           chartOptions: {
             chart: {
-              type: 'area'
+              type: 'bar',
+              stacked: true,
             },
-            dataLabels: {
-              enabled: false
-            },
-            stroke: {
-              curve: 'smooth'
-            },
-            xaxis: {
-              type: 'datetime',
-              categories: ["2014-09-19T00:00:00.000Z", "2015-09-19T01:30:00.000Z", "2016-09-19T02:30:00.000Z", "2017-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2019-09-19T05:30:00.000Z", "2020-09-19T06:30:00.000Z"]
-            },
-            tooltip: {
-              x: {
-                format: 'yyyy'
+            colors: ['#4E9F3D', '#1597E5', '#1E5128'],
+            plotOptions: {
+              bar: {
+                horizontal: false,
               },
             },
+            stroke: {
+              width: 1,
+              colors: ['#fff']
+            },
+            title: {
+              text: ''
+            },
+            xaxis: {
+              categories: ['Jul-20', 'Aug-20', 'Sep-20', 'Oct-20', 'Nov-20', 'Dec-20'],
+              labels: {
+                formatter: function (val) {
+                  return val
+                }
+              }
+            },
+            yaxis: {
+              title: {
+                text: '%'
+              },
+            },
+            tooltip: {
+              y: {
+                formatter: function (val) {
+                  return val + '%'
+                }
+              }
+            },
+            fill: {
+              opacity: 1
+            },
+            legend: {
+              position: 'bottom',
+              horizontalAlign: 'center',
+              offsetX: 40
+            }
           },
           
           
