@@ -73,7 +73,7 @@
             <td :style="{ 'background-color': getBackgroundColor(container.I.statusTime, container.I.sentTime, container.I.reminderTime) }">
               <p>Status Time: {{ container.I.statusTimeString }}</p>
               <v-text-field type="datetime-local" v-model="container.I.statusTime"></v-text-field>
-              <v-btn text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'I')">DOWNLOAD</v-btn>
+              <v-btn v-if="container.I.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'I')">DOWNLOAD</v-btn>
               <p>Sent On: {{ container.I.sentTime }}</p>
               <p>
                 Remind on: <v-text-field type="date" v-model="container.I.reminderTime"></v-text-field>
@@ -84,7 +84,7 @@
               {{container.VD.statusTime}}
               <p>Status Time: {{ container.VD.statusTimeString }}</p>
               <v-text-field type="datetime-local" v-model="container.VD.statusTime"></v-text-field>
-              <v-btn text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'VD')">DOWNLOAD</v-btn>
+              <v-btn v-if="container.VD.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'VD')">DOWNLOAD</v-btn>
               <p>Sent On: {{ container.VD.sentTime }}</p>
               <p>
                 Remind on: <v-text-field type="date" v-model="container.VD.reminderTime"></v-text-field>
@@ -94,7 +94,7 @@
             <td :style="{ 'background-color': getBackgroundColor(container.VA.statusTime, container.VA.sentTime, container.VA.reminderTime) }">
               <p>Status Time: {{ container.VA.statusTimeString }}</p>
               <v-text-field type="datetime-local" v-model="container.VA.statusTime"></v-text-field>
-              <v-btn text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'VA')">DOWNLOAD</v-btn>
+              <v-btn v-if="container.VA.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'VA')">DOWNLOAD</v-btn>
               <p>Sent On: {{container.VA.sentTime }}</p>
               <p>
                 Remind on: <v-text-field type="date" v-model="container.VA.reminderTime"></v-text-field>
@@ -104,7 +104,7 @@
             <td :style="{ 'background-color': getBackgroundColor(container.UV.statusTime, container.UV.sentTime, container.UV.reminderTime) }">
               <p>Status Time: {{ container.UV.statusTimeString }}</p>
               <v-text-field type="datetime-local" v-model="container.UV.statusTime"></v-text-field>
-              <v-btn text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'UV')">DOWNLOAD</v-btn>
+              <v-btn v-if="container.UV.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'UV')">DOWNLOAD</v-btn>
               <p>Sent On: {{ container.UV.sentTime }}</p>
               <p>
                 Remind on: <v-text-field type="date" v-model="container.UV.reminderTime"></v-text-field>
@@ -114,7 +114,7 @@
             <td :style="{ 'background-color': getBackgroundColor(container.D.statusTime, container.D.sentTime, container.D.reminderTime) }">
               <p>Status Time: {{ container.D.statusTimeString }}</p>
               <v-text-field type="datetime-local" v-model="container.D.statusTime"></v-text-field>
-              <v-btn text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'D')">DOWNLOAD</v-btn>
+              <v-btn v-if="container.D.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'D')">DOWNLOAD</v-btn>
               <p>Sent On: {{ container.D.sentTime }}</p>
               <p>
                 Remind on: <v-text-field type="date" v-model="container.D.reminderTime"></v-text-field>
@@ -124,7 +124,7 @@
             <td :style="{ 'background-color': getBackgroundColor(container.RD.statusTime, container.RD.sentTime, container.RD.reminderTime) }">
               <p>Status Time: {{ container.RD.statusTimeString }}</p>
               <v-text-field type="datetime-local" v-model="container.RD.statusTime"></v-text-field>
-              <v-btn text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'RD')">DOWNLOAD</v-btn>
+              <v-btn v-if="container.RD.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'RD')">DOWNLOAD</v-btn>
               <p>Sent On: {{ container.RD.sentTime }}</p>
               <p>
                 Remind on: <v-text-field type="date" v-model="container.RD.reminderTime"></v-text-field>
