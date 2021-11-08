@@ -12,7 +12,9 @@ Highcharts.chart('container', {
     keys: ['from', 'to', 'weight'],
     data: [
       ['DE', ' DE', 1],
+      ['DE', ' UK', 1],
       ['FR', ' FR', 5],
+      ['UK', ' DE', 1],
       ['UK', ' IT', 3],
       ['IT', ' CZ', 1],
       ['CZ', ' UK', 1],
