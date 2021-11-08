@@ -18,18 +18,35 @@
     td {
       border: 1px solid black;
     }
+
+    .flex {
+      display: flex;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
     <div>
-      <!-- <v-btn text @click.stop="reloadCarrier" :loading="carrierLoading">
-        Reload From Carrier
-      </v-btn> -->
-      <v-btn text @click.stop="reload" :loading="dataLoading">
-        Reload
+      <div>
+        <v-btn text @click.stop="reload" :loading="dataLoading">
+          Reload
         </v-btn>
+      </div>
+      <div class="flex">
+        <div style="flex: 0.5;">
+          <v-btn-toggle v-model="section" tile group>
+            <v-btn value="default">Show All</v-btn>
+            <v-btn value="etd">ETD in today ± {{interval}} days</v-btn>
+            <v-btn value="eta">ETA in today ± {{interval}} days</v-btn>
+            <v-btn value="reminder">Reminder day in today ± {{interval}} days</v-btn>
+          </v-btn-toggle>
+        </div>
+        <v-spacer></v-spacer>
+        <div style="flex: 0.2;">
+          <v-text-field label="Interval" type="number" v-model="interval" />
+        </div>
+      </div>
     </div>
     <table class="table">
       <colgroup>
@@ -55,7 +72,7 @@
         </tr>
       </thead>
       <tbody>
-        <template v-for="tracking in trackings">
+        <template v-for="tracking in selectedTrackings">
           <tr v-for="(container, index) in tracking.containers" :key="container.containerNo">
             <td v-if="index === 0" :rowspan="index === 0 ? tracking.containers.length : null">
               <div v-if="index === 0">
@@ -140,6 +157,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script>
     const baseUrl = `https://360uat-china-api.swivelsoftware.asia`;
     new Vue({
@@ -149,32 +167,80 @@
         return {
           carrierLoading: false,
           dataLoading: false,
-          trackings: []
+          trackings: [],
+          section: 'default',
+          interval: 7
+        }
+      },
+      computed: {
+        selectedTrackings() {
+          const finalTrackings = _.clone(this.trackings)
+          const today = moment.utc().startOf('day')
+          const min = today.clone().subtract(this.interval, 'days')
+          const max = today.clone().add(this.interval, 'days')
+          if (this.section === 'etd') {
+            return finalTrackings.filter(tracking => {
+              if (tracking && tracking.etd) {
+                const etd = moment.utc(tracking.etd)
+                return etd.isBetween(min, max)
+              }
+              return false
+            })
+          } else if (this.section === 'eta') {
+            return finalTrackings.filter(tracking => {
+              if (tracking && tracking.eta) {
+                const eta = moment.utc(tracking.eta)
+                return eta.isBetween(min, max)
+              }
+              return false
+            })
+          } else if (this.section === 'reminder') {
+            return finalTrackings.filter(tracking => {
+              const reminder = tracking.tracking.reminder || {}
+              const reminderI = reminder.I ? moment.utc(reminder.I) : null
+              if (reminderI) {
+                return reminderI.isBetween(min, max)
+              }
+              const reminderVD = reminder.VD ? moment.utc(reminder.VD) : null
+              if (reminderVD) {
+                return reminderVD.isBetween(min, max)
+              }
+              const reminderVA = reminder.VA ? moment.utc(reminder.VA) : null
+              if (reminderVA) {
+                return reminderVA.isBetween(min, max)
+              }
+              const reminderUV = reminder.UV ? moment.utc(reminder.UV) : null
+              if (reminderUV) {
+                return reminderUV.isBetween(min, max)
+              }
+              const reminderD = reminder.D ? moment.utc(reminder.D) : null
+              if (reminderD) {
+                return reminderD.isBetween(min, max)
+              }
+              const reminderRD = reminder.RD ? moment.utc(reminder.RD) : null
+              if (reminderRD) {
+                return reminderRD.isBetween(min, max)
+              }
+              return false
+            })
+          }
+          return this.trackings
         }
       },
       methods: {
-        reloadCarrier() {
-          // this.carrierLoading = true
-          // axios.get(`${baseUrl}/track/yundang/get`).then(() => {
-          //
-          // }).catch(e => {
-          //
-          // }).finally(() => {
-          //   this.carrierLoading = false
-          // })
-        },
         reload() {
           this.dataLoading = true
           this.tracking = []
           axios.get(`${baseUrl}/edi/getData/ECXD`).then((response) => {
             this.trackings = response.data.map(tracking => {
               const reminder = tracking.tracking.reminder || {}
-              console.log(reminder)
               tracking.etd = tracking.etd ? moment.utc(tracking.etd).format('YYYY-MM-DD HH:mm:ss') : null
               tracking.eta = tracking.eta ? moment.utc(tracking.eta).format('YYYY-MM-DD HH:mm:ss') : null
               tracking.containers = tracking.containers.map(container => {
                 if (!container) {
-                  return {}
+                  return {
+                    containerNo: ''
+                  }
                 }
                 const IStatusTime = container.I.statusTime ? moment.utc(container.I.statusTime) : null
                 const IMasterStatusTime = container.I.masterStatusTime ? moment.utc(container.I.masterStatusTime) : null
@@ -182,9 +248,9 @@
                 const IStatusTimeString = IMasterStatusTime && IContainerStatusTime && IMasterStatusTime.isSame(IContainerStatusTime) ?
                   IContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
                   (
-                    IContainerStatusTime || IMasterStatusTime
-                      ? `${IContainerStatusTime ? IContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${IMasterStatusTime ? IMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}`
-                      : ''
+                    IContainerStatusTime || IMasterStatusTime ?
+                    `${IContainerStatusTime ? IContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${IMasterStatusTime ? IMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
                   )
 
                 const VDStatusTime = container.VD.statusTime ? moment.utc(container.VD.statusTime) : null
@@ -194,9 +260,9 @@
                 const VDStatusTimeString = VDMasterStatusTime && VDContainerStatusTime && VDMasterStatusTime.isSame(VDContainerStatusTime) ?
                   VDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
                   (
-                    VDContainerStatusTime || VDMasterStatusTime
-                      ? `${VDContainerStatusTime ? VDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${VDMasterStatusTime ? VDMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}`
-                      : ''
+                    VDContainerStatusTime || VDMasterStatusTime ?
+                    `${VDContainerStatusTime ? VDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${VDMasterStatusTime ? VDMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
                   )
 
                 const VAStatusTime = container.VA.statusTime ? moment.utc(container.VA.statusTime) : null
@@ -205,9 +271,9 @@
                 const VAStatusTimeString = VAMasterStatusTime && VAContainerStatusTime && VAMasterStatusTime.isSame(VAContainerStatusTime) ?
                   VAContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
                   (
-                    VAContainerStatusTime || VAMasterStatusTime
-                      ? `${VAContainerStatusTime ? VAContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${VAMasterStatusTime ? VAMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}`
-                      : ''
+                    VAContainerStatusTime || VAMasterStatusTime ?
+                    `${VAContainerStatusTime ? VAContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${VAMasterStatusTime ? VAMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
                   )
 
                 const UVStatusTime = container.UV.statusTime ? moment.utc(container.UV.statusTime) : null
@@ -217,9 +283,9 @@
                 const UVStatusTimeString = UVMasterStatusTime && UVContainerStatusTime && UVMasterStatusTime.isSame(UVContainerStatusTime) ?
                   UVContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
                   (
-                    UVContainerStatusTime || UVMasterStatusTime
-                      ? `${UVContainerStatusTime ? UVContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${UVMasterStatusTime ? UVMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}`
-                      : ''
+                    UVContainerStatusTime || UVMasterStatusTime ?
+                    `${UVContainerStatusTime ? UVContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${UVMasterStatusTime ? UVMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
                   )
 
                 const DStatusTime = container.D.statusTime ? moment.utc(container.D.statusTime) : null
@@ -228,9 +294,9 @@
                 const DStatusTimeString = DMasterStatusTime && DContainerStatusTime && DMasterStatusTime.isSame(DContainerStatusTime) ?
                   DContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
                   (
-                    DContainerStatusTime || DMasterStatusTime
-                      ? `${DContainerStatusTime ? DContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${DMasterStatusTime ? DMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}`
-                      : ''
+                    DContainerStatusTime || DMasterStatusTime ?
+                    `${DContainerStatusTime ? DContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${DMasterStatusTime ? DMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
                   )
 
                 const RDStatusTime = container.RD.statusTime ? moment.utc(container.RD.statusTime) : null
@@ -239,9 +305,9 @@
                 const RDStatusTimeString = RDMasterStatusTime && RDContainerStatusTime && RDMasterStatusTime.isSame(RDContainerStatusTime) ?
                   RDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
                   (
-                    RDContainerStatusTime || RDMasterStatusTime
-                      ? `${RDContainerStatusTime ? RDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${RDMasterStatusTime ? RDMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}`
-                      : ''
+                    RDContainerStatusTime || RDMasterStatusTime ?
+                    `${RDContainerStatusTime ? RDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${RDMasterStatusTime ? RDMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
                   )
 
                 return {
@@ -617,17 +683,12 @@
         },
         getBackgroundColor(statusTime, sentTime, reminderTime) {
           const now = moment.utc()
-          if ((statusTime && sentTime)) {
+          if ((statusTime && sentTime) || sentTime) { // ok good sent out => green
             return '#0f0'
-          } else if (sentTime) {
-            if (reminderTime && moment.utc(reminderTime).endOf('day').isAfter(now)) {
-              return '#ff6'
-            }
-            return '#ff0'
-          } else if (statusTime) {
-            if (reminderTime && moment.utc(reminderTime).endOf('day').isAfter(now)) {
-              return '#f06'
-            }
+          }
+          if (reminderTime && moment.utc(reminderTime).endOf('day').isAfter(now)) { // reminder time => pink
+            return '#f06'
+          } else if (statusTime) { // need send => red
             return '#f00'
           }
           return null
