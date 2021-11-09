@@ -26,10 +26,10 @@ table td {
   border-right: 1px solid #ECF0F1;
 }
 table th {
-  background-color: #2083f5;
+  background-color: #1591f7;
 }
 table tr:nth-of-type(even) td {
-  background-color: #2083f5;
+  background-color: #38c2f8;
 }
 table .total th {
   background-color: white;
