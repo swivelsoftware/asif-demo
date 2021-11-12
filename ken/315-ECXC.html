@@ -88,56 +88,56 @@
             </td>
             <td>{{ container.containerNo }}</td>
             <td :style="{ 'background-color': getBackgroundColor(container.VD.statusTime, container.VD.sentTime, container.VD.reminderTime) }">
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Status Time" type="datetime-local" v-model="container.VD.statusTime"></v-text-field>
                 <v-btn icon small  v-if="container.VD.statusTime" @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'VD')"><v-icon small>send</v-icon></v-btn>
               </div>
               <p>Sent On: {{ container.VD.sentTime }} [ISA: {{ container.VD.isa }}]</p>
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Reminder Time" type="date" v-model="container.VD.reminderTime"></v-text-field>
                 <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'VD', container.VD.reminderTime)"><v-icon small>check</v-icon></v-btn>
               </div>
             </td>
             <td :style="{ 'background-color': getBackgroundColor(container.AG.statusTime, container.AG.sentTime, container.AG.reminderTime) }">
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Status Time" type="datetime-local" v-model="container.AG.statusTime"></v-text-field>
                 <v-btn icon small  v-if="container.AG.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'AG')"><v-icon small>send</v-icon></v-btn>
               </div>
               <p>Sent On:{{ container.AG.sentTime }} [ISA: {{ container.AG.isa }}]</p>
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Reminder Time" type="date" v-model="container.AG.reminderTime"></v-text-field>
                 <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'AG', container.AG.reminderTime)"><v-icon small>check</v-icon></v-btn>
               </div>
             </td>
             <td :style="{ 'background-color': getBackgroundColor(container.UV.statusTime, container.UV.sentTime, container.UV.reminderTime) }">
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Status Time" type="datetime-local" v-model="container.UV.statusTime"></v-text-field>
                 <v-btn icon small v-if="container.UV.statusTime"@click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'UV')"><v-icon small>send</v-icon></v-btn>
               </div>
               <p>Sent On:{{ container.UV.sentTime }} [ISA: {{ container.UV.isa }}]</p>
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Reminder Time" type="date" v-model="container.UV.reminderTime"></v-text-field>
                 <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'UV', container.UV.reminderTime)"><v-icon small>check</v-icon></v-btn>
               </div>
             </td>
             <td :style="{ 'background-color': getBackgroundColor(container.OA.statusTime, container.OA.sentTime, container.OA.reminderTime) }">
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Status Time" type="datetime-local" v-model="container.OA.statusTime"></v-text-field>
                 <v-btn icon small v-if="container.OA.statusTime" @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'OA')"><v-icon small>send</v-icon></v-btn>
               </div>
               <p>Sent On:{{ container.OA.sentTime }} [ISA: {{ container.OA.isa }}]</p>
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Reminder Time" type="date" v-model="container.OA.reminderTime"></v-text-field>
                 <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'OA', container.OA.reminderTime)"><v-icon small>check</v-icon></v-btn>
               </div>
             </td>
             <td :style="{ 'background-color': getBackgroundColor(container.RD.statusTime, container.RD.sentTime, container.RD.reminderTime) }">
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Status Time" type="datetime-local" v-model="container.RD.statusTime"></v-text-field>
                 <v-btn icon small v-if="container.RD.statusTime" @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'RD')"><v-icon small>send</v-icon></v-btn>
               </div>
               <p>Sent On:{{ container.RD.sentTime }} [ISA: {{ container.RD.isa }}]</p>
-              <div class="flex">
+              <div class="flex" style="align-items: baseline;">
                 <v-text-field label="Reminder Time" type="date" v-model="container.RD.reminderTime"></v-text-field>
                 <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'RD', container.RD.reminderTime)"><v-icon small>check</v-icon></v-btn>
               </div>
@@ -153,7 +153,7 @@
   <script src="https://momentjs.com/downloads/moment.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script>
-    const baseUrl = `http://localhost:7000`;
+    const baseUrl = `https://360uat-china-api.swivelsoftware.asia`;
     const xdataUrl = 'https://xdata-uat.swivelsoftware.asia';
     const token = 'CEC01F7C412C41BDED0B44C5228A8017';
     new Vue({
