@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <style>
+    .table {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    .flex {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <div>
+        <v-btn text @click.stop="reload" :loading="dataLoading">
+          Reload
+        </v-btn>
+      </div>
+      <div class="flex">
+        <div style="flex: 0.5;">
+          <v-btn-toggle v-model="section" tile group>
+            <v-btn value="default">Show All</v-btn>
+            <v-btn value="etd">ETD in today ± {{interval}} days</v-btn>
+            <v-btn value="eta">ETA in today ± {{interval}} days</v-btn>
+            <v-btn value="reminder">Reminder day in today ± {{interval}} days</v-btn>
+          </v-btn-toggle>
+        </div>
+        <v-spacer></v-spacer>
+        <div style="flex: 0.2;">
+          <v-text-field label="Interval" type="number" v-model="interval" />
+        </div>
+      </div>
+    </div>
+    <table class="table">
+      <colgroup>
+        <col style="width: 19%;" />
+        <col style="width: 9%" />
+        <col style="width: 11%" />
+        <col style="width: 11%" />
+        <col style="width: 11%" />
+        <col style="width: 11%" />
+        <col style="width: 11%" />
+        <col style="width: 11%" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Booking</th>
+          <th>Container#</th>
+          <th>GATE IN (I)</th>
+          <th>LOAD ONBOARD/ DEPARTUE (VD)</th>
+          <th>ARRIVAL (VA)</th>
+          <th>DISCHARGE (UV)</th>
+          <th>GATE OUT (D)</th>
+          <th>EMPTY GATE IN (RD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template v-for="tracking in selectedTrackings">
+          <tr v-for="(container, index) in tracking.containers" :key="container.containerNo">
+            <td v-if="index === 0" :rowspan="index === 0 ? tracking.containers.length : null">
+              <div v-if="index === 0">
+                <p>Booking#: {{ tracking.bookingNo  }}</p>
+                <p>MBL#: {{ tracking.trackingNo  }}</p>
+                <p>ETD: {{ formatDate(tracking.etd, 'YYYY-MM-DD') }}</p>
+                <p>ETA: {{ formatDate(tracking.eta, 'YYYY-MM-DD') }}</p>
+                <p>Carrier: {{ tracking.carrierCode }}</p>
+                <v-btn text :href="`https://member.yundangnet.com/CargoTracking/QueryIframe?&companyid=3132blno=${tracking.trackingNo}&ctnrno=${container.containerNo}&carrier=${tracking.carrierCode}`" target="_blank">
+                  Carrier
+                </v-btn>
+              </div>
+            </td>
+            <td>{{ container.containerNo }}</td>
+            <td :style="{ 'background-color': getBackgroundColor(container.I.statusTime, container.I.sentTime, container.I.reminderTime) }">
+              <div class="flex">
+                <v-text-field label="Status Time" type="datetime-local" v-model="container.I.statusTime"></v-text-field>
+                <v-btn icon small  v-if="container.I.statusTime"@click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'I')"><v-icon small>send</v-icon></v-btn>
+              </div>
+              <p>Sent On: {{ container.I.sentTime }} [ISA: {{ container.I.isa }}]</p>
+              <div class="flex">
+                <v-text-field label="Reminder Time" type="date" v-model="container.I.reminderTime"></v-text-field>
+                <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'I', container.I.reminderTime)"><v-icon small>check</v-icon></v-btn>
+              </div>
+            </td>
+            <td :style="{ 'background-color': getBackgroundColor(container.VD.statusTime, container.VD.sentTime, container.VD.reminderTime) }">
+              <div class="flex">
+                <v-text-field label="Status Time" type="datetime-local" v-model="container.VD.statusTime"></v-text-field>
+                <v-btn icon small  v-if="container.VD.statusTime" @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'VD')"><v-icon small>send</v-icon></v-btn>
+              </div>
+              <p>Sent On: {{ container.VD.sentTime }} [ISA: {{ container.VD.isa }}]</p>
+              <div class="flex">
+                <v-text-field label="Reminder Time" type="date" v-model="container.VD.reminderTime"></v-text-field>
+                <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'VD', container.VD.reminderTime)"><v-icon small>check</v-icon></v-btn>
+              </div>
+            </td>
+            <td :style="{ 'background-color': getBackgroundColor(container.VA.statusTime, container.VA.sentTime, container.VA.reminderTime) }">
+              <div class="flex">
+                <v-text-field label="Status Time" type="datetime-local" v-model="container.VA.statusTime"></v-text-field>
+                <v-btn icon small  v-if="container.VA.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'VA')"><v-icon small>send</v-icon></v-btn>
+              </div>
+              <p>Sent On:{{ container.VA.sentTime }} [ISA: {{ container.VA.isa }}]</p>
+              <div class="flex">
+                <v-text-field label="Reminder Time" type="date" v-model="container.VA.reminderTime"></v-text-field>
+                <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'VA', container.VA.reminderTime)"><v-icon small>check</v-icon></v-btn>
+              </div>
+            </td>
+            <td :style="{ 'background-color': getBackgroundColor(container.UV.statusTime, container.UV.sentTime, container.UV.reminderTime) }">
+              <div class="flex">
+                <v-text-field label="Status Time" type="datetime-local" v-model="container.UV.statusTime"></v-text-field>
+                <v-btn icon small v-if="container.UV.statusTime"@click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'UV')"><v-icon small>send</v-icon></v-btn>
+              </div>
+              <p>Sent On:{{ container.UV.sentTime }} [ISA: {{ container.UV.isa }}]</p>
+              <div class="flex">
+                <v-text-field label="Reminder Time" type="date" v-model="container.UV.reminderTime"></v-text-field>
+                <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'UV', container.UV.reminderTime)"><v-icon small>check</v-icon></v-btn>
+              </div>
+            </td>
+            <td :style="{ 'background-color': getBackgroundColor(container.D.statusTime, container.D.sentTime, container.D.reminderTime) }">
+              <div class="flex">
+                <v-text-field label="Status Time" type="datetime-local" v-model="container.D.statusTime"></v-text-field>
+                <v-btn icon small v-if="container.D.statusTime" @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'D')"><v-icon small>send</v-icon></v-btn>
+              </div>
+              <p>Sent On:{{ container.D.sentTime }} [ISA: {{ container.D.isa }}]</p>
+              <div class="flex">
+                <v-text-field label="Reminder Time" type="date" v-model="container.D.reminderTime"></v-text-field>
+                <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'D', container.D.reminderTime)"><v-icon small>check</v-icon></v-btn>
+              </div>
+            </td>
+            <td :style="{ 'background-color': getBackgroundColor(container.RD.statusTime, container.RD.sentTime, container.RD.reminderTime) }">
+              <div class="flex">
+                <v-text-field label="Status Time" type="datetime-local" v-model="container.RD.statusTime"></v-text-field>
+                <v-btn icon small v-if="container.RD.statusTime" @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'RD')"><v-icon small>send</v-icon></v-btn>
+              </div>
+              <p>Sent On:{{ container.RD.sentTime }} [ISA: {{ container.RD.isa }}]</p>
+              <div class="flex">
+                <v-text-field label="Reminder Time" type="date" v-model="container.RD.reminderTime"></v-text-field>
+                <v-btn icon small @click.stop="() => setReminder(tracking.trackingNo, tracking.tracking.reminder || {}, 'RD', container.RD.reminderTime)"><v-icon small>check</v-icon></v-btn>
+              </div>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://momentjs.com/downloads/moment.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const baseUrl = `https://360uat-china-api.swivelsoftware.asia`;
+    const xdataUrl = 'https://xdata-uat.swivelsoftware.asia';
+    const token = 'CEC01F7C412C41BDED0B44C5228A8017';
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: () => {
+        return {
+          carrierLoading: false,
+          dataLoading: false,
+          trackings: [],
+          section: 'default',
+          interval: 7
+        }
+      },
+      computed: {
+        selectedTrackings() {
+          const finalTrackings = _.clone(this.trackings)
+          finalTrackings.sort((a, b) => {
+            const aetd = moment.utc(a.etd)
+            const aeta = moment.utc(a.eta)
+            const betd = moment.utc(b.etd)
+            const beta = moment.utc(b.eta)
+
+            if (aetd.isBefore(betd)) {
+              return 1
+            } else if (aetd.isAfter(aetd)) {
+              return -1
+            }
+            if (aeta.isBefore(beta)) {
+              return 1
+            } else if (aeta.isAfter(beta)) {
+              return -1
+            }
+            return 0
+          })
+          const today = moment.utc().startOf('day')
+          const min = today.clone().subtract(this.interval, 'days')
+          const max = today.clone().add(this.interval, 'days')
+          if (this.section === 'etd') {
+            return finalTrackings.filter(tracking => {
+              if (tracking && tracking.etd) {
+                const etd = moment.utc(tracking.etd)
+                return etd.isBetween(min, max)
+              }
+              return false
+            })
+          } else if (this.section === 'eta') {
+            return finalTrackings.filter(tracking => {
+              if (tracking && tracking.eta) {
+                const eta = moment.utc(tracking.eta)
+                return eta.isBetween(min, max)
+              }
+              return false
+            })
+          } else if (this.section === 'reminder') {
+            return finalTrackings.filter(tracking => {
+              const reminder = tracking.tracking.reminder || {}
+              const reminderI = reminder.I ? moment.utc(reminder.I) : null
+              if (reminderI) {
+                return reminderI.isBetween(min, max)
+              }
+              const reminderVD = reminder.VD ? moment.utc(reminder.VD) : null
+              if (reminderVD) {
+                return reminderVD.isBetween(min, max)
+              }
+              const reminderVA = reminder.VA ? moment.utc(reminder.VA) : null
+              if (reminderVA) {
+                return reminderVA.isBetween(min, max)
+              }
+              const reminderUV = reminder.UV ? moment.utc(reminder.UV) : null
+              if (reminderUV) {
+                return reminderUV.isBetween(min, max)
+              }
+              const reminderD = reminder.D ? moment.utc(reminder.D) : null
+              if (reminderD) {
+                return reminderD.isBetween(min, max)
+              }
+              const reminderRD = reminder.RD ? moment.utc(reminder.RD) : null
+              if (reminderRD) {
+                return reminderRD.isBetween(min, max)
+              }
+              return false
+            })
+          }
+          return finalTrackings
+        }
+      },
+      methods: {
+        reload() {
+          this.dataLoading = true
+          this.tracking = []
+          axios.get(`${baseUrl}/edi/getData/ECXD`).then((response) => {
+            this.trackings = response.data.map(tracking => {
+              const reminder = tracking.tracking.reminder || {}
+              tracking.etd = tracking.etd ? moment.utc(tracking.etd).format('YYYY-MM-DD HH:mm:ss') : null
+              tracking.eta = tracking.eta ? moment.utc(tracking.eta).format('YYYY-MM-DD HH:mm:ss') : null
+              tracking.containers = tracking.containers.map(container => {
+                if (!container) {
+                  return {
+                    containerNo: ''
+                  }
+                }
+                const IStatusTime = container.I.statusTime ? moment.utc(container.I.statusTime) : null
+                const IMasterStatusTime = container.I.masterStatusTime ? moment.utc(container.I.masterStatusTime) : null
+                const IContainerStatusTime = container.I.containerStatusTime ? moment.utc(container.I.containerStatusTime) : null
+                const IStatusTimeString = IMasterStatusTime && IContainerStatusTime && IMasterStatusTime.isSame(IContainerStatusTime) ?
+                  IContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
+                  (
+                    IContainerStatusTime || IMasterStatusTime ?
+                    `${IContainerStatusTime ? IContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${IMasterStatusTime ? IMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
+                  )
+
+                const VDStatusTime = container.VD.statusTime ? moment.utc(container.VD.statusTime) : null
+                const finalVDStatusTime = IStatusTime && VDStatusTime ? (VDStatusTime.isSame(IStatusTime) ? VDStatusTime.add(1, 's') : VDStatusTime) : VDStatusTime
+                const VDMasterStatusTime = container.VD.masterStatusTime ? moment.utc(container.VD.masterStatusTime) : null
+                const VDContainerStatusTime = container.VD.containerStatusTime ? moment.utc(container.VD.containerStatusTime) : null
+                const VDStatusTimeString = VDMasterStatusTime && VDContainerStatusTime && VDMasterStatusTime.isSame(VDContainerStatusTime) ?
+                  VDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
+                  (
+                    VDContainerStatusTime || VDMasterStatusTime ?
+                    `${VDContainerStatusTime ? VDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${VDMasterStatusTime ? VDMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
+                  )
+
+                const VAStatusTime = container.VA.statusTime ? moment.utc(container.VA.statusTime) : null
+                const VAMasterStatusTime = container.VA.masterStatusTime ? moment.utc(container.VA.masterStatusTime) : null
+                const VAContainerStatusTime = container.VA.containerStatusTime ? moment.utc(container.VA.containerStatusTime) : null
+                const VAStatusTimeString = VAMasterStatusTime && VAContainerStatusTime && VAMasterStatusTime.isSame(VAContainerStatusTime) ?
+                  VAContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
+                  (
+                    VAContainerStatusTime || VAMasterStatusTime ?
+                    `${VAContainerStatusTime ? VAContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${VAMasterStatusTime ? VAMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
+                  )
+
+                const UVStatusTime = container.UV.statusTime ? moment.utc(container.UV.statusTime) : null
+                const finalUVStatusTime = VAStatusTime && UVStatusTime ? (UVStatusTime.isSame(VAStatusTime) ? UVStatusTime.add(1, 's') : UVStatusTime) : UVStatusTime
+                const UVMasterStatusTime = container.UV.masterStatusTime ? moment.utc(container.UV.masterStatusTime) : null
+                const UVContainerStatusTime = container.UV.containerStatusTime ? moment.utc(container.UV.containerStatusTime) : null
+                const UVStatusTimeString = UVMasterStatusTime && UVContainerStatusTime && UVMasterStatusTime.isSame(UVContainerStatusTime) ?
+                  UVContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
+                  (
+                    UVContainerStatusTime || UVMasterStatusTime ?
+                    `${UVContainerStatusTime ? UVContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${UVMasterStatusTime ? UVMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
+                  )
+
+                const DStatusTime = container.D.statusTime ? moment.utc(container.D.statusTime) : null
+                const DMasterStatusTime = container.D.masterStatusTime ? moment.utc(container.D.masterStatusTime) : null
+                const DContainerStatusTime = container.D.containerStatusTime ? moment.utc(container.D.containerStatusTime) : null
+                const DStatusTimeString = DMasterStatusTime && DContainerStatusTime && DMasterStatusTime.isSame(DContainerStatusTime) ?
+                  DContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
+                  (
+                    DContainerStatusTime || DMasterStatusTime ?
+                    `${DContainerStatusTime ? DContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${DMasterStatusTime ? DMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
+                  )
+
+                const RDStatusTime = container.RD.statusTime ? moment.utc(container.RD.statusTime) : null
+                const RDMasterStatusTime = container.RD.masterStatusTime ? moment.utc(container.RD.masterStatusTime) : null
+                const RDContainerStatusTime = container.RD.containerStatusTime ? moment.utc(container.RD.containerStatusTime) : null
+                const RDStatusTimeString = RDMasterStatusTime && RDContainerStatusTime && RDMasterStatusTime.isSame(RDContainerStatusTime) ?
+                  RDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') :
+                  (
+                    RDContainerStatusTime || RDMasterStatusTime ?
+                    `${RDContainerStatusTime ? RDContainerStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''} / ${RDMasterStatusTime ? RDMasterStatusTime.format('YYYY-MM-DD HH:mm:ss') : ''}` :
+                    ''
+                  )
+
+                return {
+                  containerNo: container.containerNo,
+                  I: {
+                    statusTimeString: IStatusTimeString,
+                    statusTime: IStatusTime ? IStatusTime.format('YYYY-MM-DDTHH:mm:ss') : null,
+                    sentTime: container.I.sentTime ? moment.utc(container.I.sentTime).format('YYYY-MM-DD HH:mm:ss') : null,
+                    reminderTime: reminder.I ? moment.utc(reminder.I).format('YYYY-MM-DD') : null,
+                    isa: container.I ? container.I.isa : null,
+                  },
+                  VD: {
+                    statusTimeString: VDStatusTimeString,
+                    statusTime: finalVDStatusTime ? finalVDStatusTime.format('YYYY-MM-DDTHH:mm:ss') : null,
+                    sentTime: container.VD.sentTime ? moment.utc(container.VD.sentTime).format('YYYY-MM-DD HH:mm:ss') : null,
+                    reminderTime: reminder.VD ? moment.utc(reminder.VD).format('YYYY-MM-DD') : null,
+                    isa: container.VD ? container.VD.isa : null,
+                  },
+                  VA: {
+                    statusTimeString: VAStatusTimeString,
+                    statusTime: VAStatusTime ? VAStatusTime.format('YYYY-MM-DDTHH:mm:ss') : null,
+                    sentTime: container.VA.sentTime ? moment.utc(container.VA.sentTime).format('YYYY-MM-DD HH:mm:ss') : null,
+                    reminderTime: reminder.VA ? moment.utc(reminder.VA).format('YYYY-MM-DD') : null,
+                    isa: container.VA ? container.VA.isa : null,
+                  },
+                  UV: {
+                    statusTimeString: UVStatusTimeString,
+                    statusTime: finalUVStatusTime ? finalUVStatusTime.format('YYYY-MM-DDTHH:mm:ss') : null,
+                    sentTime: container.UV.sentTime ? moment.utc(container.UV.sentTime).format('YYYY-MM-DD HH:mm:ss') : null,
+                    reminderTime: reminder.UV ? moment.utc(reminder.UV).format('YYYY-MM-DD') : null,
+                    isa: container.UV ? container.UV.isa : null,
+                  },
+                  D: {
+                    statusTimeString: DStatusTimeString,
+                    statusTime: DStatusTime ? DStatusTime.format('YYYY-MM-DDTHH:mm:ss') : null,
+                    sentTime: container.D.sentTime ? moment.utc(container.D.sentTime).format('YYYY-MM-DD HH:mm:ss') : null,
+                    reminderTime: reminder.D ? moment.utc(reminder.D).format('YYYY-MM-DD') : null,
+                    isa: container.D ? container.D.isa : null,
+                  },
+                  RD: {
+                    statusTimeString: RDStatusTimeString,
+                    statusTime: RDStatusTime ? RDStatusTime.format('YYYY-MM-DDThh:mm:ss') : null,
+                    sentTime: container.RD.sentTime ? moment.utc(container.RD.sentTime).format('YYYY-MM-DD HH:mm:ss') : null,
+                    reminderTime: reminder.RD ? moment.utc(reminder.RD).format('YYYY-MM-DD') : null,
+                    isa: container.RD ? container.RD.isa : null,
+                  },
+                }
+              })
+              return tracking
+            })
+          }).catch(e => {
+            console.error(e)
+          }).finally(() => {
+            this.dataLoading = false
+          })
+        },
+        getJSON(tracking, trackingReference, container, status) {
+          const json = {
+            ...tracking,
+            trackingReference,
+          }
+          switch (status) {
+            case 'I':
+              return {
+                ...json,
+                lastStatusCode: 'GITM',
+                  lastStatusDate: container.I.statusTime,
+                  lastStatusUpdateDate: container.I.statusTime,
+                  trackingContainers: [{
+                    containerNo: container.containerNo,
+                    trackingStatus: [{
+                      isEstimated: false,
+                      statusCode: 'GITM',
+                      statusDate: container.I.statusTime
+                    }]
+                  }],
+                  trackingStatus: [{
+                    isEstimated: false,
+                    statusCode: 'GITM',
+                    statusDate: container.I.statusTime
+                  }]
+              }
+              case 'VD':
+                return {
+                  ...json,
+                  lastStatusCode: 'DLPT',
+                    lastStatusDate: container.VD.statusTime,
+                    lastStatusUpdateDate: container.VD.statusTime,
+                    trackingContainers: [{
+                      containerNo: container.containerNo,
+                      trackingStatus: [{
+                          isEstimated: false,
+                          statusCode: 'GITM',
+                          statusDate: container.I.statusTime
+                        },
+                        {
+                          isEstimated: false,
+                          statusCode: 'DLPT',
+                          statusDate: container.VD.statusTime
+                        }
+                      ]
+                    }],
+                    trackingStatus: [{
+                        isEstimated: false,
+                        statusCode: 'GITM',
+                        statusDate: container.I.statusTime
+                      },
+                      {
+                        isEstimated: false,
+                        statusCode: 'DLPT',
+                        statusDate: container.VD.statusTime
+                      }
+                    ]
+                }
+                case 'VA':
+                  return {
+                    ...json,
+                    lastStatusCode: 'BDAR',
+                      lastStatusDate: container.VA.statusTime,
+                      lastStatusUpdateDate: container.VA.statusTime,
+                      trackingContainers: [{
+                        containerNo: container.containerNo,
+                        trackingStatus: [{
+                            isEstimated: false,
+                            statusCode: 'GITM',
+                            statusDate: container.I.statusTime
+                          },
+                          {
+                            isEstimated: false,
+                            statusCode: 'DLPT',
+                            statusDate: container.VD.statusTime
+                          },
+                          {
+                            isEstimated: false,
+                            statusCode: 'BDAR',
+                            statusDate: container.VA.statusTime
+                          }
+                        ]
+                      }],
+                      trackingStatus: [{
+                          isEstimated: false,
+                          statusCode: 'GITM',
+                          statusDate: container.I.statusTime
+                        },
+                        {
+                          isEstimated: false,
+                          statusCode: 'DLPT',
+                          statusDate: container.VD.statusTime
+                        },
+                        {
+                          isEstimated: false,
+                          statusCode: 'BDAR',
+                          statusDate: container.VA.statusTime
+                        }
+                      ]
+                  }
+                  case 'UV':
+                    return {
+                      ...json,
+                      lastStatusCode: 'DSCH',
+                        lastStatusDate: container.UV.statusTime,
+                        lastStatusUpdateDate: container.UV.statusTime,
+                        trackingContainers: [{
+                          containerNo: container.containerNo,
+                          trackingStatus: [{
+                              isEstimated: false,
+                              statusCode: 'GITM',
+                              statusDate: container.I.statusTime
+                            },
+                            {
+                              isEstimated: false,
+                              statusCode: 'DLPT',
+                              statusDate: container.VD.statusTime
+                            },
+                            {
+                              isEstimated: false,
+                              statusCode: 'BDAR',
+                              statusDate: container.VA.statusTime
+                            },
+                            {
+                              isEstimated: false,
+                              statusCode: 'DSCH',
+                              statusDate: container.UV.statusTime
+                            }
+                          ]
+                        }],
+                        trackingStatus: [{
+                            isEstimated: false,
+                            statusCode: 'GITM',
+                            statusDate: container.I.statusTime
+                          },
+                          {
+                            isEstimated: false,
+                            statusCode: 'DLPT',
+                            statusDate: container.VD.statusTime
+                          },
+                          {
+                            isEstimated: false,
+                            statusCode: 'BDAR',
+                            statusDate: container.VA.statusTime
+                          },
+                          {
+                            isEstimated: false,
+                            statusCode: 'DSCH',
+                            statusDate: container.UV.statusTime
+                          }
+                        ]
+                    }
+                    case 'D':
+                      return {
+                        ...json,
+                        lastStatusCode: 'STCS',
+                          lastStatusDate: container.D.statusTime,
+                          lastStatusUpdateDate: container.D.statusTime,
+                          trackingContainers: [{
+                            containerNo: container.containerNo,
+                            trackingStatus: [{
+                                isEstimated: false,
+                                statusCode: 'GITM',
+                                statusDate: container.I.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'DLPT',
+                                statusDate: container.VD.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'BDAR',
+                                statusDate: container.VA.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'DSCH',
+                                statusDate: container.UV.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'STCS',
+                                statusDate: container.D.statusTime
+                              }
+                            ]
+                          }],
+                          trackingStatus: [{
+                              isEstimated: false,
+                              statusCode: 'GITM',
+                              statusDate: container.I.statusTime
+                            },
+                            {
+                              isEstimated: false,
+                              statusCode: 'DLPT',
+                              statusDate: container.VD.statusTime
+                            },
+                            {
+                              isEstimated: false,
+                              statusCode: 'BDAR',
+                              statusDate: container.VA.statusTime
+                            },
+                            {
+                              isEstimated: false,
+                              statusCode: 'DSCH',
+                              statusDate: container.UV.statusTime
+                            },
+                            {
+                              isEstimated: false,
+                              statusCode: 'STCS',
+                              statusDate: container.D.statusTime
+                            }
+                          ]
+                      }
+                      case 'RD':
+                        return {
+                          ...json,
+                          lastStatusCode: 'RCVE',
+                            lastStatusDate: container.RD.statusTime,
+                            lastStatusUpdateDate: container.RD.statusTime,
+                            trackingContainers: [{
+                              containerNo: container.containerNo,
+                              trackingStatus: [{
+                                  isEstimated: false,
+                                  statusCode: 'GITM',
+                                  statusDate: container.I.statusTime
+                                },
+                                {
+                                  isEstimated: false,
+                                  statusCode: 'DLPT',
+                                  statusDate: container.VD.statusTime
+                                },
+                                {
+                                  isEstimated: false,
+                                  statusCode: 'BDAR',
+                                  statusDate: container.VA.statusTime
+                                },
+                                {
+                                  isEstimated: false,
+                                  statusCode: 'DSCH',
+                                  statusDate: container.UV.statusTime
+                                },
+                                {
+                                  isEstimated: false,
+                                  statusCode: 'STCS',
+                                  statusDate: container.D.statusTime
+                                },
+                                {
+                                  isEstimated: false,
+                                  statusCode: 'RCVE',
+                                  statusDate: container.RD.statusTime
+                                }
+                              ]
+                            }],
+                            trackingStatus: [{
+                                isEstimated: false,
+                                statusCode: 'GITM',
+                                statusDate: container.I.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'DLPT',
+                                statusDate: container.VD.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'BDAR',
+                                statusDate: container.VA.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'DSCH',
+                                statusDate: container.UV.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'STCS',
+                                statusDate: container.D.statusTime
+                              },
+                              {
+                                isEstimated: false,
+                                statusCode: 'RCVE',
+                                statusDate: container.RD.statusTime
+                              }
+                            ]
+                        }
+          }
+        },
+        download(tracking, trackingReference, container, status) {
+          const data = {}
+          data['data'] = this.getJSON(tracking, trackingReference, container, status)
+          const dataList = []
+          dataList.push(data)
+          const headers = {
+            'Content-Type': 'application/json',
+            'token': token
+          }
+          const json = {
+            dataList,
+            'importType': '315',
+            'importFormat': 'json',
+            'importFormatDataType': 'json',
+            'exportFormatDataType': 'string',
+            'exportType': '315',
+            'exportFormat': 'edi'
+          }
+          axios.post(`${xdataUrl}/edi/wholeProcessParser`, json, {
+              headers
+            })
+            .then(response => {
+              const data = response.data
+            }).catch(e => {
+              console.error(e)
+            })
+        },
+        setReminder(trackingNo, originalReminder, statusCode, newReminderTime) {
+          axios.post(`${baseUrl}/EDI/changeLog/${trackingNo}`, {
+            ...originalReminder,
+            [statusCode]: newReminderTime,
+          })
+        },
+        formatDate(date, format) {
+          if (!date) {
+            return ''
+          }
+          return moment.utc(date).format(format)
+        },
+        getBackgroundColor(statusTime, sentTime, reminderTime) {
+          const now = moment.utc()
+          if ((statusTime && sentTime) || sentTime) { // ok good sent out => green
+            return '#0f0'
+          }
+          if (reminderTime && moment.utc(reminderTime).endOf('day').isAfter(now)) { // reminder time => pink
+            return '#f06'
+          } else if (statusTime) { // need send => red
+            return '#f00'
+          }
+          return null
+        }
+      },
+      created() {
+        this.reload()
+      }
+    })
+  </script>
+</body>
+
+</html>
