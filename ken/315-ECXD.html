@@ -712,7 +712,7 @@
             })
             .then(response => {
               const data = response.data
-              const result = _.get(data, 'wholeProcessParser[0].outPutDataList[0].otherEdiValue', {})
+              const result = _.get(data, 'wholeOutPutDataList[0].outPutDataList[0].otherEdiValue', {})
               if (result) {
                 this.snackBarText = `EDI sent and ISA# is ${result.controlNo}`
                 this.snackBar = true
