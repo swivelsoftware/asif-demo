@@ -159,7 +159,7 @@
         </template>
       </tbody>
     </table>
-    <v-snackbar v-model="snackBarText" top right :timeout"4000">
+    <v-snackbar v-model="snackBarText" top right :timeout="4000">
       {{ snackBarText }}
       <template v-slot:action="{ attrs }">
         <v-btn text v-bind="attrs" @click="snackBarText = ''">
