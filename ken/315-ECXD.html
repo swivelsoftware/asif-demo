@@ -8,7 +8,6 @@
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://unpkg.com/vue-notifyjs/themes/material.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <style>
     .table {
@@ -160,19 +159,24 @@
         </template>
       </tbody>
     </table>
-    <notifications></notifications>
+    <v-snackbar v-model="snackBarText" top right :timeout"4000">
+      {{ snackBarText }}
+      <template v-slot:action="{ attrs }">
+        <v-btn text v-bind="attrs" @click="snackBarText = ''">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-  <script src="https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.js"></script>
   <script>
     const baseUrl = `https://360uat-china-api.swivelsoftware.asia`;
     const xdataUrl = 'https://xdata-uat.swivelsoftware.asia';
     const token = '1455D83810A3215B21D4AEB98B81DDBB';
-    Vue.use(vueNotifyjs);
     new Vue({
       el: '#app',
       vuetify: new Vuetify(),
@@ -182,7 +186,8 @@
           dataLoading: false,
           trackings: [],
           section: 'default',
-          interval: 7
+          interval: 7,
+          snackBarText: ''
         }
       },
       computed: {
@@ -708,19 +713,24 @@
               const data = response.data
               const result = _.get(data, 'wholeProcessParser[0].outPutDataList[0].otherEdiValue', {})
               if (result) {
-                this.$notify({ message: `EDI sent and ISA# is ${result.controlNo}`, type: 'success' })
+                this.snackBarText = `EDI sent and ISA# is ${result.controlNo}`
               } else {
-                this.$notify({ message: `EDI error (Error: )`, type: 'danger' })
+                this.snackBarText = `EDI error (Error: )`
               }
             }).catch(e => {
               console.error(e)
-              this.$notify({ message: `EDI error (Error: ${e.message})`, type: 'danger' })
+              this.snackBarText = `EDI error (Error: ${e.message})`
             })
         },
         setReminder(trackingNo, originalReminder, statusCode, newReminderTime) {
           axios.post(`${baseUrl}/EDI/changeLog/${trackingNo}`, {
             ...originalReminder,
             [statusCode]: newReminderTime,
+          }).then(response => {
+            this.snackBarText = `Set Reminder to ${moment.utc(newReminderTime).format('YYYY-MM-DD')}`
+          }).catch(e => {
+            console.error(e)
+            this.snackBarText = `Set Reminder Error (Error: ${e.message})`
           })
         },
         formatDate(date, format) {
