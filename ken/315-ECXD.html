@@ -159,10 +159,10 @@
         </template>
       </tbody>
     </table>
-    <v-snackbar v-model="snackBarText" top right :timeout="4000">
+    <v-snackbar v-model="snackBar" top right :timeout="4000">
       {{ snackBarText }}
       <template v-slot:action="{ attrs }">
-        <v-btn text v-bind="attrs" @click="snackBarText = ''">
+        <v-btn text v-bind="attrs" @click="snackBar = false;snackBarText = '';">
           Close
         </v-btn>
       </template>
@@ -187,6 +187,7 @@
           trackings: [],
           section: 'default',
           interval: 7,
+          snackBar: false,
           snackBarText: ''
         }
       },
@@ -714,12 +715,15 @@
               const result = _.get(data, 'wholeProcessParser[0].outPutDataList[0].otherEdiValue', {})
               if (result) {
                 this.snackBarText = `EDI sent and ISA# is ${result.controlNo}`
+                this.snackBar = true
               } else {
                 this.snackBarText = `EDI error (Error: )`
+                this.snackBar = true
               }
             }).catch(e => {
               console.error(e)
               this.snackBarText = `EDI error (Error: ${e.message})`
+              this.snackBar = true
             })
         },
         setReminder(trackingNo, originalReminder, statusCode, newReminderTime) {
@@ -728,9 +732,11 @@
             [statusCode]: newReminderTime,
           }).then(response => {
             this.snackBarText = `Set Reminder to ${moment.utc(newReminderTime).format('YYYY-MM-DD')}`
+            this.snackBar = true
           }).catch(e => {
             console.error(e)
             this.snackBarText = `Set Reminder Error (Error: ${e.message})`
+            this.snackBar = true
           })
         },
         formatDate(date, format) {
