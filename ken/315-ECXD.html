@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://unpkg.com/vue-notifyjs/themes/material.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <style>
     .table {
@@ -165,6 +166,7 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://unpkg.com/vue-notifyjs/dist/vue-notifyjs.min.js"></script>
   <script>
     const baseUrl = `https://360uat-china-api.swivelsoftware.asia`;
     const xdataUrl = 'https://xdata-uat.swivelsoftware.asia';
@@ -702,8 +704,15 @@
             })
             .then(response => {
               const data = response.data
+              const result = _.get(data, 'wholeProcessParser[0].outPutDataList[0].otherEdiValue', {})
+              if (result) {
+                this.$notify({ message: `EDI sent and ISA# is ${result.controlNo}`, type: 'success' })
+              } else {
+                this.$notify({ message: `EDI error (Error: )`, type: 'danger' })
+              }
             }).catch(e => {
               console.error(e)
+              this.$notify({ message: `EDI error (Error: ${e.message})`, type: 'danger' })
             })
         },
         setReminder(trackingNo, originalReminder, statusCode, newReminderTime) {
