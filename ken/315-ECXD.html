@@ -712,12 +712,13 @@
             })
             .then(response => {
               const data = response.data
-              const result = _.get(data, 'wholeOutPutDataList[0].outPutDataList[0].otherEdiValue', {})
-              if (result) {
-                this.snackBarText = `EDI sent and ISA# is ${result.controlNo}`
+              const { otherEdiValue = {}, success = false, exportError = [] } = _.get(data, 'wholeOutPutDataList[0].outPutDataList[0]', {})
+              if (success) {
+                this.snackBarText = `EDI sent and ISA# is ${otherEdiValue.controlNo}`
                 this.snackBar = true
               } else {
-                this.snackBarText = `EDI error (Error: )`
+                const errors = exportError.filter(e => e.type === 'customerFatal').map(({ message = '' }) => message)
+                this.snackBarText = `EDI error (Error: ${errors.join(',')})`
                 this.snackBar = true
               }
             }).catch(e => {
