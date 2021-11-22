@@ -175,13 +175,13 @@
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script>
     const baseUrl = `https://360uat-china-api.swivelsoftware.asia`;
-    const xdataUrl = 'https://xdata-uat.swivelsoftware.asia';
-    const token = '1455D83810A3215B21D4AEB98B81DDBB';
     new Vue({
       el: '#app',
       vuetify: new Vuetify(),
       data: () => {
         return {
+          xdataUrl: (new URLSearchParams(window.location.search)).get('uat') ? `https://xdata-uat.swivelsoftware.asia` : `https://xdata.swivelsoftware.asia`,
+          xdataToken: (new URLSearchParams(window.location.search)).get('uat') ? `1455D83810A3215B21D4AEB98B81DDBB` : `293504F6F363B5D21186CC08178D143F`,
           carrierLoading: false,
           dataLoading: false,
           trackings: [],
@@ -696,7 +696,7 @@
           dataList.push(data)
           const headers = {
             'Content-Type': 'application/json',
-            'token': token
+            'token': this.xdataToken
           }
           const json = {
             dataList,
@@ -707,7 +707,7 @@
             'exportType': '315',
             'exportFormat': 'edi'
           }
-          axios.post(`${xdataUrl}/edi/wholeProcessParser`, json, {
+          axios.post(`${this.xdataUrl}/edi/wholeProcessParser`, json, {
               headers
             })
             .then(response => {
