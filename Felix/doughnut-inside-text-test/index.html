@@ -5,40 +5,27 @@
     <script src='https://cdn.jsdelivr.net/npm/apexcharts'></script>
     <script>
         var options = {
-          series: [25, 37, 28, 10],
+          series: [76],
           chart: {
-          width: 550,
-          type: 'donut'
-        },
-        stroke: {
-          width: 0,
+          height: 350,
+          type: 'radialBar',
         },
         plotOptions: {
-          pie: {
-            donut: {
-              labels: {
-                show: true
+          radialBar: {
+            hollow: {
+              size: '70%',
+            },
+            dataLabels: {
+              name: {
+                show: false,
+              },
+              value: {
+                fontSize: '28px'
               }
             }
-          }
+          },
         },
-        labels: ['On Time', 'Standard', 'Late', 'Current'],
-        states: {
-          hover: {
-            filter: 'none'
-          }
-        },
-        theme: {
-          palette: 'palette2'
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
+        labels: ['PO7789165'],
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
