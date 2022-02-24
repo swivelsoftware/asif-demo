@@ -1,0 +1,72 @@
+<html>
+<body>
+      <div id='myDiv'>
+      </div>
+    <script src='https://cdn.plot.ly/plotly-2.9.0.min.js'></script>
+    <script>
+       
+       var Data = {
+        type: 'scatter',
+        x: [1,2,3,4,5,6,7,8,9],
+        y: [2,-3,0,2,4,8,10,0,-5],
+        mode: 'lines+markers',
+        name: 'Risk Day',
+        showlegend: true,
+        hoverinfo: 'all',
+        line: {
+          color: 'blue',
+          width: 2
+        },
+        marker: {
+          color: 'blue',
+          size: 8,
+          symbol: 'circle'
+        }
+      }
+
+      var CL = {
+        type: 'scatter',
+        x: [0.5, 10, null, 0.5, 10],
+        y: [-3, -6, null, 3, 7],
+        mode: 'lines',
+        name: 'Risk Range Area',
+        showlegend: true,
+        line: {
+          color: 'red',
+          width: 2,
+          dash: 'dash'
+        }
+      }
+
+      var Centre = {
+        type: 'scatter',
+        x: [0.5, 10],
+        y: [0, 0],
+        mode: 'lines',
+        name: 'Centre',
+        showlegend: true,
+        line: {
+          color: 'grey',
+          width: 2
+        }
+      }
+
+      var data = [Data,CL,Centre]
+
+      var layout = {
+        width: 550,
+        height: 400,
+        title: 'Control Charts By Screen Print',
+        xaxis: {
+          zeroline: false
+        },
+        yaxis: {
+          range: [-20,20],
+          zeroline: false
+        }
+      }
+
+      Plotly.newPlot('myDiv', data,layout);
+    </script>
+</body>
+</html>
