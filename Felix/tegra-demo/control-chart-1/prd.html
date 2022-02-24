@@ -62,8 +62,26 @@
         },
         yaxis: {
           range: [-20,20],
-          zeroline: false
-        }
+          zeroline: false,
+          title: {
+            text: 'Days',
+            font: {
+              family: 'Courier New, monospace',
+              size: 18,
+              color: '#7f7f7f'
+            }
+          }
+        },
+        xaxis: {
+          title: {
+            text: 'PO',
+            font: {
+              family: 'Courier New, monospace',
+              size: 18,
+              color: '#7f7f7f'
+            }
+          },
+        },
       }
 
       Plotly.newPlot('myDiv', data,layout);
