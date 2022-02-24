@@ -1,0 +1,62 @@
+<html>
+<body>
+      <div style="height: 100%">
+        <canvas id="myChart"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       
+       const data = {
+        labels: [
+          'A126375',
+          'GS#565665',
+          '1719865',
+          '6598956',
+          '1866563',
+          '5663068',
+          '56356353',
+          '19896565',
+          '55695456',
+          '195-A1663',
+          'AS9656667',
+          '865686589',
+          '698644688'
+        ],
+        datasets: [{
+          type: 'bar',
+          label: 'Actual',
+          data: [0, 10, 31, 60, 73, 85, 90, 82, 71, 52, 30, 5, 0],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)'
+        }, {
+          type: 'line',
+          label: 'Estimate',
+          data: [0, 20, 40, 65, 80, 90, 95, 90, 80, 60, 35, 20, 0],
+          fill: false,
+          borderColor: 'rgb(54, 162, 235)',
+          tension: 0.5
+        }]
+      };
+      // </block:setup>
+
+      // <block:config:0>
+      const config = {
+        type: 'scatter',
+        data: data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+  myChart.height = 100;
+    </script>
+</body>
+</html>
