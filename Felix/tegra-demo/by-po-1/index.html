@@ -1,6 +1,6 @@
 <html>
 <body>
-      <div style="height: 100%">
+      <div style="height: 100%; width: 100%;">
         <canvas id="myChart"></canvas>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -8,27 +8,28 @@
        
        const data = {
         labels: [
-          'Sub con Process',
-          'Sewing',
-          'In Line Checks',
-          'Reworks',
-          'Labeling',
-          'End line Checks',
-          'Folding & MD',
-          'Boxing',
-          'CT PAT',
-          'Ex Factory'
+          'FABRIC INSPECTION',
+          'PRD',
+          'CUTTING',
+          'SCREEN PRINT',
+          'EMBROIDERY',
+          'LOGO',
+          'SEWING',
+          'INSPECTIONS',
+          'MD & LABELLING',
+          'PACKING',
+          'AQL INSPECTION'
         ],
         datasets: [{
           type: 'bar',
-          label: 'Bar Dataset',
-          data: [15, 32, 42, 51, 61, 55, 69, 40, 80, 60],
+          label: 'ACTUAL',
+          data: [1, 4, 4, 5, 2, 6, 1, 6, 1, 6, 1, 15],
           borderColor: 'rgb(255, 99, 132)',
           backgroundColor: 'rgba(255, 99, 132, 0.2)'
         }, {
           type: 'line',
-          label: 'Line Dataset',
-          data: [23, 43, 37, 40, 55, 73, 60, 73, 63, 40],
+          label: 'PLANEED',
+          data: [1, 6, 1, 1, 2, 4, 1, 1, 9, 1 ,7, 2],
           fill: false,
           borderColor: 'rgb(54, 162, 235)',
           tension: 0.5
@@ -53,7 +54,6 @@
     document.getElementById('myChart'),
     config
   );
-  myChart.height = 100;
     </script>
 </body>
 </html>
