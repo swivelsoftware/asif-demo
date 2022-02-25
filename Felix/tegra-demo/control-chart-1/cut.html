@@ -1,0 +1,91 @@
+<html>
+<body>
+      <div id='myDiv'>
+      </div>
+    <script src='https://cdn.plot.ly/plotly-2.9.0.min.js'></script>
+    <script>
+       
+       var Data = {
+        type: 'scatter',
+        x: [1,2,3,4,5,6,7,8,9],
+        y: [0,7,12,-7,0,-9,0,4,10],
+        mode: 'lines+markers',
+        name: 'Actual',
+        showlegend: true,
+        hoverinfo: 'all',
+        line: {
+          color: 'blue',
+          width: 2
+        },
+        marker: {
+          color: 'blue',
+          size: 8,
+          symbol: 'circle'
+        }
+      }
+
+      var CL = {
+        type: 'scatter',
+        x: [0.5, 10, null, 0.5, 10],
+        y: [-5, -5, null, 5, 5],
+        mode: 'lines',
+        name: 'Risk Control',
+        showlegend: true,
+        line: {
+          color: 'red',
+          width: 2,
+          dash: 'dash'
+        }
+      }
+
+      var Centre = {
+        type: 'scatter',
+        x: [0.5, 10],
+        y: [0, 0],
+        mode: 'lines',
+        name: 'Control',
+        showlegend: true,
+        line: {
+          color: 'grey',
+          width: 2
+        }
+      }
+      var data = [Data,CL,Centre]
+
+      var layout = {
+        width: 500,
+        height: 300,
+        title: 'Cutting Lead time',
+        xaxis: {
+          zeroline: false
+        },
+        yaxis: {
+          range: [-20,20],
+          zeroline: false
+        },
+        xaxis: {
+          title: {
+            text: 'PO',
+            font: {
+              family: 'Courier New, monospace',
+              size: 18,
+              color: '#7f7f7f'
+            }
+          },
+        },
+        yaxis: {
+          title: {
+            text: 'Days',
+            font: {
+              family: 'Courier New, monospace',
+              size: 18,
+              color: '#7f7f7f'
+            }
+          }
+        }
+      }
+
+      Plotly.newPlot('myDiv', data,layout);
+    </script>
+</body>
+</html>
