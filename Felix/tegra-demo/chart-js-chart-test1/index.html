@@ -1,9 +1,6 @@
 <html>
   <header>
     <style>
-      * {
-        box-sizing: border-box;
-      }
       
       /* Create two equal columns that floats next to each other */
       .column {
@@ -20,22 +17,22 @@
       </head>
   </header>
 <body>
-  <div style="width: 300px;">
+  <div style="width: 220px;">
     <div style="place-items: center;margin-left: auto;margin-right: auto;padding-left: 30px;"> 
       <canvas id="chart8">
       </canvas> 
     </div>
-    <div style="width:330px;">
+    <div style="width:250px;max-height: 100px;">
       <div class="row">
         <div class="column" style="background-color:#aaa;">
-          <p style="text-align: center; color: white;font-size: 18px;">Actual</h2>
+          <p style="text-align: center; color: white;font-size: 28px;">Actual</h2>
         </div>
         <div class="column" style="background-color:#aaa;">
-          <p style="text-align: center; color: white;font-size: 18px;">Planned</h2>
+          <p style="text-align: center; color: white;font-size: 28px;">Planned</h2>
         </div>
       </div>
     </div>
-    <div style="width:330px;">
+    <div style="width:250px;">
       <div class="row">
         <div class="column">
           <p style="text-align: center;font-size: 30px;">2M</h2>
@@ -102,13 +99,13 @@ Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
 
     originalDoughnutDraw.apply(this, arguments);
 
-    const fontSize = (height / 80).toFixed(2);
+    const fontSize = (height / 50).toFixed(2);
     ctx.font = fontSize + "em Lato, sans-serif";
     ctx.textBaseline = "top";
 
 
     x = Math.round((width - ctx.measureText(text).width) / 2);
-    y = (height / 1.5) - fontSize;
+    y = (height / 1.6) - fontSize;
     ctx.fillStyle = "#000000"
     ctx.fillText(text, x, y);
     mid = x + ctx.measureText(text).width / 2;
