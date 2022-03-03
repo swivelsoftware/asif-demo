@@ -1,9 +1,53 @@
 <html>
+  <header>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        display: table;
+        clear: both;
+      }
+      </style>
+      </head>
+  </header>
 <body>
-  <div style="width:900px"> 
-    <canvas id="chart8">
-    </canvas> 
+  <div style="width: 300px;">
+    <div style="place-items: center;margin-left: auto;margin-right: auto;padding-left: 30px;"> 
+      <canvas id="chart8">
+      </canvas> 
+    </div>
+    <div style="width:330px;">
+      <div class="row">
+        <div class="column" style="background-color:#aaa;">
+          <p style="text-align: center; color: white;font-size: 18px;">Actual</h2>
+        </div>
+        <div class="column" style="background-color:#aaa;">
+          <p style="text-align: center; color: white;font-size: 18px;">Planned</h2>
+        </div>
+      </div>
+    </div>
+    <div style="width:330px;">
+      <div class="row">
+        <div class="column">
+          <p style="text-align: center;font-size: 30px;">2M</h2>
+        </div>
+        <div class="column">
+          <p style="text-align: center;font-size: 30px;">2M</h2>
+        </div>
+      </div>
+    </div>
   </div>
+  
+  
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
@@ -58,7 +102,7 @@ Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
 
     originalDoughnutDraw.apply(this, arguments);
 
-    const fontSize = (height / 70).toFixed(2);
+    const fontSize = (height / 80).toFixed(2);
     ctx.font = fontSize + "em Lato, sans-serif";
     ctx.textBaseline = "top";
 
@@ -86,7 +130,7 @@ var chart = new Chart(context, {
   },
   options: {
     legend: false,
-    cutoutPercentage: 60, 
+    cutoutPercentage: 65, 
     rotation: 1 * Math.PI, 
     circumference: 1 * Math.PI 
   }
