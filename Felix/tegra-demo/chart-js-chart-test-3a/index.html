@@ -26,7 +26,7 @@
 
         numberThere {
           float: left;
-          padding: 140px 0px 0px 230px;
+          padding: 150px 0px 0px 250px;
           font-size: 28px;
         }
 
@@ -39,7 +39,7 @@
         numberOne {
           float: left;
           font-size: 28px;
-          padding: 140px 0px 0px 0px;
+          padding: 150px 0px 0px 0px;
         }
       
       </style>
@@ -58,7 +58,7 @@
     </numberThere> 
   </div>
   <div style="padding-top: 30px;">
-    <div style="width: 280px;padding-left: 20px;">
+    <div style="width: 300px;padding-left: 20px;">
       <div class="chartArea"></div>
         <canvas id="chart8"></canvas> 
         <canvas id="chart9"></canvas>
@@ -66,20 +66,13 @@
     </div>
   </div>
   </div>
-    
-    
- 
-  
-  
-  
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
   <script type="text/javascript">
 
 
 const originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
-
+Chart.defaults.global.tooltips.enabled = false;
 Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
   draw: function() {
     const chart = this.chart;
