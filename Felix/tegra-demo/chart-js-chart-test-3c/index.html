@@ -26,20 +26,20 @@
 
         numberThere {
           float: left;
-          padding: 130px 0px 0px 105px;
+          padding: 140px 0px 0px 130px;
           font-size: 26px;
         }
 
         numberTwo {
           float: left;
           font-size: 26px;
-          padding: 0px 0px 0px 110px;
+          padding: 0px 0px 0px 130px;
         }
 
         numberOne {
           float: left;
           font-size: 26px;
-          padding: 130px 0px 0px 0px;
+          padding: 140px 0px 0px 0px;
         }
       
       </style>
@@ -58,28 +58,21 @@
     </numberThere> 
   </div>
   <div style="padding-top: 30px;">
-    <div style="width: 260px;padding-left: 40px;">
+    <div style="width: 280px;padding-left: 40px;">
       <div class="chartArea"></div>
         <canvas id="chart8"></canvas> 
-        <canvas id="chart9"></canvas>
       </div>
     </div>
   </div>
   </div>
-    
-    
- 
-  
-  
-  
-  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-  <script type="text/javascript">
 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script type="text/javascript">
 
 const originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
-
+Chart.defaults.global.tooltips.enabled = false;
 Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
   draw: function() {
     const chart = this.chart;
