@@ -78,7 +78,7 @@
 
 
 const originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
-
+Chart.defaults.global.tooltips.enabled = false;
 Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
   draw: function() {
     const chart = this.chart;
