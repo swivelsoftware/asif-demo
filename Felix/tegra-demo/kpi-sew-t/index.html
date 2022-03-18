@@ -1,0 +1,81 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 150px;
+
+      }
+      .value-col {
+        overflow: hidden;
+        width: 100px;
+      }
+      .value2-col {
+        width: 80px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Customer</th>
+        <th class="value-col">Actual</th>
+        <th class="value-col">Planned</th>
+        <th class="value-col">%</th>
+      </tr>
+      <tr  class="tr1" onclick="test();">
+        <!--table-layout: fixed;-->
+        <td class="customer-col">NIKE</td>
+        <td class="value-col">71035</td>
+        <td class="value-col">60480</td>
+        <td style="color: white;background-color: green;;" class="value-col">117%</td>
+      </tr>
+      <tr>
+        <td class="customer-col">Fanatice</td>
+        <td class="value-col">71035</td>
+        <td class="value-col">60480</td>
+        <td style="color: white;background-color: red;" class="value-col">82%</td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold;"  class="customer-col">Total</td>
+        <td style="font-weight: bold;"  class="value-col">77,341</td>
+        <td style="font-weight: bold;"  class="value-col">68,212</td>
+        <td style="font-weight: bold;color: white;background-color: green;" class="value-col">113%</td>
+      </tr>
+    </table>
+
+  </body>
+</html>
