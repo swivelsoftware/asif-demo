@@ -62,6 +62,12 @@ var chart = new Chart(context, {
   type: 'line',
   data: data,
   options: {
+    elements: {
+        line: {
+            tension: 0
+        }
+    },
+    responsive: true,
     plugins: {
       filler: {
           propagate: true
