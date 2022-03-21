@@ -1,0 +1,217 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 150px;
+        text-align: left;
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Date</th>
+        <th class="value-col">Factory</th>
+        <th class="value-col">Line</th>
+        <th class="value-col">Week</th>
+        <th class="value-col">Real Units</th>
+        <th class="value-col">Goal Units</th>
+        <th class="value-col">Units Variance</th>
+        <th class="value-col">Units Variance %</th>
+        <th class="value-col">Efficency Real</th>
+        <th class="value-col">Efficency Goal</th>
+        <th class="value-col">Efficency Variance</th>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">17/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 3</td>
+        <td class="value-col">70</td>
+        <td class="value-col">70</td>
+        <td style="color: white;background-color: red;" class="value-col">0</td>
+        <td class="value-col">100.00%</td>
+        <td class="value-col">13.00%</td>
+        <td class="value-col">13.00%</td>
+        <td style="color: white;background-color: green;" class="value-col">0.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">18/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 3</td>
+        <td class="value-col">70</td>
+        <td class="value-col">126</td>
+        <td style="color: white;background-color: red;" class="value-col">-56</td>
+        <td class="value-col">55.56%</td>
+        <td class="value-col">16.00%</td>
+        <td class="value-col">11.00%</td>
+        <td style="color: white;background-color: green;" class="value-col">5.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">19/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 3</td>
+        <td class="value-col">75</td>
+        <td class="value-col">196</td>
+        <td style="color: white;background-color: red;" class="value-col">-121</td>
+        <td class="value-col">38.37%</td>
+        <td class="value-col">7.00%</td>
+        <td class="value-col">11.00%</td>
+        <td style="color: white;background-color: RED;" class="value-col">-4.00%</td>
+      </tr>
+
+      <tr class="tr1">
+        <td class="customer-col">20/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 3</td>
+        <td class="value-col">120</td>
+        <td class="value-col">230</td>
+        <td style="color: white;background-color: red;" class="value-col">-110</td>
+        <td class="value-col">52.17%</td>
+        <td class="value-col">10.00%</td>
+        <td class="value-col">11.00%</td>
+        <td style="color: white;background-color: RED;" class="value-col">-1.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">21/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 3</td>
+        <td class="value-col">140</td>
+        <td class="value-col">140</td>
+        <td style="color: white;background-color: red;" class="value-col">0</td>
+        <td class="value-col">100.00%</td>
+        <td class="value-col">36.00%</td>
+        <td class="value-col">36.00%</td>
+        <td style="color: white;background-color: RED;" class="value-col">0.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">24/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 4</td>
+        <td class="value-col">180</td>
+        <td class="value-col">196</td>
+        <td style="color: white;background-color: red;" class="value-col">-16</td>
+        <td class="value-col">91.84%</td>
+        <td class="value-col">25.00%</td>
+        <td class="value-col">28.00%</td>
+        <td style="color: white;background-color: RED;" class="value-col">-3.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">25/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 4</td>
+        <td class="value-col">170</td>
+        <td class="value-col">250</td>
+        <td style="color: white;background-color: red;" class="value-col">-60</td>
+        <td class="value-col">73.91%</td>
+        <td class="value-col">24.00%</td>
+        <td class="value-col">32.00%</td>
+        <td style="color: white;background-color: RED;" class="value-col">-8.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">26/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 4</td>
+        <td class="value-col">180</td>
+        <td class="value-col">260</td>
+        <td style="color: white;background-color: red;" class="value-col">-80</td>
+        <td class="value-col">69.23%</td>
+        <td class="value-col">25.00%</td>
+        <td class="value-col">37.00%</td>
+        <td style="color: white;background-color: RED;" class="value-col">-12.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">27/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 4</td>
+        <td class="value-col">200</td>
+        <td class="value-col">290</td>
+        <td style="color: white;background-color: red;" class="value-col">-90</td>
+        <td class="value-col">68.97%</td>
+        <td class="value-col">28.00%</td>
+        <td class="value-col">41.00%</td>
+        <td style="color: white;background-color: RED;" class="value-col">-13.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">28/1/2022</td>
+        <td class="value-col">SAC</td>
+        <td class="value-col">SA-01A</td>
+        <td class="value-col">Week 4</td>
+        <td class="value-col">150</td>
+        <td class="value-col">255</td>
+        <td style="color: white;background-color: red;" class="value-col">-105</td>
+        <td class="value-col">58.82%</td>
+        <td class="value-col">15.00%</td>
+        <td class="value-col">41.00%</td>
+        <td style="color: white;background-color: RED;" class="value-col">-26.00%</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col" style="font-weight: bold;">Total</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col" style="font-weight: bold;">805,461</td>
+        <td class="value-col" style="font-weight: bold;">938,109</td>
+        <td class="value-col" style="font-weight: bold;color: white;background-color: RED;">-132,648</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+      </tr>
+    </table>
+
+  </body>
+</html>
