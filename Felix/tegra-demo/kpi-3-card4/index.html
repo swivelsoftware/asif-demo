@@ -1,0 +1,311 @@
+<html>
+  <header>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        text-align: left;
+        width: 280px;
+
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 100px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 100px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .value4-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 90px;
+      }
+
+      table {
+        font-family: Arial, Helvetica, sans-serif;
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .td-null {
+        border-bottom: 0px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+
+    /* icon */
+    .plus.icon {
+      color: #000;
+      position: absolute;
+      margin-left: 3px;
+      margin-top: 7px;
+    }
+    .plus.icon:before {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 1px;
+      background-color: currentColor;
+    }
+    .plus.icon:after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 1px;
+      background-color: currentColor;
+      -webkit-transform: rotate(90deg);
+              transform: rotate(90deg);
+    }
+    </style>
+
+    <script>  
+    function test() {
+      if (
+        document.getElementById("th1").style.display ==="table-row" &&
+        document.getElementById("th2").style.display==="table-row" &&
+        document.getElementById("th3").style.display==="table-row" &&
+        document.getElementById("th4").style.display==="table-row"
+      ) {
+        document.getElementById("th1").style.display="none"
+        document.getElementById("th2").style.display="none"
+        document.getElementById("th3").style.display="none"
+        document.getElementById("th4").style.display="none";
+      } else {
+        document.getElementById("th1").style.display="table-row"; 
+        document.getElementById("th2").style.display="table-row"; 
+        document.getElementById("th3").style.display="table-row"; 
+        document.getElementById("th4").style.display="table-row"; 
+      }
+    }
+
+
+    function testOpen2() {
+      if (
+        document.getElementById("th1d").style.display ==="table-row" &&
+        document.getElementById("th1a").style.display==="table-row" &&
+        document.getElementById("th1b").style.display==="table-row" &&
+        document.getElementById("th1c").style.display==="table-row"
+      ) {
+        document.getElementById("th1d").style.display="none"
+        document.getElementById("th1a").style.display="none"
+        document.getElementById("th1b").style.display="none"
+        document.getElementById("th1c").style.display="none";
+      } else {
+        document.getElementById("th1d").style.display="table-row"; 
+        document.getElementById("th1a").style.display="table-row"; 
+        document.getElementById("th1b").style.display="table-row"; 
+        document.getElementById("th1c").style.display="table-row"; 
+      }
+    }
+
+    function testOpen3() {
+      if (
+        document.getElementById("th2d").style.display ==="table-row" &&
+        document.getElementById("th2a").style.display==="table-row" &&
+        document.getElementById("th2b").style.display==="table-row" &&
+        document.getElementById("th2c").style.display==="table-row"
+      ) {
+        document.getElementById("th2d").style.display="none"
+        document.getElementById("th2a").style.display="none"
+        document.getElementById("th2b").style.display="none"
+        document.getElementById("th2c").style.display="none";
+      } else {
+        document.getElementById("th2d").style.display="table-row"; 
+        document.getElementById("th2a").style.display="table-row"; 
+        document.getElementById("th2b").style.display="table-row"; 
+        document.getElementById("th2c").style.display="table-row"; 
+      }
+    }
+
+    function testOpen4() {
+      if (
+        document.getElementById("th3a").style.display==="table-row" &&
+        document.getElementById("th3b").style.display==="table-row" &&
+        document.getElementById("th3c").style.display==="table-row"
+      ) {
+        document.getElementById("th3a").style.display="none"
+        document.getElementById("th3b").style.display="none"
+        document.getElementById("th3c").style.display="none";
+      } else { 
+        document.getElementById("th3a").style.display="table-row"; 
+        document.getElementById("th3b").style.display="table-row"; 
+        document.getElementById("th3c").style.display="table-row"; 
+      }
+    }
+
+    function testOpen5() {
+      if (
+        document.getElementById("th4d").style.display ==="table-row" &&
+        document.getElementById("th4a").style.display==="table-row" &&
+        document.getElementById("th4b").style.display==="table-row" &&
+        document.getElementById("th4c").style.display==="table-row"
+      ) {
+        document.getElementById("th4d").style.display="none"
+        document.getElementById("th4a").style.display="none"
+        document.getElementById("th4b").style.display="none"
+        document.getElementById("th4c").style.display="none";
+      } else {
+        document.getElementById("th4d").style.display="table-row"; 
+        document.getElementById("th4a").style.display="table-row"; 
+        document.getElementById("th4b").style.display="table-row"; 
+        document.getElementById("th4c").style.display="table-row"; 
+      }
+    }
+    </script>
+  </header>
+  <body>
+    <div style="display:table-row;"></div>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Customer</th>
+        <th class="value-col">Actual</th>
+        <th class="value-col">Planned</th>
+        <th class="value4-col">%</th>
+      </tr>
+      <tr onclick="test()">
+        <td style="width: 250px;" class="customer-col">Nike <span class="plus icon" ></span></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td  class="value4-col"></td>
+      </tr>
+        <tr style="display: none;" id="th1" onclick="testOpen2()">
+          <td>&nbsp;&nbsp;Volume Accomplishment <span class="plus icon"></span></td>
+          <td class="value-col"></td>
+          <td class="value-col"></td>
+          <td class="value4-col"></td>
+        </tr>
+      <tr style="display: none;" id="th1a">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;DEX</td>
+        <td class="value-col">94,856</td>
+        <td class="value-col">81,144</td>
+        <td style="color: white;background-color: red;" class="value4-col">117%</td>
+      </tr>
+      <tr style="display: none;" id="th1b">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;ARN</td>
+        <td class="value-col">53,632</td>
+        <td class="value-col">50,138</td>
+        <td style="color: white;background-color: green;" class="value4-col">107%</td>
+      </tr>
+      <tr style="display: none;" id="th1c">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;27Str</td>
+        <td class="value-col">21,908</td>
+        <td class="value-col">22,990</td>
+        <td style="color: white;background-color: green;" class="value4-col">95%</td>
+      </tr>
+      <tr style="display: none;" id="th1d">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;SAC</td>
+        <td class="value-col">77,931</td>
+        <td class="value-col">88,015</td>
+        <td style="color: white;background-color:darkorange;" class="value4-col">89%</td>
+      </tr>
+      <tr  class="tr1" style="display: none;" id="th2"  onclick="testOpen3()">
+        <td class="customer-col">&nbsp;&nbsp;Production Adherence <span class="plus icon" ></span></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value4-col"></td>
+      </tr>
+      <tr style="display: none;" id="th2a">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;ARN</td>
+        <td class="value-col">46,903</td>
+        <td class="value-col">50,138</td>
+        <td style="color: white;background-color: green;" class="value4-col">94%</td>
+      </tr>
+      <tr style="display: none;" id="th2b">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;27Str</td>
+        <td class="value-col">22,235</td>
+        <td class="value-col">24,230</td>
+        <td style="color: white;background-color: green;" class="value4-col">92%</td>
+      </tr>
+      <tr style="display: none;" id="th2c">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;SAC</td>
+        <td class="value-col">52,553</td>
+        <td class="value-col">79,679</td>
+        <td style="color: white;background-color:red;" class="value4-col">66%</td>
+      </tr>
+      <tr style="display: none;" id="th2d">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;DEX</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td style="color: white;background-color: red;" class="value4-col">0%</td>
+      </tr>
+      <tr class="tr1" style="display: none;" id="th3" onclick="testOpen4()">
+        <td class="customer-col">&nbsp;&nbsp;Schd Adherence to PO Mix <span class="plus icon"></span></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value4-col"></td>
+      </tr>
+      <tr style="display: none;" id="th3a">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;ARN</td>
+        <td class="value-col">1,600</td>
+        <td class="value-col">1,450</td>
+        <td style="color: white;background-color: green;" class="value4-col">110%</td>
+      </tr>
+      <tr style="display: none;" id="th3b">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;27Str</td>
+        <td class="value-col">14</td>
+        <td class="value-col">30</td>
+        <td style="color: white;background-color: red;" class="value4-col">47%</td>
+      </tr>
+      <tr  style="display: none;" id="th3c">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;SAC</td>
+        <td class="value-col"></td>
+        <td class="value-col">940</td>
+        <td class="value4-col"></td>
+      </tr>
+
+      <tr  class="tr1" style="display: none;" id="th4" onclick="testOpen5()">
+        <td class="customer-col">&nbsp;&nbsp;OTP(On Time Performance) <span class="plus icon"></span></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value4-col"></td>
+      </tr>
+      <tr  style="display: none;" id="th4a">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;ARN</td>
+        <td class="value-col">1,600</td>
+        <td class="value-col">1,450</td>
+        <td style="color: white;background-color: green;" class="value4-col">110%</td>
+      </tr>
+      <tr  style="display: none;" id="th4b">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;27Str</td>
+        <td class="value-col">44,835</td>
+        <td class="value-col">50.138</td>
+        <td style="color: white;background-color: red;" class="value4-col">89%</td>
+      </tr>
+      <tr  style="display: none;" id="th4c">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;27Str</td>
+        <td class="value-col">9,100</td>
+        <td class="value-col">24,230</td>
+        <td style="color: white;background-color: red;" class="value4-col">38%</td>
+      </tr>
+      <tr  style="display: none;" id="th4d">
+        <td class="customer-col">&nbsp;&nbsp;&nbsp;&nbsp;DEX</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td style="color: white;background-color: red;" class="value4-col">0%</td>
+      </tr>
+    </table>
+
+  </body>
+</html>
