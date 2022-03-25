@@ -1,0 +1,60 @@
+<html>
+<body>
+      <div>
+        <canvas id="myChart" height="100%"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       
+       const data = {
+        labels: [
+          'FABRIC INSPECTION',
+          'PRD',
+          'CUTTING',
+          'SCREEN PRINT',
+          'EMBROIDERY',
+          'LOGO',
+          'SEWING',
+          'INSPECTIONS',
+          'MD & LABELLING',
+          'PACKING',
+          'AQL INSPECTION'
+        ],
+        datasets: [{
+          type: 'bar',
+          label: 'ACTUAL',
+          data: [1, 4, 4, 5, 2, 6, 1, 6, 1, 6, 1, 15],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)'
+        }, {
+          type: 'line',
+          label: 'PLANEED',
+          data: [1, 6, 1, 1, 2, 4, 1, 1, 9, 1 ,7, 2],
+          fill: false,
+          borderColor: 'rgb(54, 162, 235)',
+          tension: 0.5
+        }]
+      };
+      // </block:setup>
+
+      // <block:config:0>
+      const config = {
+        type: 'scatter',
+        data: data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 10
+            },
+          }
+        }
+      };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+    </script>
+</body>
+</html>

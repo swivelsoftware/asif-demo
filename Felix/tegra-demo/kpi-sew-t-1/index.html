@@ -1,0 +1,128 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        text-align: left;
+        width: 150px;
+
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        font-family: Arial, Helvetica, sans-serif;
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .td-null {
+        border-bottom: 0px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Customer</th>
+        <th class="value-col">Actual</th>
+        <th class="value-col">Planned</th>
+        <th class="value-col">%</th>
+      </tr>
+      <tr  class="tr1" onclick="test();">
+        <!--table-layout: fixed;-->
+        <td class="customer-col">Nike</td>
+        <td class="value-col">71,035</td>
+        <td class="value-col">60,480</td>
+        <td style="color: white;background-color: green;;" class="value-col">117%</td>
+      </tr>
+      <tr>
+        <td class="customer-col">Fanatic</td>
+        <td class="value-col">6,306</td>
+        <td class="value-col">7,732</td>
+        <td style="color: white;background-color: red;" class="value-col">82%</td>
+      </tr>
+      <tr>
+        <td class="customer-col">Under Armour</td>
+        <td class="value-col">8,732</td>
+        <td class="value-col">8,732</td>
+        <td style="color: white;background-color: green;" class="value-col">100%</td>
+      </tr>
+      <tr>
+        <td class="customer-col">Adidas</td>
+        <td class="value-col">4,189</td>
+        <td class="value-col">2,147</td>
+        <td style="color: white;background-color: green;" class="value-col">100%</td>
+      </tr>
+      <tr>
+        <td class="customer-col">Nike Retail</td>
+        <td class="value-col">1,953</td>
+        <td class="value-col">2,035</td>
+        <td style="color: white;background-color: red;" class="value-col">96%</td>
+      </tr>
+      <tr>
+        <td class="td-null"></td>
+        <td class="td-null"></td>
+        <td class="td-null"></td>
+        <td class="td-null"></td>
+      </tr>
+      <tr>
+        <td class="td-null"></td>
+        <td class="td-null"></td>
+        <td class="td-null"></td>
+        <td class="td-null"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold;"  class="customer-col">Total</td>
+        <td style="font-weight: bold;"  class="value-col">92,215</td>
+        <td style="font-weight: bold;"  class="value-col">81,126</td>
+        <td style="font-weight: bold;color: white;background-color: green;" class="value-col">114%</td>
+      </tr>
+    </table>
+
+  </body>
+</html>

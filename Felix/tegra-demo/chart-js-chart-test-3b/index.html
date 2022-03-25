@@ -1,0 +1,143 @@
+<html>
+  <header>
+    <style>
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        overflow:hidden;
+        display: table;
+        clear: both;
+      }
+
+      .outer {
+          position: relative;
+          width: 300px;
+          height: 250px;
+        }
+        canvas {
+          position: absolute;
+        }
+
+        numberThere {
+          font-family: Arial, Helvetica, sans-serif;
+          float: left;
+          padding: 160px 0px 0px 250px;
+          font-size: 28px;
+        }
+
+        numberTwo {
+          font-family: Arial, Helvetica, sans-serif;
+          float: left;
+          font-size: 28px;
+          padding: 30px 0px 0px 50px;
+        }
+
+        numberOne {
+          font-family: Arial, Helvetica, sans-serif;
+          float: left;
+          font-size: 28px;
+          padding: 160px 0px 0px 0px;
+        }
+      
+      </style>
+      </head>
+  </header>
+<body>
+  <div style="background-color: gray;">
+    <numberOne>
+      0
+    </numberOne>
+    <numberTwo>
+      3
+    </numberTwo >
+    <numberThere>
+      12
+    </numberThere> 
+  </div>
+  <div style="padding-top: 30px;">
+    <div style="width: 310px;padding-left: 20px;">
+      <div class="chartArea"></div>
+        <canvas id="chart8"></canvas> 
+      </div>
+    </div>
+  </div>
+  </div>
+    
+    
+ 
+  
+  
+  
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script type="text/javascript">
+
+
+const originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
+Chart.defaults.global.tooltips.enabled = false;
+Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
+  draw: function() {
+    const chart = this.chart;
+    const {
+      width,
+      height,
+      ctx,
+      config
+    } = chart.chart;
+
+    const {
+      datasets
+    } = config.data;
+
+    const dataset = datasets[0];
+    const datasetData = dataset.data;
+    const completed = datasetData[0];
+    const text = `1.75`;
+    let x, y, mid;
+
+    originalDoughnutDraw.apply(this, arguments);
+
+    const fontSize = (height / 50).toFixed(2);
+    ctx.font = fontSize + "em Lato, sans-serif";
+    ctx.font.fillStyle = 'color: white';
+    ctx.textBaseline = "top";
+
+
+    x = Math.round((width - ctx.measureText(text).width) / 2);
+    y = (height / 1.6) - fontSize;
+    ctx.fillStyle = "#000000"
+    ctx.fillText(text, x, y);
+    mid = x + ctx.measureText(text).width / 2;
+  }
+});
+
+
+var context = document.getElementById('chart8').getContext('2d');
+var chart = new Chart(context, {
+  type: 'doughnut',
+  data: {
+    labels: ['Completed', 'Pending'],
+    datasets: [{
+      label: 'First dataset',
+      data: [7 ,8, 1, 35],
+      backgroundColor: ['green', '#ededed', 'black',  '#ededed'],
+    }]
+  },
+  options: {
+    responsive: true,
+    legend: false,
+    cutoutPercentage: 65, 
+    rotation: 1 * Math.PI, 
+    circumference: 1 * Math.PI 
+  }
+});
+  </script> 
+</body>
+</html>

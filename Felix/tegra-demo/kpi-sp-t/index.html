@@ -1,0 +1,91 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 150px;
+        text-align: left;
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Customer</th>
+        <th class="value-col">Actual</th>
+        <th class="value-col">Planned</th>
+        <th class="value-col">%</th>
+      </tr>
+      <tr  class="tr1">
+        <!--table-layout: fixed;-->
+        <td class="customer-col">Nike</td>
+        <td class="value-col">81,991</td>
+        <td class="value-col">62,012</td>
+        <td style="color: white;background-color: green;;" class="value-col">132%</td>
+      </tr>
+      <tr>
+        <td class="customer-col">Fanatic</td>
+        <td class="value-col">67,891</td>
+        <td class="value-col">97,531</td>
+        <td style="color: white;background-color: red;" class="value-col">70%</td>
+      </tr>
+      <tr>
+        <td class="customer-col">Adidas</td>
+        <td class="value-col">1,635</td>
+        <td class="value-col">1,211</td>
+        <td style="color: white;background-color: red;" class="value-col">70%</td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold;"  class="customer-col">Total</td>
+        <td style="font-weight: bold;"  class="value-col">151,517</td>
+        <td style="font-weight: bold;"  class="value-col">160,754</td>
+        <td style="font-weight: bold;color: white;background-color: red;" class="value-col">94%</td>
+      </tr>
+    </table>
+
+  </body>
+</html>

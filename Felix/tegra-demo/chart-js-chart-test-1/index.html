@@ -1,0 +1,146 @@
+<html>
+  <header>
+    <style>
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        overflow:hidden;
+        display: table;
+        clear: both;
+      }
+      </style>
+      </head>
+  </header>
+<body>
+  <div style="width:200px;background-color: #D8D8D8 ;">
+    <div style="text-align: center; padding-top: 5px;padding-bottom: 5px;">
+      Schd Adherence to PO Mix
+    </div>
+    <div style="width: 170px;">
+      <div style="place-items: center;margin-left: auto;margin-right: auto;padding-left: 30px;"> 
+        <canvas id="chart8">
+        </canvas> 
+      </div>
+      <div style="width:200px;max-height: 80px;padding-top: 10px;">
+        <div class="row">
+          <div class="column" style="background-color:#aaa;color: white;text-align: center;padding-top: 2%;padding-bottom: 2%;">
+            Actual
+          </div>
+          <div class="column" style="background-color:#aaa;color: white;text-align: center;padding-top: 2%;padding-bottom: 2%;">
+            Planned
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="background-color: #ECECEC ;width:200px;">
+    <div style="width:200px;max-height: 80px;padding-top: 10px;padding-bottom: 10px;">
+      <div class="row">
+        <div class="column" style="background-color: #D8D8D8 ;text-align: center;padding-top: 2%;padding-bottom: 2%;font-size: 20px;">
+          2M
+        </div>
+        <div class="column" style="background-color: #D8D8D8 ;text-align: center;padding-top: 2%;padding-bottom: 2%;font-size: 20px;">
+          2M
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <script type="text/javascript">
+  /*
+  var num = Math.random();
+  var data = { labels: [ "pink" ], datasets: [ { data: [num, 1-num], backgroundColor: [ "#FF6384" ], hoverBackgroundColor: [ "#FF6384" ] }] };
+  window.onload = function() { 
+    var ctx8 = $('#chart8').get(0).getContext("2d");
+    window.theChart8 = new Chart(ctx8, { 
+      type: 'doughnut', 
+      data: data, 
+      options: { 
+        responsive: true, 
+        legend: { display: false }, 
+        elements: { 
+          center: { 
+            text: Math.round(num*100),
+            fontStyle: 'Helvetica', //Default Arial 
+            sidePadding: 15 //Default 20 (as a percentage) 
+          } 
+        }, 
+        maintainAspectRatio : false, 
+        cutoutPercentage:50, 
+        animation:false, 
+        rotation: 1 * Math.PI, 
+        circumference: 1 * Math.PI 
+      } 
+    }); 
+  } */
+  const originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
+
+Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
+  draw: function() {
+    const chart = this.chart;
+    const {
+      width,
+      height,
+      ctx,
+      config
+    } = chart.chart;
+
+    const {
+      datasets
+    } = config.data;
+
+    const dataset = datasets[0];
+    const datasetData = dataset.data;
+    const completed = datasetData[0];
+    const text = `${completed}%`;
+    let x, y, mid;
+
+    originalDoughnutDraw.apply(this, arguments);
+
+    const fontSize = (height / 50).toFixed(2);
+    ctx.font = fontSize + "em Lato, sans-serif";
+    ctx.font.fillStyle = 'color: white';
+    ctx.textBaseline = "top";
+
+
+    x = Math.round((width - ctx.measureText(text).width) / 2);
+    y = (height / 1.6) - fontSize;
+    ctx.fillStyle = "#000000"
+    ctx.fillText(text, x, y);
+    mid = x + ctx.measureText(text).width / 2;
+  }
+});
+Chart.defaults.global.tooltips.enabled = false;
+
+var context = document.getElementById('chart8').getContext('2d');
+var percent_value = 67;
+var chart = new Chart(context, {
+  type: 'doughnut',
+  data: {
+    labels: ['Completed', 'Pending'],
+    datasets: [{
+      label: 'First dataset',
+      data: [percent_value, 100 - percent_value],
+      backgroundColor: ['red', '#ededed'],
+    }]
+  },
+  options: {
+    responsive: true,
+    legend: false,
+    cutoutPercentage: 65, 
+    rotation: 1 * Math.PI, 
+    circumference: 1 * Math.PI 
+  }
+});
+
+
+  </script> 
+</body>
+</html>

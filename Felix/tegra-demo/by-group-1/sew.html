@@ -1,0 +1,66 @@
+<html>
+<body>
+      <div style="height: 100%">
+        <canvas id="myChart"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       
+       const data = {
+        labels: [
+          '2',
+          '4',
+          '6',
+          '8',
+          '10',
+          '12',
+          '14',
+          '14',
+          '16',
+          '18',
+          '20',
+          '22',
+          '24',
+          '26',
+          '28',
+          '30',
+          '32'
+        ],
+        datasets: [{
+          type: 'bar',
+          label: 'POs / Makes in Subprocess',
+          data: [5, 0, 9, 22, 35, 47, 60, 75, 91, 78, 83, 68, 45, 32, 22, 2],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)'
+        }, {
+          type: 'line',
+          label: 'Standard',
+          data: [0, 10, 20, 35, 48, 60, 70, 75, 76, 70, 60, 45, 35, 25, 15, 5, 0],
+          fill: false,
+          borderColor: 'rgb(54, 162, 235)',
+          tension: 0.5
+        }]
+      };
+      // </block:setup>
+
+      // <block:config:0>
+      const config = {
+        type: 'scatter',
+        data: data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+  myChart.height = 100;
+    </script>
+</body>
+</html>

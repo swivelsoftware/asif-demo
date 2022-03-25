@@ -1,0 +1,40 @@
+<html>
+<body>
+    <div id="chart">
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/apexcharts'></script>
+    <script>
+        var options = {
+          series: [76],
+          chart: {
+          height: 350,
+          type: 'radialBar',
+        },
+        plotOptions: {
+          radialBar: {
+            hollow: {
+              // size: '70%',
+              margin: 800
+            },
+            dataLabels: {
+              name: {
+                show: false,
+              },
+              value: {
+                fontSize: '36px'
+              }
+            },
+            track: {
+              width: 800,
+              opacity: 800
+            }
+          },
+        },
+        labels: ['PO7789165'],
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+</body>
+</html>

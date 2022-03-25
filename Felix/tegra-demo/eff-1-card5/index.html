@@ -1,0 +1,84 @@
+<html>
+  <header>
+    <style>
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        overflow:hidden;
+        display: table;
+        clear: both;
+      }
+
+      .outer {
+          position: relative;
+          width: 300px;
+          height: 250px;
+        }
+      </style>
+      </head>
+  </header>
+<body>
+  <div>
+    <canvas wihtd="100%" height="100%" id="chart8"></canvas> 
+  </div>
+ 
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script type="text/javascript">
+const data = {
+  labels: ['FY21 02 FEB', 'FY21 03 MAR', 'FY21 04 APR', 'FY21 05 MAY', 'FY21 06 JUN', 'FY21 07 JUL', 'FY21 08 AUG', 'FY21 09 SEP', 'FY21 10 OCT', 'FY21 11 NOV' , 'FY21 12 DEC', 'FY22 01 JAN'],
+  datasets: [
+    {
+      label: 'Efficiency',
+      data: [61, 52, 59, 47, 50, 51, 52, 55, 59, 53, 43, 55],
+      fill: false,
+      borderColor: 'skyblue',
+    },
+    {
+      label: 'Sum of Efficiency Goal',
+      data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 55],
+      fill: false,
+      borderColor: 'rgba(255, 164, 164)',
+    }
+  ]
+};
+
+var context = document.getElementById('chart8').getContext('2d');
+var chart = new Chart(context, {
+  type: 'line',
+  data: data,
+  options: {
+    scales: {
+      yAxes: [{
+        scaleFontSize: 40,
+        scaleLabel: {
+          display: true,
+        },
+        ticks: {
+          max: 100,
+          min: 0,
+          stepSize: 20,
+          beginAtZero: true,
+          callback: function(value) {
+            return value + " %"
+          }
+        },
+      }],
+    },
+    elements: {
+        line: {
+            tension: 0
+        }
+    },
+  }
+});
+  </script> 
+</body>
+</html>
