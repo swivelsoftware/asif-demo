@@ -98,7 +98,6 @@
               </p>
             </td>
             <td :style="{ 'background-color': getBackgroundColor(container.VD.statusTime, container.VD.sentTime, container.VD.reminderTime) }">
-              {{container.VD.statusTime}}
               <p>Status Time: {{ container.VD.statusTimeString }}</p>
               <v-text-field type="datetime-local" v-model="container.VD.statusTime"></v-text-field>
               <v-btn v-if="container.VD.statusTime" text @click.stop="() => download(tracking.tracking, tracking.trackingReference, container, 'VD')">DOWNLOAD</v-btn>
@@ -159,7 +158,7 @@
   <script src="https://momentjs.com/downloads/moment.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script>
-    const baseUrl = `https://360uat-china-api.swivelsoftware.asia`;
+    const baseUrl = `http://localhost:7010`;
     new Vue({
       el: '#app',
       vuetify: new Vuetify(),
