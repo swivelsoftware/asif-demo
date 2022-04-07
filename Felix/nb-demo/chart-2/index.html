@@ -25,35 +25,55 @@
   </header>
 <body>
   <div>
-    <canvas height="100%" id="chart8"></canvas> 
+    <canvas wihtd="100%" id="chart8"></canvas> 
   </div>
 
-  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
   <script type="text/javascript">
 const data = {
-  labels: ['FY21 Q2', 'FY21 Q3','FY21 Q4', 'FY21 Q1'],
   datasets: [
-    {
-      label: 'Efficiency',
-      data: [50, 47.32, 0, 44.49],
-      fill: false,
-      borderColor: 'green',
-      backgroundColor: 'green',
-    },
-    {
-      label: 'Efficiency Goal',
-      data: [0, 0, 30.49, 0],
-      fill: false,
-      borderColor: '#800000',
-      backgroundColor: '#800000',
-    }
+        {
+          label: 'Count',
+          data: [
+            461538,
+            186615,
+            99434,
+            89744,
+            79741,
+            76923,
+            73171,
+            53571,
+            46875,
+            43403,
+            32854,
+            32258,
+            1773
+          ],
+          borderColor: 'rgba(8, 95, 182)',
+          backgroundColor: 'rgba(77, 195, 255,0.5)',
+        }
+    ],
+  labels: [
+    'GEC',
+    'NPI',
+    'PYS',
+    'ESV',
+    'ESC',
+    'LEC',
+    'VJC',
+    'YFV',
+    'VZC',
+    'HLV',
+    'VSV',
+    'HGV',
+    'SDI'
   ]
 };
 
 var context = document.getElementById('chart8').getContext('2d');
 var chart = new Chart(context, {
-  type: 'bar',
+  type: 'horizontalBar',
   data: data,
   options: {
     scales: {
@@ -62,7 +82,7 @@ var chart = new Chart(context, {
         scaleLabel: {
           display: true,
         },
-        ticks: {
+        /* ticks: {
           max: 100,
           min: 0,
           stepSize: 50,
@@ -70,7 +90,7 @@ var chart = new Chart(context, {
           callback: function(value) {
             return value + " %"
           }
-        },
+        }, */
       }],
     },
     elements: {
