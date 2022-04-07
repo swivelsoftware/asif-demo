@@ -1,0 +1,148 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 350px;
+        text-align: left;
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 150px;
+        height: 2rem;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+
+      .circle-green{
+        width:45px;
+        height:45px;
+        border-radius:999em;
+        background-color:green;
+      }
+
+      .circle-red{
+        width:45px;
+        height:45px;
+        border-radius:999em;
+        background-color:red;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="value-col">Factory</th>
+        <th class="value-col">PWI</th>
+        <th class="value-col">FTV</th>
+        <th class="value-col">DIAV</th>
+        <th class="value-col">JHV</th>
+        <th class="value-col">MPI</th>
+        <th class="value-col">CJ3</th>
+        <th class="value-col">DIAH</th>
+        <th class="value-col">PYV</th>
+        <th class="value-col">SA1</th>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">2022Y-Mar DPPM</td>
+        <td class="value-col">3,788</td>
+        <td class="value-col">8,982</td>
+        <td class="value-col">19,231</td>
+        <td class="value-col">8,838</td>
+        <td class="value-col">No Inspection</td>
+        <td class="value-col">No Inspection</td>
+        <td class="value-col">17,442</td>
+        <td class="value-col">41,565</td>
+        <td class="value-col">No Inspection</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">2022Y Target</td>
+        <td class="value-col">28, 000</td>
+        <td class="value-col">28, 000</td>
+        <td class="value-col">28, 000</td>
+        <td class="value-col">28, 000</td>
+        <td class="value-col">28, 000</td>
+        <td class="value-col">28, 000</td>
+        <td class="value-col">28, 000</td>
+        <td class="value-col">28, 000</td>
+        <td class="value-col">28, 000</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">On Target? <br>(2022Y-Mar DPPM VS 2022Y Target)</td>
+        <td class="value-col"><div class="circle-green"></div></td>
+        <td class="value-col"><div class="circle-green"></div></td>
+        <td class="value-col"><div class="circle-green"></div></td>
+        <td class="value-col"><div class="circle-green"></div></td>
+        <td class="value-col">No Inspection</td>
+        <td class="value-col">No Inspection</td>
+        <td class="value-col"><div class="circle-green"></div></td>
+        <td class="value-col"><div class="circle-red"></div></td>
+        <td class="value-col">No Inspection</td>
+      </tr>
+
+      <tr class="tr1">
+        <td class="customer-col">Recent 3 months Total DPPM</td>
+        <td class="value-col">4,898</td>
+        <td class="value-col">7,937</td>
+        <td class="value-col">8,929</td>
+        <td class="value-col">11,388</td>
+        <td class="value-col">14,493</td>
+        <td class="value-col">18,750</td>
+        <td class="value-col">23,066</td>
+        <td class="value-col">25,731</td>
+        <td class="value-col">26,163</td>
+      </tr>
+      <tr class="tr1">
+        <td class="customer-col">Ranking By Core & Starateic Factories<br>(Base On Recent 3months Total CSI DPPM)</td>
+        <td class="value-col">1</td>
+        <td class="value-col">2</td>
+        <td class="value-col">3</td>
+        <td class="value-col">4</td>
+        <td class="value-col">5</td>
+        <td class="value-col">6</td>
+        <td class="value-col">7</td>
+        <td class="value-col">8</td>
+        <td class="value-col">9</td>
+      </tr>
+    </table>
+
+  </body>
+</html>
