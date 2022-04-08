@@ -1,0 +1,628 @@
+<html>
+  <header>
+    <style>
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        overflow:hidden;
+        display: table;
+        clear: both;
+      }
+
+      .outer {
+          position: relative;
+          width: 300px;
+          height: 250px;
+        }
+      </style>
+      </head>
+  </header>
+<body>
+  <div>
+    <canvas wihtd="100%" id="chart8"></canvas> 
+  </div>
+
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script type="text/javascript">
+const data = {
+  datasets: [
+        {
+        label: 'CJ Grp-12 Mons moving ave DPPM',
+          data: [
+            38000,
+            35000,
+            34000,
+            34000,
+            31500,
+            31000,
+            31500,
+            32000,
+            33500,
+            34500,
+            35000,
+            32000,
+            32000,
+        ],  
+          type: 'line',
+          fill: false,
+          borderColor: '#5A5A5A',
+          backgroundColor: '#5A5A5A',
+        },
+        {
+        label: 'Prior Year-12Mons moving ave DPPM',
+          data: [
+            1000,
+            2000,
+            0,
+            500,
+            3000,
+            5000,
+            7800,
+            9000,
+            9800,
+            8000,
+            6000,
+            3000,
+            500
+        ],  
+          type: 'line',
+          fill: false,
+          borderColor: '#BABABA',
+          backgroundColor: '#BABABA',
+        },
+        {
+          type: 'bar',
+          label: 'Materials-Leathers/Synthetics',
+          data: [
+            0,
+            1000,
+            0,
+            500,
+            500,
+            0,
+            2500,
+            2600,
+            3000,
+            1500,
+            5000,
+            1700,
+            1000
+          ],
+          borderColor: 'rgba(0, 125, 242)',
+          backgroundColor: 'rgba(0, 125, 242, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Materials-Textiles',
+          data: [
+            7000,
+            500,
+            2000,
+            500,
+            2500,
+            0,
+            1000,
+            1000,
+            3000,
+            0,
+            1000,
+            1000,
+            0
+          ],
+          borderColor: 'rgba(198, 198, 198)',
+          backgroundColor: 'rgba(198, 198, 198, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Materials-Components',
+          data: [
+            500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            300,
+            300,
+            0
+          ],
+          borderColor: 'rgba(255, 31, 31)',
+          backgroundColor: 'rgba(255, 31, 31, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Materials-Soleunit',
+          data: [
+            4500,
+            3000,
+            5000,
+            2500,
+            1000,
+            0,
+            5000,
+            6000,
+            3000,
+            2000,
+            5000,
+            3000,
+            1500
+          ],
+          borderColor: 'rgba(89, 255, 17)',
+          backgroundColor: 'rgba(89, 255, 17, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Color Variation',
+          data: [
+            0,
+            0,
+            300,
+            700,
+            0,
+            0,
+            800,
+            0,
+            3000,
+            0,
+            300,
+            10,
+            0
+          ],
+          borderColor: 'rgba(255, 119, 0)',
+          backgroundColor: 'rgba(255, 119, 0, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Cutting',
+          data: [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          borderColor: 'rgba(255, 119, 0)',
+          backgroundColor: 'rgba(255, 119, 0, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Skiving/Folding/Trimming',
+          data: [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          borderColor: 'rgba(255, 119, 0)',
+          backgroundColor: 'rgba(255, 119, 0, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Embroidary/Emboossing/Printing/NoSew/3D Printing',
+          data: [
+            200,
+            50,
+            0,
+            0,
+            0,
+            0,
+            500,
+            500,
+            3000,
+            0,
+            0,
+            0,
+            0
+          ],
+          borderColor: 'rgba(255, 222, 0)',
+          backgroundColor: 'rgba(255, 222, 0, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Stitching-Open/Tension/Trimming',
+          data: [
+            2000,
+            2200,
+            1400,
+            900,
+            4000,
+            2000,
+            1000,
+            3000,
+            1500,
+            800,
+            2500,
+            3000,
+            3000
+          ],
+          borderColor: 'rgba(122, 198, 255)',
+          backgroundColor: 'rgba(122, 198, 255, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Stitching-Margin/Stitches/Needle Hole',
+          data: [
+            500,
+            500,
+            100,
+            1500,
+            0,
+            800,
+            600,
+            500,
+            0,
+            0,
+            500,
+            100,
+            0
+          ],
+          borderColor: 'rgba(122, 198, 255)',
+          backgroundColor: 'rgba(122, 198, 255, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Punching',
+          data: [
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            800,
+            0,
+            0,
+            60,
+            10,
+            0
+          ],
+          borderColor: 'rgba(90, 142, 0)',
+          backgroundColor: 'rgba(90, 142, 0, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Upper/Lining Lumps/Wrinkles/Crooks',
+          data: [
+            0,
+            500,
+            800,
+            0,
+            1000,
+            0,
+            800,
+            0,
+            6000,
+            0,
+            800,
+            0,
+            0
+          ],
+          borderColor: 'rgba(142, 0, 62)',
+          backgroundColor: 'rgba(142, 0, 62, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Tip/Vamp/Window/Tongue/Eyestay',
+          data: [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          borderColor: 'rgba(142, 0, 62)',
+          backgroundColor: 'rgba(142, 0, 62, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Hardware',
+          data: [
+            0,
+            0,
+            0,
+            450,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          borderColor: 'rgba(238, 220, 0)',
+          backgroundColor: 'rgba(238, 220, 0, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Toe/Side/Heel Lasting',
+          data: [
+            0,
+            0,
+            300,
+            0,
+            0,
+            0,
+            0,
+            1000,
+            0,
+            0,
+            1000,
+            0,
+            0
+          ],
+          borderColor: 'rgba(169, 169, 169)',
+          backgroundColor: 'rgba(169, 169, 169, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Toe Spring/Quarter Height/Back Height',
+          data: [
+            900,
+            0,
+            500,
+            2000,
+            300,
+            700,
+            0,
+            3000,
+            6000,
+            1500,
+            2300,
+            2000,
+            0
+          ],
+          borderColor: 'rgba(3, 0, 101)',
+          backgroundColor: 'rgba(3, 0, 101, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Roughing/Priming/Cementing',
+          data: [
+            0,
+            0,
+            100,
+            500,
+            600,
+            1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1000
+          ],
+          borderColor: 'rgba(209, 211, 0)',
+          backgroundColor: 'rgba(209, 211, 0, 0.5)',
+        },
+        {
+          type: 'bar',
+          label: 'Upper/Outsole Adhesion',
+          data: [
+            4000,
+            5000,
+            5000,
+            7000,
+            3000,
+            8000,
+            4000,
+            4000,
+            4000,
+            1500,
+            1500,
+            3000,
+            4000
+          ],
+          borderColor: 'rgba(24, 24, 24)',
+          backgroundColor: 'rgba(24, 24, 24, 0.7)',
+        },
+        {
+          type: 'bar',
+          label: 'Inserts',
+          data: [
+            500,
+            0,
+            0,
+            2000,
+            0,
+            0,
+            10000,
+            2000,
+            0,
+            2000,
+            2000,
+            1700,
+            900
+          ],
+          borderColor: 'rgba(82, 85, 71)',
+          backgroundColor: 'rgba(82, 85, 71, 0.7)',
+        },
+        {
+          type: 'bar',
+          label: 'Laces',
+          data: [
+            0,
+            2000,
+            2500,
+            0,
+            1000,
+            1000,
+            1600,
+            1500,
+            2500,
+            3500,
+            2000,
+            1500,
+            900
+          ],
+          borderColor: 'rgba(0, 62, 103)',
+          backgroundColor: 'rgba(0, 62, 103, 0.7)',
+        },
+        {
+          type: 'bar',
+          label: 'Cleanliness',
+          data: [
+            19000,
+            15000,
+            12000,
+            8000,
+            12000,
+            7000,
+            5000,
+            10000,
+            9000,
+            11000,
+            8000,
+            5000,
+            7000
+          ],
+          borderColor: 'rgba(255, 93, 124)',
+          backgroundColor: 'rgba(255, 93, 124, 0.7)',
+        },
+        {
+          type: 'bar',
+          label: 'Labeling/Packing',
+          data: [
+            3000,
+            2000,
+            5000,
+            1500,
+            500,
+            5500,
+            2000,
+            3000,
+            0,
+            0,
+            1000,
+            2500,
+            1000
+          ],
+          borderColor: 'rgba(148, 64, 68)',
+          backgroundColor: 'rgba(148, 64, 68, 0.7)',
+        },
+        {
+          type: 'bar',
+          label: 'Aligment',
+          data: [
+            2500,
+            1000,
+            0,
+            1500,
+            0,
+            1000,
+            0,
+            0,
+            3500,
+            2500,
+            1000,
+            1000,
+            2500
+          ],
+          borderColor: 'rgba(206, 206, 206)',
+          backgroundColor: 'rgba(206, 206, 206, 0.7)',
+        },
+        {
+          type: 'bar',
+          label: 'Aligment',
+          data: [
+            1500,
+            900,
+            5000,
+            900,
+            2000,
+            0,
+            1500,
+            900,
+            0,
+            0,
+            1000,
+            0,
+            0
+          ],
+          borderColor: 'rgba(84, 233, 255)',
+          backgroundColor: 'rgba(84, 233, 255, 0.7)',
+        }
+       
+      
+    ],
+  labels: [
+    'Mar-21',
+    'Apr-21',
+    'May-21',
+    'Jun-21',
+    'Jul-21',
+    'Aug-21',
+    'Sep-21',
+    'Oct-21',
+    'Nov-21',
+    'Dec-21',
+    'Jan-22',
+    'Feb-22',
+    'Mar-22'
+  ]
+};
+
+var context = document.getElementById('chart8').getContext('2d');
+var chart = new Chart(context, {
+  type: 'line',
+  data: data,
+  options: {  
+    scales: {
+      xAxes: [{
+        stacked: true
+      }],
+      yAxes: [{
+        stacked: true,
+        ticks: {
+          beginAtZero: true,
+          max: 60000,
+          min: 0,
+          stepSize: 10000,
+          beginAtZero: true,
+        },
+      }]
+    }
+  }
+});
+  </script> 
+</body>
+</html>
