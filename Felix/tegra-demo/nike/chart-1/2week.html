@@ -32,6 +32,7 @@
         font-size: 16px;
         border: 5px gray;
       }
+
       </style>
       </head>
   </header>
@@ -39,8 +40,8 @@
   <div>
     <button class="button" type="button" onclick="location.href='./index.html'">All</button> 
     <button class="button" type="button" onclick="location.href='./1week.html'">1 Week</button> 
-    <button class="button" type="button" onclick="location.href='./2week.html'">2 Week</button> 
     <button class="button" type="button" onclick="location.href='./6week.html'">6 Week</button> 
+    <button class="button" type="button" onclick="location.href='./1month.html'">1 Month</button> 
     <canvas wihtd="100%" id="chart8"></canvas> 
   </div>
 
@@ -51,7 +52,7 @@
 let datasets = [
         {
           label: 'Nike Demand',
-          data: [379745, 113777, 164065, 135500],
+          data: [76082, 84200],
           type: 'line',
           fill: false,
           borderColor: '#800000',
@@ -59,7 +60,7 @@ let datasets = [
         },
         {
           label: 'Tegra Capacity Offer in Nike System',
-          data: [676400, 178000, 178000, 178000],
+          data: [142400, 178000],
           type: 'line',
           fill: false,
           borderColor: '#9FFF98',
@@ -67,13 +68,13 @@ let datasets = [
         },
         {
           label: 'Tegra Planned',
-          data: [345481, 126744, 146595, 15116],
+          data: [34654, 84065],
           borderColor: 'rgba(77, 195, 255)',
           backgroundColor: 'rgba(77, 195, 255,0.5)',
         },
         {
           label: 'Tegra Actual',
-          data: [343563, 128287, 157799, 169434],
+          data: [30202, 88453],
           borderColor: 'rgba(187, 152, 255)',
           backgroundColor: 'rgba(187, 152, 255,0.5)',
         }
@@ -81,10 +82,12 @@ let datasets = [
     ];
 
     const label = [
+    'WK01',
+    'WK02',
+    'WK03',
+    'WK04',
     'WK05',
-    'WK06',
-    'WK07',
-    'WK08'
+    'WK06'
   ]
 
   function test1() {
