@@ -21,6 +21,7 @@
           height: 250px;
         }
 
+
       .button {
         background-color: gainsboro; /* Green */
         border: none;
@@ -32,16 +33,16 @@
         font-size: 16px;
         border: 5px gray;
       }
+
       </style>
       </head>
   </header>
 <body>
   <div>
-    <button class="button" type="button" onclick="location.href='./index.html'">All</button> 
-    <button class="button" type="button" onclick="location.href='./1week.html'">1 Week</button> 
-    <button class="button" type="button" onclick="location.href='./2week.html'">2 Week</button> 
+    <button class="button" type="button" onclick="location.href='./index.html'">All</button>
     <button class="button" type="button" onclick="location.href='./6week.html'">6 Week</button> 
-    <canvas wihtd="100%" id="chart8"></canvas> 
+    <button class="button" type="button" onclick="location.href='./12week.html'">12 Week</button> 
+    <canvas wihtd="100%" height="100%" id="chart8"></canvas> 
   </div>
 
   <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
@@ -51,7 +52,7 @@
 let datasets = [
         {
           label: 'Nike Demand',
-          data: [379745, 113777, 164065, 135500],
+          data: [76082, 84200, 115324, 104139, 113777, 164065, 135500, 175952, 129933, 177979, 178013, 177979, 136444, 110313, 0, 126034, 113212, 104267, 124074, 122430, 129386, 132594, 107891, 141789],
           type: 'line',
           fill: false,
           borderColor: '#800000',
@@ -59,7 +60,7 @@ let datasets = [
         },
         {
           label: 'Tegra Capacity Offer in Nike System',
-          data: [676400, 178000, 178000, 178000],
+          data: [142400, 178000, 178000, 178000, 178000, 178000, 178000, 178000, 178000, 178000, 178000, 178000, 178000, 178000, 0, 142000, 178000, 142000, 178000, 178000, 178000, 192000, 173000, 177000],
           type: 'line',
           fill: false,
           borderColor: '#9FFF98',
@@ -67,13 +68,13 @@ let datasets = [
         },
         {
           label: 'Tegra Planned',
-          data: [345481, 126744, 146595, 15116],
+          data: [34654, 84065, 110154, 116607, 126744, 146595, 151116, 159627, 166487, 140532, 121426, 126094, 105706, 124786, 6662, 158430, 115894, 177934, 156304, 147868, 164835, 156781, 178952, 167823],
           borderColor: 'rgba(77, 195, 255)',
           backgroundColor: 'rgba(77, 195, 255,0.5)',
         },
         {
           label: 'Tegra Actual',
-          data: [343563, 128287, 157799, 169434],
+          data: [30202, 88453, 114956, 112952, 128287, 157799, 169434, 172159, 151768, 127298, 130352, 134647, 114972, 0, 0, 0, 28751, 0, 0, 0, 0, 37891, 0, 0],
           borderColor: 'rgba(187, 152, 255)',
           backgroundColor: 'rgba(187, 152, 255,0.5)',
         }
@@ -81,10 +82,30 @@ let datasets = [
     ];
 
     const label = [
+    'WK01',
+    'WK02',
+    'WK03',
+    'WK04',
     'WK05',
     'WK06',
     'WK07',
-    'WK08'
+    'WK08',
+    'WK09',
+    'WK10',
+    'WK11',
+    'WK12',
+    'WK13',
+    'WK14',
+    'WK15',
+    'WK16',
+    'WK17',
+    'WK18',
+    'WK19',
+    'WK20',
+    'WK21',
+    'WK22',
+    'WK23',
+    'WK24'
   ]
 
   function test1() {
