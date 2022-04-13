@@ -1,0 +1,572 @@
+<html>
+  <header>
+    <style>
+       .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        text-align: left;
+        width: 150px;
+
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        font-family: Arial, Helvetica, sans-serif;
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table border="1" align="center" cellpadding="10px">
+      <thead>
+          <tr class="header-table">
+              <th rowspan="3" colspan="3" style="width: 100%;">TGH (Nike CRs)</th>
+              <th colspan="5">JAN'22</th>
+              <th colspan="5">FEB'22</th>
+              <th colspan="6">MARCH'22</th>
+              <th colspan="5">APRIL'22</th>
+              <th colspan="5">MAY'22</th>
+              <th rowspan="3">TOTAL</th>
+          </tr>
+          <tr class="header-table">
+              <th colspan="1">WK01</th>
+              <th colspan="1">WK02</th>
+              <th colspan="1">WK03</th>
+              <th colspan="1">WK04</th>
+              <th colspan="1">JAN</th>
+              <th colspan="1">WK05</th>
+              <th colspan="1">WK06</th>
+              <th colspan="1">WK07</th>
+              <th colspan="1">WK08</th>
+              <th colspan="1">FEB</th>
+              <th colspan="1">WK09</th>
+              <th colspan="1">WK10</th>
+              <th colspan="1">WK11</th>
+              <th colspan="1">WK12</th>
+              <th colspan="1">WK13</th>
+              <th colspan="1">MARCH</th>
+              <th colspan="1">WK14</th>
+              <th colspan="1">WK15</th>
+              <th colspan="1">WK16</th>
+              <th colspan="1">WK17</th>
+              <th colspan="1">APRIL</th>
+              <th colspan="1">WK18</th>
+              <th colspan="1">WK19</th>
+              <th colspan="1">WK20</th>
+              <th colspan="1">WK21</th>
+              <th colspan="1">MAY</th>
+          </tr>
+          <tr>
+            <th colspan="1">01/03/22</th>
+            <th colspan="1">01/10/22</th>
+            <th colspan="1">01/17/22</th>
+            <th colspan="1">01/24/22</th>
+            <th colspan="1">TOTAL</th>
+            <th colspan="1">01/31/22</th>
+            <th colspan="1">02/07/22</th>
+            <th colspan="1">02/14/22</th>
+            <th colspan="1">02/21/22</th>
+            <th colspan="1">TOTAL</th>
+            <th colspan="1">02/28/22</th>
+            <th colspan="1">03/07/22</th>
+            <th colspan="1">03/14/22</th>
+            <th colspan="1">03/21/22</th>
+            <th colspan="1">03/28/22</th>
+            <th colspan="1">TOTAL</th>
+            <th colspan="1">04/04/22</th>
+            <th colspan="1">04/11/22</th>
+            <th colspan="1">04/18/22</th>
+            <th colspan="1">04/25/22</th>
+            <th colspan="1">TOTAL</th>
+            <th colspan="1">05/02/22</th>
+            <th colspan="1">05/09/22</th>
+            <th colspan="1">05/16/22</th>
+            <th colspan="1">05/23/22</th>
+            <th colspan="1">TOTAL</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td rowspan="4">Nike CR's</td>
+          <td rowspan="4">Nike System</td>
+          <td style="width: 100%;">TEGRA Capacity Offer in Nike System</td>
+          <td>142400</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>676400</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>712000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>890000</td>
+
+          <td>178000</td>
+          <td>0</td>
+          <td>142400</td>
+          <td>178000</td>
+          <td>498400</td>
+
+          <td>142400</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>676400</td>
+          <td>3453200</td>
+        </tr>
+
+        <tr>
+          <td style="width: 100%;">Nike Demand</td>
+          <td>76082</td>
+          <td>84200</td>
+          <td>115324</td>
+          <td>104139</td>
+          <td>379745</td>
+          <td>113777</td>
+          <td>164065</td>
+          <td>135000</td>
+          <td>175952</td>
+          <td>588794</td>
+          <td>129933</td>
+          <td>138969</td>
+          <td>178013</td>
+          <td>177979</td>
+          <td>136444</td>
+          <td>761338</td>
+          <td>110313</td>
+          <td>0</td>
+          <td>126034</td>
+          <td>113212</td>
+          <td>349559</td>
+          <td>104267</td>
+          <td>124074</td>
+          <td>122430</td>
+          <td>129386</td>
+          <td>480157</td>
+          <td>2559593</td>
+        </tr>
+
+        <tr>
+          <td style="width: 100%;">Balance</td>
+          <td>66318</td>
+          <td>93800</td>
+          <td>62676</td>
+          <td>73861</td>
+          <td>296655</td>
+          <td>64223</td>
+          <td>13935</td>
+          <td>43000</td>
+          <td>2048</td>
+          <td>123206</td>
+          <td>48067</td>
+          <td>39031</td>
+          <td style="color: red;">(13)</td>
+          <td>21</td>
+          <td>41556</td>
+          <td>128662</td>
+          <td>67687</td>
+          <td>0</td>
+          <td>16366</td>
+          <td>64788</td>
+          <td>148841</td>
+          <td>38133</td>
+          <td>53926</td>
+          <td>55570</td>
+          <td>48614</td>
+          <td>196243</td>
+          <td>893607</td>
+        </tr>
+
+        <tr>
+          <td style="width: 100%;">Utilization % </td>
+          <td>53%</td>
+          <td>47%</td>
+          <td>65%</td>
+          <td>59%</td>
+          <td>56%</td>
+          <td>64%</td>
+          <td>92%</td>
+          <td>76%</td>
+          <td>99%</td>
+          <td>83%</td>
+          <td>73%</td>
+          <td>78%</td>
+          <td>100%</td>
+          <td>100%</td>
+          <td>77%</td>
+          <td>86%</td>
+
+          <td>62%</td>
+          <td>0%</td>
+          <td>89%</td>
+          <td>64%</td>
+          <td>70%</td>
+
+          <td>73%</td>
+          <td>70%</td>
+          <td>69%</td>
+          <td>73%</td>
+          <td>71%</td>
+          <td>74%</td>
+        </tr>
+        <tr>
+          <td rowspan="9">Nike CR's</td>
+          <td rowspan="4">Tegra Planned vs Capacity Offer</td>
+          <td>TEGRA Planned</td>
+          <td>34654</td>
+          <td>84065</td>
+          <td>110154</td>
+          <td>116607</td>
+          <td>345481</td>
+          <td>126744</td>
+          <td>146595</td>
+          <td>151116</td>
+          <td>159627</td>
+          <td>584082</td>
+
+          <td>166487</td>
+          <td>140532</td>
+          <td>121426</td>
+          <td>126094</td>
+          <td>105706</td>
+          <td>660244</td>
+
+          <td>124786</td>
+          <td>6662</td>
+          <td>158430</td>
+          <td>115894</td>
+          <td>405772</td>
+
+          <td>177934</td>
+          <td>156304</td>
+          <td>147868</td>
+          <td>164835</td>
+          <td>646941</td>
+          <td>2642520</td>
+        </tr>
+        <tr>
+          <td>Capacity Offer</td>
+          <td>142400</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>676400</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>712000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>890000</td>
+          <td>178000</td>
+          <td>0</td>
+          <td>142400</td>
+          <td>178000</td>
+          <td>498400</td>
+
+          <td>142400</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>676400</td>
+          <td>3453200</td>
+        </tr>
+
+        <tr>
+          <td>Balance</td>
+          <td>107746</td>
+          <td>93935</td>
+          <td>67846</td>
+          <td>61393</td>
+          <td>330919</td>
+          <td>51256</td>
+          <td>31405</td>
+          <td>26884</td>
+          <td>18373</td>
+          <td>127918</td>
+
+          <td>11513</td>
+          <td>37468</td>
+          <td>56574</td>
+          <td>51906</td>
+          <td>72294</td>
+          <td>229756</td>
+          <td>53214</td>
+          <td>0</td>
+          <td style="color: red;">(16030)</td>
+          <td>62106</td>
+          <td>99290</td>
+
+          <td style="color: red;">(35534)</td>
+          <td>21696</td>
+          <td>30132</td>
+          <td>13165</td>
+          <td>29459</td>
+          <td>817342</td>
+        </tr>
+
+        <tr>
+          <td>% Utilization</td>
+          <td>24%</td>
+          <td>47%</td>
+          <td>62%</td>
+          <td>66%</td>
+          <td>51%</td>
+          <td>71%</td>
+          <td>82%</td>
+          <td>85%</td>
+          <td>90%</td>
+          <td>82%</td>
+
+          <td>94%</td>
+          <td>79%</td>
+          <td>68%</td>
+          <td>71%</td>
+          <td>59%</td>
+          <td>74%</td>
+          <td>70%</td>
+          <td>0%</td>
+          <td>111%</td>
+          <td>65%</td>
+          <td>81%</td>
+
+          <td>125%</td>
+          <td>88%</td>
+          <td>83%</td>
+          <td>93%</td>
+          <td>96%</td>
+          <td>77%</td>
+        </tr>
+
+        <tr>
+          <td rowspan="5">Tegra Actuals vs Capacity Offer Vs Tegra Planned</td>
+          <td>Capacity Offer</td>
+          <td>142400</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>676400</td>
+
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>712000</td>
+
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>356000</td>
+
+          <td>178000</td>
+          <td>0</td>
+          <td>142400</td>
+          <td>178000</td>
+          <td>178000</td>
+
+          <td>142400</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>178000</td>
+          <td>676400</td>
+          <td>1744400</td>
+        </tr>
+
+        <tr>
+          <td>Tegra Actual</td>
+          <td>30202</td>
+          <td>88453</td>
+          <td>114956</td>
+          <td>112952</td>
+          <td>346563</td>
+
+          <td>128287</td>
+          <td>157799</td>
+          <td>169434</td>
+          <td>172179</td>
+          <td>627699</td>
+
+          <td>151768</td>
+          <td>127298</td>
+          <td>130352</td>
+          <td>134647</td>
+          <td>114972</td>
+          <td>659037</td>
+
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1633300</td>
+        </tr>
+
+        <tr>
+          <td>Balance</td>
+          <td style="color: red;">(112198)</td>
+          <td style="color: red;">(89547)</td>
+          <td style="color: red;">(63044)</td>
+          <td style="color: red;">(65048)</td>
+          <td style="color: red;">(329837)</td>
+
+          <td style="color: red;">(49713)</td>
+          <td style="color: red;">(20201)</td>
+          <td style="color: red;">(8566)</td>
+          <td style="color: red;">(5821)</td>
+          <td style="color: red;">627699</td>
+
+          <td style="color: red;">(26232)</td>
+          <td style="color: red;">(50702)</td>
+          <td style="color: red;">(47648)</td>
+          <td style="color: red;">(43353)</td>
+          <td style="color: red;">(63028)</td>
+          <td style="color: red;">(76934)</td>
+
+          <td style="color: red;">(178000)</td>
+          <td style="color: red;">0</td>
+          <td style="color: red;">(142400)</td>
+          <td style="color: red;">(178000)</td>
+          <td style="color: red;">(498400)</td>
+
+          <td style="color: red;">(142400)</td>
+          <td style="color: red;">(178000)</td>
+          <td style="color: red;">(178000)</td>
+          <td style="color: red;">(178000)</td>
+          <td style="color: red;">(676400)</td>
+          <td>(1665871)</td>
+        </tr>
+
+        <tr>
+          <td>% Accomplishment Actual vs Capacity Offer</td>
+          <td>21%</td>
+          <td>50%</td>
+          <td>65%</td>
+          <td>63%</td>
+          <td>51%</td>
+
+          <td>72%</td>
+          <td>89%</td>
+          <td>95%</td>
+          <td>97%</td>
+          <td>88%</td>
+
+          <td>85%</td>
+          <td>72%</td>
+          <td>73%</td>
+          <td>76%</td>
+          <td>65%</td>
+          <td>185%</td>
+
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>94%</td>
+        </tr>
+
+        
+        <tr>
+          <td>% Accomplishment Actual vs Tegra Planned</td>
+          <td>87%</td>
+          <td>105%</td>
+          <td>104%</td>
+          <td>97%</td>
+          <td>100%</td>
+
+          <td>101%</td>
+          <td>108%</td>
+          <td>112%</td>
+          <td>108%</td>
+          <td>107%</td>
+
+          <td>91%</td>
+          <td>91%</td>
+          <td>107%</td>
+          <td>107%</td>
+          <td>109%</td>
+          <td>215%</td>
+
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>0%</td>
+          <td>103%</td>
+        </tr>
+
+      </tbody>
+  </table>
+
+
+  </body>
+</html>
