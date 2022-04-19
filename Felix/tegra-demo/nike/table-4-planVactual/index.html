@@ -1,0 +1,870 @@
+<html>
+  <header>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        text-align: left;
+        width: 280px;
+
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 100px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 100px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .value4-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 90px;
+      }
+
+      table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+      .td-null {
+        border-bottom: 0px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+
+    /* icon */
+    .plus.icon {
+      color: #000;
+      position: absolute;
+      margin-left: 3px;
+      margin-top: 7px;
+    }
+    .plus.icon:before {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 1px;
+      background-color: currentColor;
+    }
+    .plus.icon:after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 1px;
+      background-color: currentColor;
+      -webkit-transform: rotate(90deg);
+              transform: rotate(90deg);
+    }
+    </style>
+
+    <script>  
+    function elSalvador() {
+      if (
+        document.getElementById("th1a").style.display==="table-row" && 
+        document.getElementById("th1a").style.display==="table-row"
+      ) {
+        document.getElementById("th1b").style.display="none";
+        document.getElementById("th1b-1").style.display="none";
+        document.getElementById("th1b-2").style.display="none";
+        document.getElementById("th1b-3").style.display="none";
+
+        document.getElementById("th1a").style.display="none";
+        document.getElementById("th1a-1").style.display="none";
+        document.getElementById("th1a-2").style.display="none";
+        document.getElementById("th1a-3").style.display="none";
+
+
+      }else {
+        document.getElementById("th1a").style.display="table-row"; 
+        document.getElementById("th1b").style.display="table-row"; 
+      }
+      
+    }
+
+
+    function elSalvadorCut() {
+      if (
+        document.getElementById("th1a-1").style.display==="table-row" && 
+        document.getElementById("th1a-2").style.display==="table-row" && 
+        document.getElementById("th1a-3").style.display==="table-row"
+      ) {
+        document.getElementById("th1a-1").style.display="none";
+        document.getElementById("th1a-2").style.display="none";
+        document.getElementById("th1a-3").style.display="none";
+      } else {
+        document.getElementById("th1a-1").style.display="table-row";
+        document.getElementById("th1a-2").style.display="table-row";
+        document.getElementById("th1a-3").style.display="table-row";
+      }
+    }
+
+    function elSalvadorSew() {
+      if (
+        document.getElementById("th1b-1").style.display==="table-row" && 
+        document.getElementById("th1b-2").style.display==="table-row" && 
+        document.getElementById("th1b-3").style.display==="table-row"
+      ) {
+        document.getElementById("th1b-1").style.display="none";
+        document.getElementById("th1b-2").style.display="none";
+        document.getElementById("th1b-3").style.display="none";
+      } else {
+        document.getElementById("th1b-1").style.display="table-row";
+        document.getElementById("th1b-2").style.display="table-row";
+        document.getElementById("th1b-3").style.display="table-row";
+      }
+    }
+
+
+    function hondurasSac() {
+      if (
+        document.getElementById("th2a").style.display==="table-row" && 
+        document.getElementById("th2b").style.display==="table-row" && 
+        document.getElementById("th2c").style.display==="table-row"
+      ) {
+        document.getElementById("th2a").style.display="none";
+        document.getElementById("th2a-1").style.display="none";
+        document.getElementById("th2a-2").style.display="none";
+        document.getElementById("th2a-3").style.display="none";
+
+        document.getElementById("th2b").style.display="none";
+        document.getElementById("th2b-1").style.display="none";
+        document.getElementById("th2b-2").style.display="none";
+        document.getElementById("th2b-3").style.display="none";
+
+
+        document.getElementById("th2c").style.display="none";
+        document.getElementById("th2c-1").style.display="none";
+        document.getElementById("th2c-2").style.display="none";
+        document.getElementById("th2c-3").style.display="none";
+
+      }else {
+        document.getElementById("th2a").style.display="table-row";
+        document.getElementById("th2b").style.display="table-row";
+        document.getElementById("th2c").style.display="table-row";
+      }
+    }
+
+    function hondurasSacCut() {
+      if (
+        document.getElementById("th2a-1").style.display==="table-row" && 
+        document.getElementById("th2a-2").style.display==="table-row" && 
+        document.getElementById("th2a-3").style.display==="table-row"
+      ) {
+        document.getElementById("th2a-1").style.display="none";
+        document.getElementById("th2a-2").style.display="none";
+        document.getElementById("th2a-3").style.display="none";
+      } else {
+        document.getElementById("th2a-1").style.display="table-row";
+        document.getElementById("th2a-2").style.display="table-row";
+        document.getElementById("th2a-3").style.display="table-row";
+      }
+    }
+
+    function hondurasSacSew() {
+      if (
+        document.getElementById("th2b-1").style.display==="table-row" && 
+        document.getElementById("th2b-2").style.display==="table-row" && 
+        document.getElementById("th2b-3").style.display==="table-row"
+      ) {
+        document.getElementById("th2b-1").style.display="none";
+        document.getElementById("th2b-2").style.display="none";
+        document.getElementById("th2b-3").style.display="none";
+      } else {
+        document.getElementById("th2b-1").style.display="table-row";
+        document.getElementById("th2b-2").style.display="table-row";
+        document.getElementById("th2b-3").style.display="table-row";
+      }
+    }
+
+    function hondurasSacSP() {
+      if (
+        document.getElementById("th2c-1").style.display==="table-row" && 
+        document.getElementById("th2c-2").style.display==="table-row" && 
+        document.getElementById("th2c-3").style.display==="table-row"
+      ) {
+        document.getElementById("th2c-1").style.display="none";
+        document.getElementById("th2c-2").style.display="none";
+        document.getElementById("th2c-3").style.display="none";
+      } else {
+        document.getElementById("th2c-1").style.display="table-row";
+        document.getElementById("th2c-2").style.display="table-row";
+        document.getElementById("th2c-3").style.display="table-row";
+      }
+    }
+
+    function hondurasArena() {
+      if (
+        document.getElementById("th3a").style.display==="table-row" && 
+        document.getElementById("th3b").style.display==="table-row" && 
+        document.getElementById("th3c").style.display==="table-row" &&
+        document.getElementById("th3d").style.display==="table-row"
+      ) {
+        document.getElementById("th3a").style.display="none";
+        document.getElementById("th3a-1").style.display="none";
+        document.getElementById("th3a-2").style.display="none";
+        document.getElementById("th3a-3").style.display="none";
+
+        document.getElementById("th3b").style.display="none";
+        document.getElementById("th3b-1").style.display="none";
+        document.getElementById("th3b-2").style.display="none";
+        document.getElementById("th3b-3").style.display="none";
+
+
+        document.getElementById("th3c").style.display="none";
+        document.getElementById("th3c-1").style.display="none";
+        document.getElementById("th3c-2").style.display="none";
+        document.getElementById("th3c-3").style.display="none";
+
+        document.getElementById("th3d").style.display="none";
+        document.getElementById("th3d-1").style.display="none";
+        document.getElementById("th3d-2").style.display="none";
+        document.getElementById("th3d-3").style.display="none";
+
+      }else {
+        document.getElementById("th3a").style.display="table-row";
+        document.getElementById("th3b").style.display="table-row";
+        document.getElementById("th3c").style.display="table-row";
+        document.getElementById("th3d").style.display="table-row";
+      }
+    }
+
+    function hondurasArenaCut() {
+      if (
+        document.getElementById("th3a-1").style.display==="table-row" && 
+        document.getElementById("th3a-2").style.display==="table-row" && 
+        document.getElementById("th3a-3").style.display==="table-row"
+      ) {
+        document.getElementById("th3a-1").style.display="none";
+        document.getElementById("th3a-2").style.display="none";
+        document.getElementById("th3a-3").style.display="none";
+      } else {
+        document.getElementById("th3a-1").style.display="table-row";
+        document.getElementById("th3a-2").style.display="table-row";
+        document.getElementById("th3a-3").style.display="table-row";
+      }
+    }
+
+    function hondurasArenaSM() {
+      if (
+        document.getElementById("th3b-1").style.display==="table-row" && 
+        document.getElementById("th3b-2").style.display==="table-row" && 
+        document.getElementById("th3b-3").style.display==="table-row"
+      ) {
+        document.getElementById("th3b-1").style.display="none";
+        document.getElementById("th3b-2").style.display="none";
+        document.getElementById("th3b-3").style.display="none";
+      } else {
+        document.getElementById("th3b-1").style.display="table-row";
+        document.getElementById("th3b-2").style.display="table-row";
+        document.getElementById("th3b-3").style.display="table-row";
+      }
+    }
+
+    function hondurasArenaSS() {
+      if (
+        document.getElementById("th3c-1").style.display==="table-row" && 
+        document.getElementById("th3c-2").style.display==="table-row" && 
+        document.getElementById("th3c-3").style.display==="table-row"
+      ) {
+        document.getElementById("th3c-1").style.display="none";
+        document.getElementById("th3c-2").style.display="none";
+        document.getElementById("th3c-3").style.display="none";
+      } else {
+        document.getElementById("th3c-1").style.display="table-row";
+        document.getElementById("th3c-2").style.display="table-row";
+        document.getElementById("th3c-3").style.display="table-row";
+      }
+    }
+
+    function hondurasArenaSP() {
+      if (
+        document.getElementById("th3d-1").style.display==="table-row" && 
+        document.getElementById("th3d-2").style.display==="table-row" && 
+        document.getElementById("th3d-3").style.display==="table-row"
+      ) {
+        document.getElementById("th3d-1").style.display="none";
+        document.getElementById("th3d-2").style.display="none";
+        document.getElementById("th3d-3").style.display="none";
+      } else {
+        document.getElementById("th3d-1").style.display="table-row";
+        document.getElementById("th3d-2").style.display="table-row";
+        document.getElementById("th3d-3").style.display="table-row";
+      }
+    }
+
+    function honduras27th() {
+      if (
+        document.getElementById("th4a").style.display==="table-row"
+      ) {
+        document.getElementById("th4a").style.display="none";
+        document.getElementById("th4a-1").style.display="none";
+        document.getElementById("th4a-2").style.display="none";
+        document.getElementById("th4a-3").style.display="none";
+
+      }else {
+        document.getElementById("th4a").style.display="table-row";
+      }
+    }
+
+    function honduras27thSew() {
+      if (
+        document.getElementById("th4a-1").style.display==="table-row" && 
+        document.getElementById("th4a-2").style.display==="table-row" && 
+        document.getElementById("th4a-3").style.display==="table-row"
+      ) {
+        document.getElementById("th4a-1").style.display="none";
+        document.getElementById("th4a-2").style.display="none";
+        document.getElementById("th4a-3").style.display="none";
+      } else {
+        document.getElementById("th4a-1").style.display="table-row";
+        document.getElementById("th4a-2").style.display="table-row";
+        document.getElementById("th4a-3").style.display="table-row";
+      }
+    }
+    </script>
+  </header>
+  <body>
+    <div style="display:table-row;"></div>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">2022</th>
+        <th class="value-col">Week 01</th>
+        <th class="value-col">Week 02</th>
+        <th class="value-col">Week 03</th>
+        <th class="value-col">Week 04</th>
+        <th class="value-col">Week 05</th>
+        <th class="value-col">Week 06</th>
+        <th class="value-col">Week 07</th>
+        <th class="value-col">Week 08</th>
+        <th class="value-col">Week 09</th>
+        <th class="value-col">Week 10</th>
+        <th class="value-col">Week 11</th>
+        <th class="value-col">Week 12</th>
+      </tr>
+      <tr onclick="elSalvador()">
+        <td colspan="13">El Salvador  <span class="plus icon" ></span></td>
+      </tr>
+      
+      <tr id="th1a" style="display: none;"onclick="elSalvadorCut()">
+        <td colspan="13">&nbsp;&nbsp;Cutting <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th1a-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>137000</td>
+        <td>82300</td>
+        <td>33312</td>
+        <td>192848</td>
+        <td>109852</td>
+        <td>23817</td>
+        <td>52322</td>
+        <td>82972</td>
+        <td>115798</td>
+        <td>137958</td>
+        <td>79830</td>
+        <td>132390</td>
+      </tr>
+      <tr id="th1a-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>160000</td>
+        <td>78200</td>
+        <td>70266</td>
+        <td>271552</td>
+        <td>230100</td>
+        <td>102629</td>
+        <td>788835</td>
+        <td>150364</td>
+        <td>113796</td>
+        <td>151828</td>
+        <td>156733</td>
+        <td>149436</td>
+      </tr>
+      <tr id="th1a-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>117%</td>
+        <td>95%</td>
+        <td>211%</td>
+        <td>141%</td>
+        <td>209%</td>
+        <td>431%</td>
+        <td>151%</td>
+        <td>181%</td>
+        <td>98%</td>
+        <td>110%</td>
+        <td>196%</td>
+        <td>113%</td>
+      </tr>
+
+      <tr id="th1b" style="display: none;">
+        <td colspan="13" onclick="elSalvadorSew()">&nbsp;&nbsp;Sewing <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th1b-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>116200</td>
+        <td>152000</td>
+        <td>69946</td>
+        <td>81144</td>
+        <td>168222</td>
+        <td>175087</td>
+        <td>14469</td>
+        <td>154674</td>
+        <td>123839</td>
+        <td>107096</td>
+        <td>128323</td>
+        <td>126736</td>
+      </tr>
+      <tr id="th1b-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>125400</td>
+        <td>157500</td>
+        <td>78929</td>
+        <td>94856</td>
+        <td>173186</td>
+        <td>172195</td>
+        <td>137581</td>
+        <td>160252</td>
+        <td>132815</td>
+        <td>135547</td>
+        <td>146768</td>
+        <td>127223</td>
+      </tr>
+      <tr id="th1b-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>117%</td>
+        <td>95%</td>
+        <td>211%</td>
+        <td>141%</td>
+        <td>209%</td>
+        <td>431%</td>
+        <td>151%</td>
+        <td>181%</td>
+        <td>98%</td>
+        <td>110%</td>
+        <td>196%</td>
+        <td>113%</td>
+      </tr>
+
+      <tr onclick="hondurasSac()">
+        <td colspan="13">Honduras- SAC  <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th2a" style="display: none;" onclick="hondurasSacCut()">
+        <td colspan="13">&nbsp;&nbsp;Cutting <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th2a-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>53600</td>
+        <td>122000</td>
+        <td>132328</td>
+        <td>149819</td>
+        <td>105458</td>
+        <td>60912</td>
+        <td>61220</td>
+        <td>74601</td>
+        <td>61500</td>
+        <td>88374</td>
+        <td>74545</td>
+        <td>79413</td>
+      </tr>
+      <tr id="th2a-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>66900</td>
+        <td>110000</td>
+        <td>126917</td>
+        <td>144353</td>
+        <td>139610</td>
+        <td>62284</td>
+        <td>82039</td>
+        <td>99014</td>
+        <td>60078</td>
+        <td>77054</td>
+        <td>51433</td>
+        <td>68223</td>
+      </tr>
+      <tr id="th2a-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>125%</td>
+        <td>90%</td>
+        <td>96%</td>
+        <td>96%</td>
+        <td>132%</td>
+        <td>102%</td>
+        <td>134%</td>
+        <td>133%</td>
+        <td>98%</td>
+        <td>87%</td>
+        <td>69%</td>
+        <td>86%</td>
+      </tr>
+
+      <tr id="th2b" style="display: none;" onclick="hondurasSacSew()">
+        <td colspan="13">&nbsp;&nbsp;Sewing <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th2b-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>23000</td>
+        <td>64400</td>
+        <td>85900</td>
+        <td>88015</td>
+        <td>86985</td>
+        <td>91860</td>
+        <td>97390</td>
+        <td>95605</td>
+        <td>103585</td>
+        <td>93196</td>
+        <td>77100</td>
+        <td>70325</td>
+      </tr>
+      <tr id="th2b-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>22400</td>
+        <td>66100</td>
+        <td>84651</td>
+        <td>77931</td>
+        <td>86193</td>
+        <td>99208</td>
+        <td>99915</td>
+        <td>100647</td>
+        <td>87843</td>
+        <td>72189</td>
+        <td>71736</td>
+        <td>68875</td>
+      </tr>
+      <tr id="th2b-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>97%</td>
+        <td>103%</td>
+        <td>99%</td>
+        <td>89%</td>
+        <td>99%</td>
+        <td>108%</td>
+        <td>103%</td>
+        <td>105%</td>
+        <td>85%</td>
+        <td>77%</td>
+        <td>98%</td>
+        <td>98%</td>
+      </tr>
+
+      <tr id="th2c" style="display: none;" onclick="hondurasSacSP()">
+        <td colspan="13">&nbsp;&nbsp;Screen Print <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th2c-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>9000</td>
+        <td>33000</td>
+        <td>18005</td>
+        <td>20000</td>
+        <td>21000</td>
+        <td>25111</td>
+        <td>19860</td>
+        <td>13679</td>
+        <td>29713</td>
+        <td>26139</td>
+        <td>25319</td>
+        <td>30035</td>
+      </tr>
+      <tr id="th2c-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>8000</td>
+        <td>25000</td>
+        <td>23496</td>
+        <td>16750</td>
+        <td>18270</td>
+        <td>22851</td>
+        <td>18470</td>
+        <td>18994</td>
+        <td>36858</td>
+        <td>23031</td>
+        <td>24393</td>
+        <td>24743</td>
+      </tr>
+      <tr id="th2c-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>89%</td>
+        <td>76%</td>
+        <td>130%</td>
+        <td>84%</td>
+        <td>87%</td>
+        <td>91%</td>
+        <td>93%</td>
+        <td>139%</td>
+        <td>124%</td>
+        <td>88%</td>
+        <td>96%</td>
+        <td>82%</td>
+      </tr>
+
+      <tr onclick="hondurasArena()">
+        <td colspan="13">Honduras- Arena <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th3a" style="display: none;" onclick="hondurasArenaCut()">
+        <td colspan="13">&nbsp;&nbsp;Cutting <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th3a-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>137000</td>
+        <td>62200</td>
+        <td>71540</td>
+        <td>66461</td>
+        <td>82253</td>
+        <td>98300</td>
+        <td>93077</td>
+        <td>115460</td>
+        <td>90595</td>
+        <td>111017</td>
+        <td>110933</td>
+        <td>111394</td>
+      </tr>
+      <tr id="th3a-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>160000</td>
+        <td>66900</td>
+        <td>72746</td>
+        <td>62317</td>
+        <td>101155</td>
+        <td>104062</td>
+        <td>95533</td>
+        <td>118945</td>
+        <td>90597</td>
+        <td>117407</td>
+        <td>106213</td>
+        <td>102542</td>
+      </tr>
+      <tr id="th3a-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>117%</td>
+        <td>108%</td>
+        <td>102%</td>
+        <td>94%</td>
+        <td>123%</td>
+        <td>106%</td>
+        <td>103%</td>
+        <td>103%</td>
+        <td>100%</td>
+        <td>106%</td>
+        <td>96%</td>
+        <td>92%</td>
+      </tr>
+
+      <tr id="th3b" style="display: none;" onclick="hondurasArenaSM()">
+        <td colspan="13">&nbsp;&nbsp;Sewing-Modified <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th3b-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>13200</td>
+        <td>36600</td>
+        <td>33172</td>
+        <td>31962</td>
+        <td>35368</td>
+        <td>37169</td>
+        <td>33211</td>
+        <td>26954</td>
+        <td>33019</td>
+        <td>37339</td>
+        <td>35189</td>
+        <td>33499</td>
+      </tr>
+      <tr id="th3b-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>15800</td>
+        <td>42600</td>
+        <td>40515</td>
+        <td>33390</td>
+        <td>40311</td>
+        <td>38371</td>
+        <td>37247</td>
+        <td>30240</td>
+        <td>33544</td>
+        <td>39373</td>
+        <td>37590</td>
+        <td>32956</td>
+      </tr>
+      <tr id="th3b-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>120%</td>
+        <td>116%</td>
+        <td>122%</td>
+        <td>104%</td>
+        <td>114%</td>
+        <td>103%</td>
+        <td>112%</td>
+        <td>112%</td>
+        <td>102%</td>
+        <td>105%</td>
+        <td>107%</td>
+        <td>98%</td>
+      </tr>
+
+      <tr id="th3c" style="display: none;" onclick="hondurasArenaSS()">
+        <td colspan="13">&nbsp;&nbsp;Sewing-Stock <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th3c-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>7100</td>
+        <td>17700</td>
+        <td>17905</td>
+        <td>18176</td>
+        <td>19134</td>
+        <td>24096</td>
+        <td>27269</td>
+        <td>88506</td>
+        <td>43792</td>
+        <td>39781</td>
+        <td>37511</td>
+        <td>43876</td>
+      </tr>
+      <tr id="th3c-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>7100</td>
+        <td>17600</td>
+        <td>20525</td>
+        <td>20242</td>
+        <td>20622</td>
+        <td>26602</td>
+        <td>33788</td>
+        <td>88705</td>
+        <td>48996</td>
+        <td>42106</td>
+        <td>44541</td>
+        <td>49127</td>
+      </tr>
+      <tr id="th3c-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>100%</td>
+        <td>99%</td>
+        <td>115%</td>
+        <td>111%</td>
+        <td>108%</td>
+        <td>110%</td>
+        <td>124%</td>
+        <td>100%</td>
+        <td>112%</td>
+        <td>106%</td>
+        <td>119%</td>
+        <td>112%</td>
+      </tr>
+
+      <tr id="th3d" style="display: none;" onclick="hondurasArenaSP()">
+        <td colspan="13">&nbsp;&nbsp;Screen Print <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th3d-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>43792</td>
+        <td>39781</td>
+        <td>37511</td>
+        <td>43876</td>
+      </tr>
+      <tr id="th3d-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>48996</td>
+        <td>42106</td>
+        <td>44541</td>
+        <td>49127</td>
+      </tr>
+      <tr id="th3d-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>112%</td>
+        <td>106%</td>
+        <td>119%</td>
+        <td>112%</td>
+      </tr>
+
+      <tr onclick="honduras27th()">
+        <td colspan="13">Honduras- 27th St <span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th4a" style="display: none;" onclick="honduras27thSew()">
+        <td colspan="13">&nbsp;&nbsp;Sewing<span class="plus icon" ></span></td>
+      </tr>
+      <tr id="th4a-1" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Planned</td>
+        <td>6000</td>
+        <td>13800</td>
+        <td>17230</td>
+        <td>22990</td>
+        <td>29080</td>
+        <td>29580</td>
+        <td>29290</td>
+        <td>27520</td>
+        <td>27260</td>
+        <td>25170</td>
+        <td>23285</td>
+        <td>25800</td>
+      </tr>
+      <tr id="th4a-2" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;Actual</td>
+        <td>3000</td>
+        <td>13800</td>
+        <td>19011</td>
+        <td>21908</td>
+        <td>27056</td>
+        <td>29928</td>
+        <td>28264</td>
+        <td>24987</td>
+        <td>25708</td>
+        <td>24132</td>
+        <td>25066</td>
+        <td>27375</td>
+      </tr>
+      <tr id="th4a-3" style="display: none;">
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;%</td>
+        <td>50%</td>
+        <td>100%</td>
+        <td>110%</td>
+        <td>95%</td>
+        <td>93%</td>
+        <td>101%</td>
+        <td>96%</td>
+        <td>91%</td>
+        <td>94%</td>
+        <td>96%</td>
+        <td>108%</td>
+        <td>106%</td>
+      </tr>
+      
+  </body>
+</html>
