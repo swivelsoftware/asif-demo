@@ -1,0 +1,1128 @@
+<html>
+  <header>
+    <style>
+       .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        text-align: left;
+        width: 150px;
+
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        font-family: Arial, Helvetica, sans-serif;
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 2px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        min-width: 60px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table border="0" cellpadding="5px">
+      <thead class="header-table">
+        <tr>
+          <th></th>
+          <th></th>
+          <th>Total</th>
+          <th>PD</th>
+          <th>2/28</th>
+          <th>3/7</th>
+          <th>3/14</th>
+          <th>3/21</th>
+          <th>3/28</th>
+          <th>4/4</th>
+          <th>4/11</th>
+          <th>4/18</th>
+          <th>4/25</th>
+          <th>5/2</th>
+          <th>5/9</th>
+          <th>5/16</th>
+          <th>5/23</th>
+          <th>5/30</th>
+          <th>6/6</th>
+          <th>6/13</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="3">HONDURAS</td>
+          <td>Total Production</td>
+          <td>621976</td>
+          <td>0</td>
+          <td>111379</td>
+          <td>56954</td>
+          <td>39381</td>
+          <td>95954</td>
+          <td>35548</td>
+          <td>53357</td>
+          <td>175</td>
+          <td>25704</td>
+          <td>37991</td>
+          <td>52627</td>
+          <td>36769</td>
+          <td>41453</td>
+          <td>26171</td>
+          <td>6006</td>
+          <td>2193</td>
+          <td>314</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>312520</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1693</td>
+          <td>7415</td>
+          <td>40087</td>
+          <td>16413</td>
+          <td>33862</td>
+          <td>27</td>
+          <td>24870</td>
+          <td>36487</td>
+          <td>42671</td>
+          <td>36606</td>
+          <td>38389</td>
+          <td>26171</td>
+          <td>6006</td>
+          <td>1509</td>
+          <td>314</td>
+        </tr>
+
+        <tr>
+          <td>Production Risk (units))</td>
+          <td>107020</td>
+          <td>0</td>
+          <td>18409</td>
+          <td>12407</td>
+          <td>8567</td>
+          <td>47199</td>
+          <td>8933</td>
+          <td>7444</td>
+          <td>0</td>
+          <td>415</td>
+          <td>0</td>
+          <td>3596</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td rowspan="3">SAC</td>
+          <td>Total Production</td>
+          <td>156580</td>
+          <td>0</td>
+          <td>63043</td>
+          <td>31464</td>
+          <td>3203</td>
+          <td>26237</td>
+          <td>9571</td>
+          <td>8252</td>
+          <td>0</td>
+          <td>1056</td>
+          <td>159</td>
+          <td>8917</td>
+          <td>1082</td>
+          <td>3596</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>27095</td>
+          <td>0</td>
+          <td>0</td>
+          <td>601</td>
+          <td>569</td>
+          <td>9249</td>
+          <td>2676</td>
+          <td>7807</td>
+          <td>0</td>
+          <td>1056</td>
+          <td>159</td>
+          <td>300</td>
+          <td>1082</td>
+          <td>3596</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>23680</td>
+          <td>0</td>
+          <td>755</td>
+          <td>3227</td>
+          <td>1285</td>
+          <td>18413</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td rowspan="3">27th</td>
+          <td>Total Production</td>
+          <td>107144</td>
+          <td>0</td>
+          <td>31680</td>
+          <td>9180</td>
+          <td>7282</td>
+          <td>30715</td>
+          <td>13377</td>
+          <td>14076</td>
+          <td>0</td>
+          <td>834</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>15093</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>7363</td>
+          <td>5030</td>
+          <td>2700</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>82531</td>
+          <td>0</td>
+          <td style="background-color: red;color: white;">31680</td>
+          <td style="background-color: red;color: white;">9180</td>
+          <td style="background-color: red;color: white;">7282</td>
+          <td style="background-color: red;color: white;">30715</td>
+          <td>974</td>
+          <td>2700</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td rowspan="3">ELB</td>
+          <td>Total Production</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td rowspan="3">ARENA</td>
+          <td>Total Production</td>
+          <td>358252</td>
+          <td>0</td>
+          <td>16656</td>
+          <td>16310</td>
+          <td>28896</td>
+          <td>39002</td>
+          <td>12600</td>
+          <td>31029</td>
+          <td>175</td>
+          <td>23814</td>
+          <td>37832</td>
+          <td>43710</td>
+          <td>35687</td>
+          <td>35687</td>
+          <td>26171</td>
+          <td>6006</td>
+          <td>2193</td>
+          <td>314</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>270332</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1092</td>
+          <td>6846</td>
+          <td>23475</td>
+          <td>8707</td>
+          <td>23355</td>
+          <td>27</td>
+          <td>23814</td>
+          <td>36328</td>
+          <td>42371</td>
+          <td>35524</td>
+          <td>34793</td>
+          <td>26171</td>
+          <td>6006</td>
+          <td>1509</td>
+          <td>314</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>21193</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4429</td>
+          <td style="background-color: red;color: white;">8009</td>
+          <td>4744</td>
+          <td>0</td>
+          <td>415</td>
+          <td>0</td>
+          <td>3596</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">FLEECE</td>
+          <td>Total Production</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">NBA JSY/SHORTS</td>
+          <td>Total Production</td>
+          <td>156580</td>
+          <td>0</td>
+          <td>63043</td>
+          <td>31464</td>
+          <td>3203</td>
+          <td>26237</td>
+          <td>9571</td>
+          <td>8252</td>
+          <td>0</td>
+          <td>1056</td>
+          <td>159</td>
+          <td>8917</td>
+          <td>1082</td>
+          <td>3596</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>27095</td>
+          <td>0</td>
+          <td>0</td>
+          <td>601</td>
+          <td>569</td>
+          <td>9249</td>
+          <td>2676</td>
+          <td>7807</td>
+          <td>0</td>
+          <td>1056</td>
+          <td>159</td>
+          <td>300</td>
+          <td>1082</td>
+          <td>3596</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td>Risk (units)</td>
+          <td>23680</td>
+          <td>0</td>
+          <td>755</td>
+          <td>3227</td>
+          <td style="background-color: yellow;">1285</td>
+          <td style="background-color: red;color: white;">18413</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+
+        <tr>
+          <td rowspan="3">LEGEND C&S PRINTED</td>
+          <td>Total Production</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">MILER TEE</td>
+          <td>Total Production</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">STOCK</td>
+          <td>Total Production</td>
+          <td>358252</td>
+          <td>0</td>
+          <td>16656</td>
+          <td>16310</td>
+          <td>28896</td>
+          <td>39002</td>
+          <td>12600</td>
+          <td>31029</td>
+          <td>175</td>
+          <td>23814</td>
+          <td>37832</td>
+          <td>43710</td>
+          <td>35687</td>
+          <td>37857</td>
+          <td>26171</td>
+          <td>6006</td>
+          <td>2193</td>
+          <td>314</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>270332</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1092</td>
+          <td>6846</td>
+          <td>23475</td>
+          <td>8707</td>
+          <td>23355</td>
+          <td>27</td>
+          <td>23814</td>
+          <td>36328</td>
+          <td>42371</td>
+          <td>35524</td>
+          <td>34793</td>
+          <td>26171</td>
+          <td>6006</td>
+          <td>1509</td>
+          <td>314</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>21193</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>4429</td>
+          <td style="background-color: red; color: white;">8009</td>
+          <td>4744</td>
+          <td>0</td>
+          <td>415</td>
+          <td>0</td>
+          <td>3596</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">LEGEND C&S</td>
+          <td>Total Production</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">PRO</td>
+          <td>Total Production</td>
+          <td>85926</td>
+          <td>0</td>
+          <td>17654</td>
+          <td>9180</td>
+          <td>7282</td>
+          <td>24357</td>
+          <td>13377</td>
+          <td>14076</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>15093</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>7363</td>
+          <td>5030</td>
+          <td>2700</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>62147</td>
+          <td>0</td>
+          <td style="background-color: red;color: white;">17654</td>
+          <td style="background-color: red;color: white;">9180</td>
+          <td style="background-color: red;color: white;">7282</td>
+          <td style="background-color: red;color: white;">24357</td>
+          <td>974</td>
+          <td>2700</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">FLY SHORTS</td>
+          <td>Total Production</td>
+          <td>21218</td>
+          <td>0</td>
+          <td>14026</td>
+          <td>0</td>
+          <td>0</td>
+          <td>6358</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>834</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>20384</td>
+          <td>0</td>
+          <td style="background-color: red;color: white;">14026</td>
+          <td>0</td>
+          <td>0</td>
+          <td style="background-color: red;color: white;">6358</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">DEMAND PULL</td>
+          <td>Total Production</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">NCAAJSY</td>
+          <td>Total Production</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+        <tr>
+          <td rowspan="3">PARY</td>
+          <td>Total Production</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>In Process Fabric (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Risk (units)</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </body>
+</html>
