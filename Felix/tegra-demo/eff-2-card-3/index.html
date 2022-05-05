@@ -91,7 +91,10 @@ var chart = new Chart(context, {
           max: 2.0,
           min: 0,
           stepSize: 0.25,
-          beginAtZero: true
+          beginAtZero: true,
+          callback: function(value) {
+            return value + " %"
+          }
         },
       }],
     },
