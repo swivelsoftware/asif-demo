@@ -1,0 +1,64 @@
+<html>
+  <header>
+    <style>
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        overflow:hidden;
+        display: table;
+        clear: both;
+      }
+
+      .outer {
+          position: relative;
+          width: 300px;
+          height: 250px;
+        }
+      </style>
+      </head>
+  </header>
+<body>
+  <div>
+    <canvas id="chart8" height="100%"></canvas> 
+  </div>
+ 
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script type="text/javascript">
+const data = {
+  labels: [
+    'Style on Hold',
+    'Warehouse Delay',
+    'Cutting',
+    'Fabric Inspection',
+    'Bulk Approvel',
+    'Marker/FIFO',
+    '3PL Delay',
+    'PRD Change',
+    'Fabric Incomplete'
+  ],
+  datasets: [
+    {
+      label: 'Units',
+      data: [8305, 5157, 4020, 3780, 3891, 2758, 2569, 2161, 75],
+      backgroundColor: '#F9BDFF'
+    }
+  ]
+};
+
+var context = document.getElementById('chart8').getContext('2d');
+var chart = new Chart(context, {
+  type: 'bar',
+  data: data,
+  options: {}
+});
+  </script> 
+</body>
+</html>

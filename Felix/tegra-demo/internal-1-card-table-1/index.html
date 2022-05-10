@@ -1,0 +1,143 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 150px;
+        text-align: left;
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Costomer</th>
+        <th class="value-col">Style on Hold</th>
+        <th class="value-col">Warehouse Delay</th>
+        <th class="value-col">Cutting</th>
+        <th class="value-col">Fabric Inspection</th>
+        <th class="value-col">Bulk Approvel</th>
+        <th class="value-col">Marker/FIFO</th>
+        <th class="value-col">3PL Delay</th>
+        <th class="value-col">PRD Change</th>
+        <th class="value-col">Fabric Incomplete</th>
+        <th class="value-col">Total</th>
+      </tr>
+      
+      <tr class="tr1">
+        <td class="customer-col" style="font-weight: bold;">ADISAS</td>
+        <td class="value-col"></td>
+        <td class="value-col">1121</td>
+        <td class="value-col">4000</td>
+        <td class="value-col"></td>
+        <td class="value-col">3032</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col">8153</td>
+      </tr>
+
+      <tr class="tr1">
+        <td class="customer-col" style="font-weight: bold;">FANATIC</td>
+        <td class="value-col">74</td>
+        <td class="value-col">512</td>
+        <td class="value-col">45</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col">290</td>
+        <td class="value-col"></td>
+        <td class="value-col">921</td>
+      </tr>
+
+      <tr class="tr1">
+        <td class="customer-col" style="font-weight: bold;">NIKE</td>
+        <td class="value-col"></td>
+        <td class="value-col">3156</td>
+        <td class="value-col">83</td>
+        <td class="value-col">4106</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col">1795</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col">9140</td>
+      </tr>
+
+      <tr class="tr1">
+        <td class="customer-col" style="font-weight: bold;">UA</td>
+        <td class="value-col">8251</td>
+        <td class="value-col">1198</td>
+        <td class="value-col">757</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col">2456</td>
+        <td class="value-col">710</td>
+        <td class="value-col">383</td>
+        <td class="value-col">71</td>
+        <td class="value-col">13826</td>
+      </tr>
+
+      <tr class="tr1">
+        <td class="customer-col" style="font-weight: bold;">Grand</td>
+        <td class="value-col" style="font-weight: bold;">8325</td>
+        <td class="value-col" style="font-weight: bold;">5987</td>
+        <td class="value-col" style="font-weight: bold;">4885</td>
+        <td class="value-col" style="font-weight: bold;">4106</td>
+        <td class="value-col" style="font-weight: bold;">3032</td>
+        <td class="value-col" style="font-weight: bold;">2456</td>
+        <td class="value-col" style="font-weight: bold;">2505</td>
+        <td class="value-col" style="font-weight: bold;">673</td>
+        <td class="value-col" style="font-weight: bold;">71</td>
+        <td class="value-col" style="font-weight: bold;">32040</td>
+      </tr>
+    </table>
+
+  </body>
+</html>
