@@ -20,6 +20,13 @@
           width: 300px;
           height: 250px;
         }
+
+        numberOne {
+          font-family: Arial, Helvetica, sans-serif;
+          float: inherit;
+          font-size: 28px;
+          padding: 0px 50px 0px 0px;
+        }
       </style>
       </head>
   </header>
@@ -29,10 +36,70 @@
   </div>
  
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
-  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc"></script>
   <script type="text/javascript">
 
+Chart.register(ChartDataLabels);
+
+var options = {
+  type: 'bar',
+  data: {
+    labels: ["Red"],
+    datasets: [{
+      label: "Completion",
+      backgroundColor: "#70ad4780",
+      hoverBackgroundColor: "#70ad4780",
+      data: [70],
+    }, {
+      label: "TODO",
+      backgroundColor: "#a1b8e180",
+      hoverBackgroundColor: "#a1b8e180",
+      data: [30]
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    scales: {
+      x: {
+        stacked: true,
+        display: false
+      },
+      y: {
+        stacked: true,
+        display: false
+      }
+    },
+    plugins: {
+      legend: {
+      display: false
+    },
+      datalabels: {
+        backgroundColor: function(context) {
+          return context.dataset.backgroundColor;
+        },
+        borderColor: 'white',
+        borderRadius: 5,
+        borderWidth: 3,
+        color: 'white',
+        font: {
+          size: '50px',
+          weight: 'bold'
+        },
+        padding: 6,
+      }
+    }
+  }
+}
+
+var ctx = document.getElementById('chart8').getContext('2d');
+new Chart(ctx, options);
+
+
+
+
+    /*
+Chart.register(ChartDataLabels)
 
 var context = document.getElementById('chart8').getContext('2d');
 var config = {
@@ -72,11 +139,27 @@ var config = {
         stacked: true,
         display: false
       }]
-    }
+    },
+
+    plugins: {
+      datalabels: {
+          backgroundColor: function(context) {
+            return context.dataset.backgroundColor;
+          },
+          borderRadius: 4,
+          color: 'white',
+          font: {
+            weight: 'bold'
+          },
+          formatter: Math.round,
+          padding: 6
+        }
+      },
+    
   }
 };
 
-var chart = new Chart(context, config)
+var chart = new Chart(context, config)*/
   </script> 
 </body>
 </html>
