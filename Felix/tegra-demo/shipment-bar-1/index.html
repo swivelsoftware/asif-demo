@@ -41,13 +41,13 @@ var config = {
     labels: ['Shipment'],
     datasets: [{
       label: "Completion",
-      backgroundColor: "#80ff0070",
-      hoverBackgroundColor: "#80ff0070",
+      backgroundColor: "#70ad4780",
+      hoverBackgroundColor: "#70ad4780",
       data: [70],
     }, {
       label: "TODO",
-      backgroundColor: "#cceeff50",
-      hoverBackgroundColor: "#cceeff50",
+      backgroundColor: "#a1b8e180",
+      hoverBackgroundColor: "#a1b8e180",
       data: [30]
     }]
   },
@@ -56,7 +56,7 @@ var config = {
         callbacks: {
             label: function(tooltipItem) {
               console.log(tooltipItem)
-                return Number(tooltipItem.xLabel) + "%""
+                return Number(tooltipItem.xLabel) + "%"
             }
         }
     },
