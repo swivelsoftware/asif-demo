@@ -52,6 +52,14 @@ var config = {
     }]
   },
   options: {
+    tooltips: {
+        callbacks: {
+            label: function(tooltipItem) {
+              console.log(tooltipItem)
+                return Number(tooltipItem.xLabel) + "%""
+            }
+        }
+    },
     legend: {
       display: false
     },
