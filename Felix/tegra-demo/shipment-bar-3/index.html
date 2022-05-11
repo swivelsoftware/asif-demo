@@ -20,6 +20,13 @@
           width: 300px;
           height: 250px;
         }
+
+        numberOne {
+          font-family: Arial, Helvetica, sans-serif;
+          float: inherit;
+          font-size: 28px;
+          padding: 0px 50px 0px 0px;
+        }
       </style>
       </head>
   </header>
@@ -29,32 +36,97 @@
   </div>
  
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
-  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js" integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0-rc"></script>
   <script type="text/javascript">
 
+Chart.register(ChartDataLabels);
+
+var options = {
+  type: 'bar',
+  data: {
+    labels: ["Red"],
+    datasets: [{
+      label: "Completion",
+      backgroundColor: "#70ad4780",
+      hoverBackgroundColor: "#70ad4780",
+      data: [65],
+    }, {
+      label: "TODO",
+      backgroundColor: "#a1b8e180",
+      hoverBackgroundColor: "#a1b8e180",
+      data: [35]
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    scales: {
+      x: {
+        stacked: true,
+        display: false
+      },
+      y: {
+        stacked: true,
+        display: false
+      }
+    },
+    plugins: {
+      legend: {
+      display: false
+    },
+      datalabels: {
+        backgroundColor: function(context) {
+          return context.dataset.backgroundColor;
+        },
+        borderColor: 'white',
+        borderRadius: 5,
+        borderWidth: 3,
+        color: 'white',
+        font: {
+          size: '50px',
+          weight: 'bold'
+        },
+        padding: 6,
+      }
+    }
+  }
+}
+
+var ctx = document.getElementById('chart8').getContext('2d');
+new Chart(ctx, options);
+
+
+
+
+    /*
+Chart.register(ChartDataLabels)
 
 var context = document.getElementById('chart8').getContext('2d');
 var config = {
   type: 'horizontalBar',
-  plugins: [dataLabels],
   data: {
     labels: ['Shipment'],
     datasets: [{
       label: "Completion",
       backgroundColor: "#70ad4780",
       hoverBackgroundColor: "#70ad4780",
-      data: [60],
+      data: [70],
     }, {
       label: "TODO",
       backgroundColor: "#a1b8e180",
       hoverBackgroundColor: "#a1b8e180",
-      data: [40]
+      data: [30]
     }]
   },
   options: {
-    
-    
+    tooltips: {
+        callbacks: {
+            label: function(tooltipItem) {
+              console.log(tooltipItem)
+                return Number(tooltipItem.xLabel) + "%"
+            }
+        }
+    },
     legend: {
       display: false
     },
@@ -68,32 +140,26 @@ var config = {
         display: false
       }]
     },
+
     plugins: {
-      tooltips: {
-        callbacks: {
-            label: function(tooltipItem) {
-              console.log(tooltipItem)
-                return Number(tooltipItem.xLabel) + "%"
-            }
-        }
-    },
       datalabels: {
-            backgroundColor: function (context) {
-              return context.dataset.backgroundColor;
-            },
-            borderRadius: 4,
-            color: "white",
-            font: {
-              weight: "bold",
-            },
-            formatter: Math.round,
-            padding: 6,
+          backgroundColor: function(context) {
+            return context.dataset.backgroundColor;
           },
+          borderRadius: 4,
+          color: 'white',
+          font: {
+            weight: 'bold'
+          },
+          formatter: Math.round,
+          padding: 6
         }
+      },
+    
   }
 };
 
-var chart = new Chart(context, config)
+var chart = new Chart(context, config)*/
   </script> 
 </body>
 </html>
