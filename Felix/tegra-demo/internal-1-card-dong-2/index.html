@@ -25,60 +25,35 @@
   </header>
 <body>
   <div>
-    <canvas height="100%" id="chart8"></canvas> 
+    <canvas id="chart8" height="100%"></canvas> 
   </div>
-
+ 
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
   <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
   <script type="text/javascript">
 const data = {
-  labels: ['FY21 Q2', 'FY21 Q3','FY21 Q4', 'FY21 Q1'],
+  labels: ['Other', 'Asian', 'Spanish', 'Other Indo-European', 'Only English'],
   datasets: [
     {
-      label: 'Efficiency',
-      data: [50, 47.32, 0, 44.49],
-      fill: false,
-      borderColor: 'green',
-      backgroundColor: 'green',
-    },
-    {
-      label: 'Efficiency Goal',
-      data: [0, 0, 30.49, 0],
-      fill: false,
-      borderColor: '#800000',
-      backgroundColor: '#800000',
+      label: 'Units',
+      data: [5, 3, 55, 7, 30],
+      backgroundColor: [
+        '#BDFFBD',
+        '#BDC4FF',
+        '#FFC8BD',
+        '#FFEEBD',
+        '#F9BDFF'
+      ],
     }
   ]
 };
 
 var context = document.getElementById('chart8').getContext('2d');
 var chart = new Chart(context, {
-  type: 'bar',
+  type: 'doughnut',
   data: data,
-  options: {
-    scales: {
-      yAxes: [{
-        scaleFontSize: 40,
-        scaleLabel: {
-          display: true,
-        },
-        ticks: {
-          max: 100,
-          min: 0,
-          stepSize: 50,
-          beginAtZero: true,
-          callback: function(value) {
-            return value + " %"
-          }
-        },
-      }],
-    },
-    elements: {
-        line: {
-            tension: 0
-        }
-    },
-  }
+  options: {}
 });
   </script> 
 </body>

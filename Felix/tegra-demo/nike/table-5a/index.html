@@ -1,0 +1,486 @@
+<html>
+  <header>
+    <style>
+       .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        text-align: left;
+        width: 150px;
+
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        border: none;
+        font-family: Arial, Helvetica, sans-serif;
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        border: none;
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        min-width: 60px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table border="0" cellpadding="5px">
+      <thead class="header-table">
+        <tr>
+          <th style="font-weight: bold;">TOTAL PRODUCTION</th>
+          <th style="font-weight: bold;">DOP</th>
+          <th style="font-weight: bold;">DP</th>
+          <th style="font-weight: bold;">PD</th>
+          <th style="font-weight: bold;">2/28</th>
+          <th style="font-weight: bold;">3/7</th>
+          <th style="font-weight: bold;">3/14</th>
+          <th style="font-weight: bold;">3/21</th>
+          <th style="font-weight: bold;">3/28</th>
+          <th style="font-weight: bold;">4/4</th>
+          <th style="font-weight: bold;">4/11</th>
+          <th style="font-weight: bold;">4/18</th>
+          <th style="font-weight: bold;">4/25</th>
+          <th style="font-weight: bold;">5/2</th>
+          <th style="font-weight: bold;">5/9</th>
+          <th style="font-weight: bold;">5/16</th>
+          <th style="font-weight: bold;">5/23</th>
+          <th style="font-weight: bold;">5/30</th>
+          <th style="font-weight: bold;">6/6</th>
+          <th style="font-weight: bold;">6/13</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="background-color: darkblue;color: white;font-weight: bold;">HONDURAS</td>
+          <td style="background-color: yellow;font-weight: bold;">IN PROCESS FABRIC</td>
+          <td style="font-weight: bold;">TBD</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td style="font-weight: bold;">No ETA</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td style="background-color: red;color: white;font-weight: bold;">>50% @ Risk</td></td>
+          <td></td>
+          <td style="font-weight: bold;">PD</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td style="background-color: yellow;font-weight: bold;">>25% @ Risk</td></td>
+          <td></td>
+          <td style="font-weight: bold;">2/28</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2030</td>
+          <td>4125</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td style="background-color: orange;font-weight: bold;">>10% @ Risk</td>
+          <td></td>
+          <td style="font-weight: bold;">3/7</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>300</td>
+          <td>2182</td>
+          <td>0</td>
+          <td>1052</td>
+          <td>159</td>
+          <td>200</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td style="font-weight: bold;">3/14</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1500</td>
+          <td>0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>100</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td style="font-weight: bold;">3/21</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>2</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td style="font-weight: bold;">3/28</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>5</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td style="font-weight: bold;">04/04+</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td style="background-color: red;color: white;">2401</td>
+          <td style="background-color: red;color: white;">974</td>
+          <td style="background-color: red;color: white;">2700</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>1082</td>
+          <td>3596</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td style="font-weight: bold;">On Hard</td>
+          <td>0</td>
+          <td>0</td>
+          <td style="background-color: red;color: white;">601</td>
+          <td style="background-color: red;color: white;">569</td>
+          <td style="background-color: red;color: white;">13211</td>
+          <td>4397</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="background-color: yellow;font-weight: bold;">CUTTING</td>
+          <td style="font-weight: bold;">4-5d</td>
+          <td>0</td>
+          <td>0</td>
+          <td style="background-color: red;color: white;">1</td>
+          <td style="background-color: red;color: white;">721</td>
+          <td style="background-color: red;color: white;">8245</td>
+          <td>2020</td>
+          <td>445</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>7657</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="background-color: yellow;font-weight: bold;">SORTING</td>
+          <td style="font-weight: bold;">2d</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="background-color: yellow;font-weight: bold;">LOGOS</td>
+          <td style="font-weight: bold;">4-7d</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="background-color: yellow;font-weight: bold;">INLINE</td>
+          <td style="font-weight: bold;">1-6d</td>
+          <td>0</td>
+          <td style="background-color: yellow;">29611</td>
+          <td>28223</td>
+          <td style="background-color: red;color: white;">5103</td>
+          <td style="background-color: red;color: white;">17146</td>
+          <td>3270</td>
+          <td>10429</td>
+          <td>0</td>
+          <td>834</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="background-color: yellow;font-weight: bold;">EMB/SP</td>
+          <td style="font-weight: bold;">1-3d</td>
+          <td>0</td>
+          <td sstyle="background-color: red;color: white;">909</td>
+          <td style="background-color: red;color: white;">5409</td>
+          <td style="background-color: red;color: white;">3113</td>
+          <td style="background-color: red;color: white;">14253</td>
+          <td>8493</td>
+          <td>947</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>960</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="background-color: yellow;font-weight: bold;">SUBLIMATED</td>
+          <td style="font-weight: bold;">7-9d</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="background-color: yellow;font-weight: bold;">IN PACKING</td>
+          <td style="font-weight: bold;">1-2d</td>
+          <td>0</td>
+          <td sstyle="background-color: yellow;color: white;">64203</td>
+          <td style="background-color: red;color: white;">6410</td>
+          <td style="background-color: red;color: white;">979</td>
+          <td style="background-color: red;color: white;">696</td>
+          <td>1459</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="background-color: yellow;font-weight: bold;">READY TO SHIPD</td>
+          <td style="font-weight: bold;">1-2d</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 150px;
+        text-align: left;
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .td-null {
+        border-bottom: 0px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Nike Classification</th>
+        <th class="value-col">GLOBAL CAT</th>
+        <th class="value-col">TEGRA WEIGHTED CR</th>
+        <th class="value-col">NIKE WEIGHTED CR</th>
+      </tr>
+      <tr  class="tr1">
+        <!--table-layout: fixed;-->
+        <td class="customer-col">LEGEND</td>
+        <td class="value-col">LEGEND</td>
+        <td class="value-col">0.6</td>
+        <td  style="background-color: lightgrey;" class="value-col">0.6</td>
+      </tr>
+      <tr  class="tr1">
+        <!--table-layout: fixed;-->
+        <td class="customer-col">LEGEND Total</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td  style="background-color: lightgrey;" class="value-col"></td>
+      </tr>
+      <tr>
+        <td class="td-null"></td>
+        <td class="td-null"></td>
+        <td class="td-null"></td>
+        <td  style="background-color: lightgrey;" class="td-null"></td>
+      </tr>
+      <tr>
+        <td>Grand Total</td>
+        <td></td>
+        <td></td>
+        <td  style="background-color: lightgrey;" ></td>
+      </tr>
+    </table>
+
+  </body>
+</html>

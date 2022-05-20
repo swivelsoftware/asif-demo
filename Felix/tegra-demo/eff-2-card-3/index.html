@@ -1,0 +1,135 @@
+<html>
+  <header>
+    <style>
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        overflow:hidden;
+        display: table;
+        clear: both;
+      }
+
+      .outer {
+          position: relative;
+          width: 300px;
+          height: 250px;
+        }
+      </style>
+      </head>
+  </header>
+<body>
+  <div>
+    <canvas wihtd="100%" height="100%" id="chart8"></canvas> 
+  </div>
+ 
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script type="text/javascript">
+const data = {
+  labels: ['17-2-2022', '18-2-2022', '19-2-2022', '20-2-2022', '21-2-2022', '24-2-2022', '25-2-2022', '26-2-2022', '27-2-2022', '28-2-2022' 
+  , '1-3-2022', '2-3-2022', '3-3-2022', '4-3-2022', '7-3-2022', '8-3-2022', '9-3-2022', '10-3-2022', '11-3-2022', '12-3-2022', '14-3-2022', '15-3-2022'
+],
+  datasets: [
+    {
+      label: 'Efficiency Real%',
+      data: [
+        0.2, 0.4, 0.36, 0.47, 0.51, 1.1, 1.7, 1.4, 1.2, 0.8, 0.75, 
+      0.45, 0.6, 0.78, 0.95, 0.95, 1.2, 1.01, 1, 0.85, 0.8, 0.83
+    ],
+    datalabels: {
+        display: true,
+        formatter: function(context, chart_obj) {
+          return calculate(chart_obj.dataIndex)
+        },
+      },
+      backgroundColor: 'rgba(77, 195, 255,0.2)',
+      borderColor: '#0088cc',
+      pointBorderColor: '#fff',
+      pointBackgroundColor: '#0088cc',
+      pointBorderColor: 'fff',
+    },
+    {
+      label: 'Efficiency Goal%',
+      data: [
+        0.45, 0.57, 0.83, 0.83, 0.98, 1.3, 1.4, 1.6, 
+        1.65, 1.75, 1.5, 1.35, 1.45, 1.6, 1.45, 1.32, 1.36, 1.3, 1.15, 0.8, 0.85, 0.9
+      ],
+      datalabels: {
+        display: true,
+        formatter: function(context, chart_obj) {
+          return calculate(chart_obj.dataIndex)
+        },
+      },
+      backgroundColor: 'rgba(255, 164, 164,0.2)',
+      borderColor: 'rgba(255, 164, 164)',
+      pointBorderColor: '#fff',
+      pointBackgroundColor: 'rgba(255, 164, 164)',
+      pointBorderColor: 'fff',
+    }
+  ]
+};
+
+var context = document.getElementById('chart8').getContext('2d');
+var chart = new Chart(context, {
+  type: 'line',
+  data: data,
+  options: {
+    scales: {
+      yAxes: [{
+        scaleFontSize: 40,
+        scaleLabel: {
+          display: true,
+        },
+        ticks: {
+          max: 2.0,
+          min: 0,
+          stepSize: 0.25,
+          beginAtZero: true,
+          callback: function(value) {
+            return value + " %"
+          }
+        },
+      }],
+    },
+    elements: {
+        line: {
+            tension: 0
+        }
+    },
+    responsive: true,
+    plugins: {
+      filler: {
+          propagate: true
+      },
+      datalabels: {
+        anchor: 'end',
+        align: 'top'   
+      }
+    },
+    onAnimationComplete: function () {
+
+      var ctx = this.chart.ctx;
+      ctx.font = this.scale.font;
+      ctx.fillStyle = this.scale.textColor
+      ctx.textAlign = "center";
+      ctx.textBaseline = "bottom";
+
+      this.datasets.forEach(function (dataset) {
+          dataset.points.forEach(function (points) {
+              ctx.fillText(points.value, points.x, points.y - 10);
+          });
+      })
+    }
+
+  }
+});
+  </script> 
+</body>
+</html>

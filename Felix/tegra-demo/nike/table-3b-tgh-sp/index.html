@@ -1,0 +1,96 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 150px;
+        text-align: left;
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .td-null {
+        border-bottom: 0px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Nike Classification</th>
+        <th class="value-col">GLOBAL CAT</th>
+        <th class="value-col">TEGRA WEIGHTED CR</th>
+        <th class="value-col">NIKE WEIGHTED CR</th>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col">FLEECE</td>
+        <td class="value-col"></td>
+        <td class="value-col">1.0</td>
+        <td style="background-color: lightgrey;" class="value-col">1.0</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col">Jsy.</td>
+        <td class="value-col"></td>
+        <td class="value-col">1.0</td>
+        <td style="background-color: lightgrey;" class="value-col">1.0</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col">Other</td>
+        <td class="value-col"></td>
+        <td class="value-col">1.0</td>
+        <td style="background-color: lightgrey;" class="value-col">1.0</td>
+      </tr>
+      <tr>
+        <td>Grand Total</td>
+        <td></td>
+        <td>1.0</td>
+        <td>1.0</td>
+      </tr>
+    </table>
+
+  </body>
+</html>

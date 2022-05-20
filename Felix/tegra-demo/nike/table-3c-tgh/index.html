@@ -1,0 +1,167 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 150px;
+        text-align: left;
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      .td-null {
+        border-bottom: 0px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+
+      .total-cut{
+        background-color: #ccddff;
+        font-weight: bold;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="customer-col">Nike Classification</th>
+        <th class="value-col">GLOBAL CAT</th>
+        <th class="value-col">TEGRA WEIGHTED CR</th>
+        <th class="value-col">NIKE WEIGHTED CR</th>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col">FLEECE</td>
+        <td class="value-col"></td>
+        <td class="value-col">1.6</td>
+        <td style="background-color: lightgrey;" class="value-col">1.8</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col total-cut">FLEECE Total</td>
+        <td class="value-col total-cut"></td>
+        <td class="value-col total-cut"></td>
+        <td class="value-col total-cut">1.8</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col">JERSEYS</td>
+        <td class="value-col">GAME-LIMITED</td>
+        <td class="value-col">1.6</td>
+        <td style="background-color: lightgrey;" class="value-col">1.6</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col"></td>
+        <td class="value-col">NBA JSY</td>
+        <td class="value-col">1.3</td>
+        <td style="background-color: lightgrey;" class="value-col">1.6</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col"></td>
+        <td class="value-col">JERSEYS Total</td>
+        <td class="value-col">1.4</td>
+        <td style="background-color: lightgrey;" class="value-col">1.6</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col total-cut">FLEECE Total</td>
+        <td class="value-col total-cut"></td>
+        <td class="value-col total-cut">1.4</td>
+        <td class="value-col total-cut">1.6</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col">OTHERS</td>
+        <td style="font-weight: bold;" class="value-col">FLY SHORT</td>
+        <td style="font-weight: bold;" class="value-col">1.0</td>
+        <td style="background-color: lightgrey;font-weight: bold;color: red;" class="value-col">1.4</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col"></td>
+        <td style="font-weight: bold;" class="value-col">LEGEND</td>
+        <td style="font-weight: bold;" class="value-col">0.5</td>
+        <td style="background-color: lightgrey;font-weight: bold;" class="value-col">0.6</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col"></td>
+        <td class="value-col">MILER</td>
+        <td class="value-col">0.5</td>
+        <td style="background-color: lightgrey;font-weight: bold;color: red;" class="value-col">2.5</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col"></td>
+        <td style="font-weight: bold;" class="value-col">NBA SHORT</td>
+        <td style="font-weight: bold;" class="value-col">2.1</td>
+        <td style="background-color: lightgrey;font-weight: bold;" class="value-col">2.0</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col"></td>
+        <td class="value-col">PARK</td>
+        <td class="value-col">0.6</td>
+        <td style="background-color: lightgrey;" class="value-col">0.6</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col"></td>
+        <td style="font-weight: bold;" class="value-col">PRO</td>
+        <td style="font-weight: bold;" class="value-col">0.8</td>
+        <td style="background-color: lightgrey;" class="value-col">0.9</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col"></td>
+        <td style="font-weight: bold;" class="value-col">STOCK</td>
+        <td style="font-weight: bold;" class="value-col">1.1</td>
+        <td style="background-color: lightgrey;font-weight: bold;color: red;" class="value-col">1.6</td>
+      </tr>
+      <tr  class="tr1">
+        <td class="customer-col total-cut">OTHER Total</td>
+        <td class="value-col total-cut"></td>
+        <td class="value-col total-cut">0.8</td>
+        <td class="value-col total-cut">1.0</td>
+      </tr>
+      <tr>
+        <td>Grand Total</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+  </body>
+</html>
