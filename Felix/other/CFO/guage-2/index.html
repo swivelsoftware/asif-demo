@@ -1,0 +1,64 @@
+<html>
+  <header>
+    <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
+  </header>
+  <body>
+    <div id="charts1"></div>
+    <script>
+      var data = [
+  {
+    type: "indicator",
+    mode: "gauge+number",
+    value: 17.6,
+    gauge: {
+      axis: { range: [0, 50], tickwidth: 1, tickcolor: "rgb(178, 178, 178)", tickmode: 'array', tickvals: [0, 50] },
+      bar: { color: "rgb(0,204, 204)", thickness: 1 },
+      bgcolor: "rgb(239, 239, 239)",
+      bordercolor: "rgb(178, 178, 178)",
+      threshold: {
+        line: { color: "bllack", width: 3 },
+        thickness:1,
+        value: 16.3
+      }
+    }
+  }
+];
+
+var layout = {
+  width: 500,
+  height: 380,
+  margin: { l: 0, r: 0 },
+  // margin: { t: 25, r: 40, l: 0, b: 25 },
+  font: { color: "black", family: "Arial", size: 30 }
+};
+
+Plotly.newPlot('charts1', data, layout);
+
+      /*
+var data = [
+
+{
+  value: 29.7,
+  type: "indicator",
+  mode: "gauge+number",
+  delta: { reference: 50 },
+  gauge: {
+    axis: { range: [null, 50] },
+    threshold: {
+      line: { color: "red", width: 4 },
+      thickness:5,
+      value: 28.5
+    }
+  }
+}
+
+];
+
+
+var layout = { width: 600, height: 450 };
+
+// Display using Plotly
+Plotly.newPlot("charts1", data, layout); */
+    </script>
+  </body>
+</html>

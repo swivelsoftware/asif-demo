@@ -1,0 +1,69 @@
+<html>
+  <header>
+    <style>
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        overflow:hidden;
+        display: table;
+        clear: both;
+      }
+
+      .outer {
+          position: relative;
+          width: 300px;
+          height: 250px;
+        }
+      </style>
+      </head>
+  </header>
+<body>
+  <div>
+    <canvas wihtd="100%" height="100%" id="chart8"></canvas> 
+  </div>
+ 
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script type="text/javascript">
+const data = {
+  labels: ['J', 'A', 'S', 'O', 'N', 'D', 'J', 'F', 'M', 'A', 'M', 'J'],
+  datasets: [
+    {
+      label: 'Receivable',
+      data: [7000, 6000, 6900, 9600, 9000, 8500, 9000, 6200, 7900, 8500, 9500, 8500],
+      borderColor: '#29EBFF',
+      borderWidth: 2,
+      fill: false
+    }
+  ]
+};
+
+var context = document.getElementById('chart8').getContext('2d');
+var chart = new Chart(context, {
+  type: 'line',
+  data: data,
+  options: {
+    scales: {
+      yAxes: [{
+        scaleFontSize: 40,
+        ticks: {
+          beginAtZero: true
+        },
+      }],
+    },
+    elements: {
+        line: {
+            tension: 0
+        }
+    },
+  }
+});
+  </script> 
+</body>
+</html>
