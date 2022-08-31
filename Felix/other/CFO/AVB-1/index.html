@@ -1,0 +1,81 @@
+<html>
+  <header>
+    <style>
+      
+      /* Create two equal columns that floats next to each other */
+      .column {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        overflow:hidden;
+        display: table;
+        clear: both;
+      }
+
+      .outer {
+          position: relative;
+          width: 300px;
+          height: 250px;
+        }
+      </style>
+      </head>
+  </header>
+<body>
+  <div>
+    <canvas wihtd="100%" height="100%" id="chart8"></canvas> 
+  </div>
+ 
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script type="text/javascript">
+const data = {
+  labels: ['Marketing', 'Full Time - Salary', 'Fulltime - Bouns', 'Payroll Taxes - FICA', 'Part Time - Salary'],
+  datasets: [
+    {
+      label: 'ACT',
+      data: [3.25, 1.6, 0.49, 0.25, 0.15],
+      backgroundColor: [
+        'rgb(123, 211, 247, 0.4)',
+        'rgb(255, 204, 229, 0.4)',
+        'rgb(153, 255, 153, 0.4)',
+        'rgb(255, 226, 204, 0.4)',
+        'rgb(153, 153, 255, 0.4)'
+      ],
+      borderColor: ['#7bd3f7', '#FFCCE5', '#99FF99', '#FFE5CC', '#9999FF'],
+      borderWidth: 1
+    }
+  ]
+};
+
+var context = document.getElementById('chart8').getContext('2d');
+var chart = new Chart(context, {
+  type: 'bar',
+  data: data,
+  options: {
+    scales: {
+      yAxes: [{
+        scaleFontSize: 40,
+        ticks: {
+          max: 3.5,
+          min: 0,
+          stepSize: 0.5,
+          beginAtZero: true,
+          callback: function(value) {
+            return value + "M"
+          }
+        },
+      }],
+    },
+    elements: {
+        line: {
+            tension: 0
+        }
+    },
+  }
+});
+  </script> 
+</body>
+</html>

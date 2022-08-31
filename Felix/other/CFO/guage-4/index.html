@@ -1,0 +1,68 @@
+<html>
+  <header>
+    <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
+  </header>
+  <body>
+    <div id="charts1"></div>
+    <script>
+      var data = [
+  {
+    type: "indicator",
+    mode: "gauge+number",
+    value: 93,
+    gauge: {
+      axis: { range: [0, 180], tickwidth: 1, tickcolor: "rgb(178, 178, 178)", tickmode: 'array', tickvals: [0, 180] },
+      bar: { color: "rgb(255,255, 255, 0.1)", thickness:0 },
+      bgcolor: "rgb(239, 239, 239)",
+      bordercolor: "rgb(178, 178, 178)",
+      threshold: {
+        line: { color: "red", width: 3 },
+        thickness:1,
+        value: 93
+      },
+      steps: [
+      { range: [0, 60], color: "cyan" },
+      { range: [61, 120], color: "#00738A" },
+      { range: [121, 180], color: "#0045BC" }
+      ],
+    }
+  }
+];
+
+var layout = {
+  width: 550,
+  height: 210,
+  margin: { t: 10, r: 10, l: 10, b: 30 },
+  font: { color: "black", family: "Arial", size: 20 }
+};
+
+Plotly.newPlot('charts1', data, layout);
+
+      /*
+var data = [
+
+{
+  value: 29.7,
+  type: "indicator",
+  mode: "gauge+number",
+  delta: { reference: 50 },
+  gauge: {
+    axis: { range: [null, 50] },
+    threshold: {
+      line: { color: "red", width: 4 },
+      thickness:5,
+      value: 28.5
+    }
+  }
+}
+
+];
+
+
+var layout = { width: 600, height: 450 };
+
+// Display using Plotly
+Plotly.newPlot("charts1", data, layout); */
+    </script>
+  </body>
+</html>
