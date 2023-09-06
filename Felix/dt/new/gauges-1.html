@@ -1,0 +1,89 @@
+<html>
+  <header>
+    <style>
+      </style>
+      </head>
+  </header>
+<body>
+
+
+    <div style="font-size: 2.1rem;font-family: Arial, Helvetica, sans-serif;text-align: center;">
+        SKU Total Number
+    </div>
+    <div style="width: 300px;padding-top: 1rem;">
+        <div>
+            <canvas id="chart8"  width="100" height="45"></canvas>
+        </div>
+    </div>
+    <div style="padding-top: 1rem;font-size: 2.1rem;font-family: Arial, Helvetica, sans-serif;text-align: center;">
+        2,100
+    </div>
+
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script type="text/javascript">
+
+
+const originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
+Chart.defaults.global.tooltips.enabled = false;
+Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
+  draw: function() {
+    const chart = this.chart;
+    const {
+      width,
+      height,
+      ctx,
+      config
+    } = chart.chart;
+
+    const {
+      datasets
+    } = config.data;
+
+    const dataset = datasets[0];
+    const datasetData = dataset.data;
+    const completed = datasetData[0];
+    const text = `65%`;
+    let x, y, mid;
+
+    originalDoughnutDraw.apply(this, arguments);
+
+    const fontSize = (height / 76).toFixed(2);
+    ctx.font = fontSize + "em Lato, sans-serif";
+    ctx.font.fillStyle = 'color: white';
+    ctx.textBaseline = "top";
+
+
+    x = Math.round((width - ctx.measureText(text).width) / 2);
+    y = (height / 1.2) - fontSize;
+    ctx.fillStyle = "#000000"
+    ctx.fillText(text, x, y);
+    mid = x + ctx.measureText(text).width / 2;
+  }
+});
+
+
+var context = document.getElementById('chart8').getContext('2d');
+var chart = new Chart(context, {
+  type: 'doughnut',
+  data: {
+    labels: ['Completed', 'Pending'],
+    datasets: [{
+      label: 'First dataset',
+      data: [8 ,12],
+      backgroundColor: ['rgb(141, 1, 58)', '#ededed'],
+    }]
+  },
+  options: {
+    width: 200,
+    responsive: true,
+    legend: false,
+    cutoutPercentage: 65,
+    rotation: 1 * Math.PI,
+    circumference: 1 * Math.PI
+  }
+});
+  </script>
+</body>
+</html>

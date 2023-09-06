@@ -1,0 +1,137 @@
+<html>
+  <header>
+    <style>
+      .header-table{
+        background-color: deepskyblue;
+        border: 0px;
+      }
+      .customer-col {
+        width: 150px;
+        text-align: left;
+      }
+      .value-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+        width: 180px;
+      }
+      .value2-col {
+        text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 180px;
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      .tr1 {
+        border-bottom: 1px gray;
+        padding-bottom: 1px;
+      }
+
+      table {
+        table-layout:fixed;
+        border-collapse: collapse;
+      }
+      tr {
+        overflow: hidden;
+      }
+      td {
+        border-bottom: 1px solid rgb(179, 179, 179, 0.5) ;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      th{
+        table-layout:fixed;
+      }
+    </style>
+
+    <script>  
+    function test() {
+      document.getElementById("tr2").style.display="inline-block"; 
+    }
+    </script>
+  </header>
+  <body>
+    <table>
+      <tr class="header-table">
+        <th class="value-col"></th>
+        <th class="value-col">Request Qty</th>
+        <th class="value-col">FIN</th>
+        <th class="value-col">2nd</th>
+        <th class="value-col">3rd</th>
+        <th class="value-col">Bal</th>
+        <th class="value-col">%</th>
+        <th class="value-col">Allowed Qty</th>
+        <th class="value-col">Comment</th>
+      </tr>
+      <tr class="tr1">
+        <td class="value-col" style="font-weight: bold;">Total</td>
+        <td class="value-col">100</td>
+        <td class="value-col">100</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col">0</td>
+        <td class="value-col" style="background-color: #ffcc66;color: white;">97%</td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: yellow;">Pending Sizes</td>
+      </tr>
+      <tr class="tr1">
+        <td class="value-col">Customer Qty</td>
+        <td class="value-col">678</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: rgb(51, 204, 51);color: white;">97%</td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: rgb(51, 204, 51);color: white;">Ready to Finish</td>
+      </tr>
+      <tr class="tr1">
+        <td class="value-col">S</td>
+        <td class="value-col">145</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: #ffcc66;color: white;">90%</td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: rgb(51, 204, 51);color: white;">Ready to Finish</td>
+      </tr>
+      <tr class="tr1">
+        <td class="value-col">M</td>
+        <td class="value-col">291</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: red;color: white;">80%</td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: rgb(51, 204, 51);color: white;">Ready to Finish</td>
+      </tr>
+      <tr class="tr1">
+        <td class="value-col">L</td></td>
+        <td class="value-col">145</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: red;color: white;">80%</td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: yellow;">Pending</td>
+      </tr>
+      <tr class="tr1">
+        <td class="value-col">XL</td></td>
+        <td class="value-col">97</td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: red;color: white;">50%</td>
+        <td class="value-col"></td>
+        <td class="value-col" style="background-color: yellow;">Pending</td>
+      </tr>
+    </table>
+
+  </body>
+</html>
